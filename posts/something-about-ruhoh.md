@@ -66,3 +66,12 @@ widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只�
 
 [Why are the same comments showing up on multiple pages?]: http://help.disqus.com/customer/portal/articles/662547-why-are-the-same-comments-showing-up-on-multiple-pages-
 
+
+### 掌握 ###
+
+- bootstrap
+- mustache
+- less
+
+
+### mustache ###
