@@ -1,3 +1,9 @@
+---
+title: ios 筆記
+date: '2012-08-11'
+description:
+categories:
+---
 
 ### strong weak ###
 
@@ -6,7 +12,7 @@ automatic reference counting
 不同於垃圾收集機制，當對象失去最後一個strong 指針，就會馬上被釋放，沒有延遲。
 
 
-## nil ## 
+### nil ### 
 
 nill  = 0
 
@@ -19,12 +25,12 @@ if(obj)  可以判斷是否爲nil
 
     int i = [obj methodWhichReturnsAnInt]  // 如果 obj爲nil，那麼i將等於0
 	
-## BOOL ##
+### BOOL ###
 
 objc 的布爾類型，實際是用了typedef
 NO 等於 0 ，YES 爲非零
 
-## 類方法 vs 實例方法 ##
+### 類方法 vs 實例方法 ###
 
 **Struct 和 Object 的區別**
 
@@ -69,11 +75,11 @@ init 方法應當返回 **id**
     }
     @end
 
-## Dynamic Binding (動態綁定) ##
+### Dynamic Binding (動態綁定) ###
 
 固定類型，只是方便debug，固定類型和id在運行時是沒有區別的。
 
-## Object Typing ##
+### Object Typing ###
 
 跟java 有不少區別，找課件
 
@@ -87,7 +93,7 @@ respondsToSelector
 
 selector 非常酷，更有面向函數語言的感覺了。
 
-## Foundation 框架 ##
+### Foundation 框架 ###
 
 ### NSObject
 
@@ -150,17 +156,20 @@ NSSet + NSArray 有序不能有重複對象
 
 ### NSMutableOrderedSet
 
-## 枚舉 ##
-
-## Property List
+### 枚舉 ##
+### Property List ####
 
 NSArray ， NSDictionary，NSNumber，NString，NSDate，NSData
 
-### NSUserDefaults
+#### NSUserDefaults ####
 
 只能存放 Property List 的輕量數據庫
 
 類似 Android 的 sharedperference  
+
+
+
+
 
 
 
