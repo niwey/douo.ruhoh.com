@@ -60,7 +60,13 @@ widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只�
             <a href="http://disqus.com" class="dsq-brlink">comments
                 powered by <span class="logo-disqus">Disqus</span></a>
 
-	
+
+
+
+另外，对于 ruhoh 的 post ，如果不想以后换个标题，或者换个域名，都要重新整合评论，最好每篇文章提供一个 unique id 作为 disque_indentifier 使用。[Some Jekyll Hacks][] 希望可以得到一些启示。
+
+[Some Jekyll Hacks]: http://brizzled.clapper.org/blog/2010/12/20/some-jekyll-hacks/
+
 
 [issue52]: https://github.com/ruhoh/ruhoh.rb/issues/52
 
@@ -75,6 +81,8 @@ widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只�
 
 
 ### mustache ###
+
+
 
 
 ### TODO ###
