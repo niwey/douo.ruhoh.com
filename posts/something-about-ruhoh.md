@@ -8,9 +8,12 @@ categories:
 
 ### ruhoh ###
 
+{{! 关闭掉mustache的默认分隔符，因为要罗列mustache的代码}}
+{{=<% %>=}}
+
 这里也许会成为我第一篇ruhoh的博客，先罗列一下常用的命令吧。
 
-    rackup -p 9292  # 启动web服务再 9292端口
+    rackup -p 9292  # 启动 web 服务在 9292 端口
 	ruhoh page about.md  #创建一个页面，支持子目录 
 	ruhoh post "The Greatest Post Ever" #通过标题创建文章，将会生成 the-greatest-post-ever.md
 	ruhoh draft #快速建立一个草稿，生成untitled-draft-1.md 
@@ -82,7 +85,73 @@ widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只�
 
 ### mustache ###
 
+一个 Logic Less? 的模板语言，ruhoh 采用它是为了 Language Agnostic? 参考它的 [demo][] 可以大致了解它的特性
 
+json 对象:
+
+    {
+      "header": "Colors",
+      "items": [
+          {"name": "red", "first": true, "url": "#Red"},
+          {"name": "green", "link": true, "url": "#Green"},
+          {"name": "blue", "link": true, "url": "#Blue"}
+      ],
+      "empty": false
+    }
+
+模板：
+
+    <h1>{{header}}</h1>
+    {{#bug}}
+    {{/bug}}
+    
+    {{#items}}
+      {{#first}}
+        <li><strong>{{name}}</strong></li>
+      {{/first}}
+      {{#link}}
+        <li><a href="{{url}}">{{name}}</a></li>
+      {{/link}}
+    {{/items}}
+    
+    {{#empty}}
+      <p>The list is empty.</p>
+    {{/empty}}
+
+结果：
+
+    <h1>Colors</h1>
+    <li><strong>red</strong></li>
+    <li><a href="#Green">green</a></li>
+    <li><a href="#Blue">blue</a></li>
+
+要一点要注意一下，对于  `"tags"=>["forkosh", "LaTex", "mathtex"]` 这样列表或者数组(top-level-array)，没有 key 所以要这样处理
+
+    <ul>
+      {{#tags}}
+      <li>{{& .}}</li>
+      {{/tags}}
+    </ul>
+
+可以这样来模拟 if-else 结构
+
+    {{#repo}}
+      <b>{{name}}</b>
+    {{/repo}}
+    {{^repo}}
+      No repos :(
+    {{/repo}}
+
+`{{! ignore me }}` `"!"`用于注释
+
+如果好奇为什么我可以显示`{{ }}`,请参考[mustache(5)][] 的Set Delimiter。
+
+[mustache(5)]: http://mustache.github.com/mustache.5.html
+
+<%={{ }}=%>
+{{! 切换回默认的分隔符，免得出现奇怪的问题}} 
+
+[demo]: http://mustache.github.com/#demo
 
 
 ### TODO ###
