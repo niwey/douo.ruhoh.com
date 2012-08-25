@@ -17,6 +17,7 @@ meta:
 postid: '778'
 guid: http://dourok.info/?p=778
 ---
+!(alignright caption)path/to/image.jpg(Alt Text)!
 [![](http://dourok.info/wp-content/uploads/2012/05/light_out_banner.png "light_out_banner")](http://dourok.info/wp-content/uploads/2012/05/light_out_banner.png)
 Lights Out(关灯游戏) 是一款经典的老游戏，维基百科上说Lights Out
 是在1995年由 [Tiger

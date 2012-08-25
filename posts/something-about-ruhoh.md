@@ -153,6 +153,12 @@ json 对象:
 
 [demo]: http://mustache.github.com/#demo
 
+### bootstrap ###
+
+bootstrap 无法实现我理想的 left sidebar ，另外一点，预期说是bootstrap的问题，不如说是 markdown 的限制，无法为 img 标签指定 class 。
+
+文章的标签不知道放哪里好
+
 
 ### TODO ###
 
@@ -161,3 +167,4 @@ json 对象:
 - wp 轉換程序，codecolor 插件 短標籤的問題
 - sitemap
 - rss
+
