@@ -17,8 +17,9 @@ meta:
   _edit_last: '1'
   _aioseop_keywords: python,foobar2000,foobar2000歌词,Lyrics Grabber2,foobar2000千千静听,千千静听,谷歌翻译api
   _aioseop_title: 修复了 Lyrics Grabber2 的千千静听歌词抓取脚本
-  _aioseop_description: ! "Lyrics Grabber2 可以说我理想中的歌曲下载插件，主要是它可以批量抓取更新歌词，又可以自定义抓取脚本方便扩展，实在强大。\r\nLyrics
-    Grabber2里面的千千静听歌词抓取脚本（TTPlayer(LRC).py）是用不了的。我修复了一下"
+  _aioseop_description: ! 'Lyrics Grabber2 可以说我理想中的歌曲下载插件，主要是它可以批量抓取更新歌词，又可以自定义抓取脚本方便扩展，实在强大。
+
+    Lyrics Grabber2里面的千千静听歌词抓取脚本（TTPlayer(LRC).py）是用不了的。我修复了一下'
   dsq_thread_id: '796842664'
 postid: '571'
 guid: http://dourok.info/?p=571
