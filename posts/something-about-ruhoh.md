@@ -206,3 +206,6 @@ id="MathJax-Element-11">\begin{aligned}P\left( \sup_{f\in\mathcal{F}}
 - sitemap
 - rss
 - less
+
+
+到底是關注於博客系統還是博客本身呢，本末倒置了吧。整理一下現在還欠缺的內容。
