@@ -5,9 +5,9 @@ title: 成就狂!专属游戏Achievement Unlocked
 tags: []
 categories:
 - Otaku
-status: private
+status: publish
 type: post
-published: false
+published: true
 meta:
   _edit_last: '1'
 postid: '762'

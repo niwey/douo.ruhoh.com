@@ -15,7 +15,6 @@ published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842398'
-  dsq_needs_sync: '1'
 postid: '149'
 guid: http://dourok.info/?p=149
 ---
@@ -24,10 +23,13 @@ guid: http://dourok.info/?p=149
 
 用WordPress以来，一直都用CodeColorer插件用来实现代码高亮，不过一直没花时间去看说明，用起来很苦恼。所以今天决定花点时间认真学习下，并根据作者的说明总结下各个属性的作用，还添加了些例子，以后忘了理解起来也方便些。不过都是些苦力活啦。
 
-### CodeColorer
+CodeColorer
 
-CodeColorer是一款基于[GeSHi](http://qbnz.com/highlighter/)库的WordPress代码语法高亮插件。功能简单，使用方便，是一款比较轻量的插件。CodeColorer支持[cci\_ruby][cc
-lang="lang"]code[/cc][/cci\_ruby] 和 [cc inline="true"
+CodeColorer是一款基于[GeSHi](http://qbnz.com/highlighter/)库的WordPress代码语法高亮插件。功能简单，使用方便，是一款比较轻量的插件。CodeColorer支持
+
+    code
+
+和 [cc inline="true"
 lang="xml"]`code`{lang="lang"}[/cc]两种语法。[这里是插件的主页](http://kpumuk.info/projects/wordpress-plugins/codecolorer/)，本文据此翻译修改而成。
 
 属性说明及例子
@@ -73,14 +75,14 @@ lang="xml"]`code`{lang="lang"}[/cc]两种语法。[这里是插件的主页](htt
     当值为false，代码块里的html转义字符不会被转义，如[cc
     inline="true"]\<[/cc]不会转义为\<，默认为false。
 
-### lang
+lang
 
 [cc strict="true" theme="twitlight"]
 ` package dourok.info.test; public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{lang="java"}
 [/cc]
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{lang="java"}
 
-### tab\_size
+tab\_size
 
 tab\_size替换制表符的空格数，下面是1的例子。
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -88,7 +90,7 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{tab_size="1"
 lang="java"}
 
-### line\_numbers
+line\_numbers
 
 line\_numbers显示行号的开关：
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -96,7 +98,7 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{line_numbers="true"
 lang="java"}
 
-### first\_line
+first\_line
 
 first\_line第一行的行号数，下面是first\_line="3"的例子：
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -104,7 +106,7 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{first_line="3"
 lang="java"}
 
-### highlight
+highlight
 
 highlight模式，高亮代码段中的某几行，如例子 highlight="1,5"
 高亮行数以半角逗号分隔：
@@ -113,7 +115,7 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{highlight="1,5"
 lang="java"}
 
-### no\_links
+no\_links
 
 当no\_links为false时会为一下关键字添加一个到官方文档的链接，默认为false，下面是no\_links=true的例子，System没了链接：
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -122,7 +124,7 @@ no\_links有个BUG，当我在这个代码块指定为true时，后面的代码�
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{no_links="true"
 lang="java"}
 
-### lines
+lines
 
 lines作者说明是显示固定行数,多于这个行数便会出现纵向滚动条,实际实验当指定行数小于代码行数时,代码块变成成为固定行数(该行数可在CodeColorer里面更改),而无论实际代码多少行.应该是bug.不过将lines="-1"去掉纵向滚动条还是有效的
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -130,7 +132,7 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{no_links="false"
 lines="5" lang="java"}
 
-### width
+width
 
 width 指定代码块的宽度,多于这个宽度会出现横向滚动条 height
 指定代码块的高度,单位是像素.当这个值比lines大时才会生效 width= "217"
@@ -140,14 +142,14 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{lines="1"
 width="217" height="217" lang="java"}
 
-### theme
+theme
 
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
 theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{theme="dawn"
 lang="java"}
 
-### inline
+inline
 
 inline模式,为true时去掉代码块，主要用来把代码内嵌到文本中，inline模式的默认主题跟一般模式是分开的，如下例子，详见设置页面。
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -155,14 +157,14 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{inline="true"
 lang="java"}
 
-### strict
+strict
 
 strict
 严格模式(strict-mode)的开关,不大清楚什么意思?根据下面的例子理解下或者看下这里的[说明](http://qbnz.com/highlighter/geshi-doc.html#using-strict-mode)
 strict="false" ``{strict="false" lang="php"} strict="true"
 ``{strict="true" lang="php"}
 
-### nowrap
+nowrap
 
 nowrap自动换行的开关,默认是不换行(nowrap="true"),当代码宽度超过代码块宽度时,会出现横向滚动条.
 下面的例子是nowrap="false"的情形
@@ -171,7 +173,7 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("This is a very very very very very very very very very very very very very very very very very very very very very very very very long String");     } }`{nowrap="false"
 lang="java"}
 
-### noborder
+noborder
 
 noborder 是否显示边框的开关
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -179,7 +181,7 @@ theme="twitlight"}
 ` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{noborder="true"
 lang="java"}
 
-### no\_cc
+no\_cc
 
 no\_cc 是否高亮关键字,实际测试是取消codeColorer的效果,例子如下
 ` package dourok.info.test; public class Main {     public static void main(String args[]){         System.out.println("WTF");     } }`{strict="true"
@@ -190,7 +192,17 @@ lang="java"}
 短标签(Short Codes)
 -------------------
 
-上面提过可以用[cci][cc][/cci]来代替[cci]`[/cci]，可以避免使用code标签。作者还提供了跟简洁的语法[cci][ccMODE_LANG][/cci]来定义代码块。LANG就是指定语法高亮的语言，MODE可以是下面几个模式的一个或多个：`
+上面提过可以用
+
+    [cc]
+
+来代替
+
+，可以避免使用code标签。作者还提供了跟简洁的语法
+
+    [ccMODE_LANG]
+
+来定义代码块。LANG就是指定语法高亮的语言，MODE可以是下面几个模式的一个或多个：
 
 -   i – inline
 -   e – escaped
@@ -200,8 +212,25 @@ lang="java"}
 -   w – no\_wrap
 -   l – no\_links
 
-模式分大小写，小写表示打开，相应的大写表示关闭，比如[cci][cciL\_java][/cci]就如同[cci]`[/cci]，注意关闭标签要一致[cci][/cciL_java][/cci]，当然后面还可以再带属性。最后再看下实际的例子：  [cc theme="twitlight"][ccsW theme="dawn"] package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("This is a very very very very very very very very very very very very long String");     } }`{inline="true"
-no_links="false"} [/ccsW][/cc] [ccsW\_xml
+模式分大小写，小写表示打开，相应的大写表示关闭，比如
+
+    [cciL_java]
+
+就如同
+
+，注意关闭标签要一致
+
+    [/cciL_java]
+
+，当然后面还可以再带属性。最后再看下实际的例子： [cc
+theme="twitlight"][ccsW
 theme="dawn"]` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("This is a very very very very very very very very very very very very long String");     } }`{nowrap="false"
-lang="java"} [/ccsW\_xml]
-如果要显示[cci\_xml]``[/cci\_xml]，就得用短标签将其包围起来，如果要显示短标签[cci][cc][/cc][/cci]就得用不同的短标签将其包围起来。不知这样说的够明白没。
+lang="java"} [/ccsW][/cc] [ccsW\_xml
+theme="dawn"]` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("This is a very very very very very very very very very very very very long String");     } }`{nowrap="false"
+lang="java"} [/ccsW\_xml] 如果要显示
+
+，就得用短标签将其包围起来，如果要显示短标签
+
+    [cc][/cc]
+
+就得用不同的短标签将其包围起来。不知这样说的够明白没。

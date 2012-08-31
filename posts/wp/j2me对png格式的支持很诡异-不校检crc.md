@@ -6,9 +6,9 @@ tags:
 - J2ME
 categories:
 - Coder
-status: private
+status: publish
 type: post
-published: false
+published: true
 meta:
   _edit_last: '1'
 postid: '764'

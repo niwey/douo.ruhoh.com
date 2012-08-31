@@ -20,7 +20,7 @@ meta:
 postid: '446'
 guid: http://dourok.info/?p=446
 ---
-### Groovy
+Groovy
 
 Groovy是一种运行在Java虚拟机上的脚本语言，语法相比java起来简单很多。而且完全支持Java语法，这个不知道是不是好事，写习惯groovy再去写java会不会很容易混淆？所有Java的库都可以在Groovy上使用，可以说跟Java是互通的。Groovy的就是一跑在jvm上的脚本语言嘛，Groovy的代码最后也要被编译成为jvm上的字节码。
 一直都打算学一种脚本语言来写脚本和小程序的，本来是用python的，用了几天，一放松又用回Java了。Java虽然库比较熟悉，代码比较亲切，但是用来写脚本还是太繁琐了。接触都Groovy后，感觉就是它了，有脚本语言的语法和Java的库，对于会Java的人来说，学习Groovy几乎是零成本的！
@@ -49,61 +49,168 @@ groovy.lang.\*
 
 groovy.util.\*
 
-“==”操作符，不再比较引用，如下面的的代码输出2个true [cc\_groovy]a = new
-String("wtf") b = new String("wtf") println a == b println
-a.equals(b)[/cc\_groovy] [cci\_groovy theme="dawn"]Output:true true
-[/cci\_groovy]
+“==”操作符，不再比较引用，如下面的的代码输出2个true
+
+    a = new String("wtf")
+    b = new String("wtf")
+    println a == b
+    println a.equals(b)
+
+[cci\_groovy theme="dawn"]Output:true true [/cci\_groovy]
 正则表达式也有独立的操作符，正则表达式要用两个斜杠包围起来。 是否匹配
-==\~ 如 [cci\_groovy]println "potatoe" ==\~ /potatoe/[/cci\_groovy]
+==\~ 如
+
+    println "potatoe" ==~ /potatoe/
+
 [cci\_groovy theme="dawn"]Output:true[/cci\_groovy] 匹配结果 =\~
 会返回一个相当于java.util.regex.Matcher的对象。
 
-### 闭包(Closure)
+闭包(Closure)
 
 用python的时候还没用过闭包，毕竟是没接触过的特性所以有股阻力，Lisp则是想学还没动手，所以学Groovy也算是我第一次接触闭包了。
-闭包就像这样 [cci\_groovy]s = {println it}[/cci\_groovy] 一个变量名
-指向一个代码块 调用s(5) 就会打印出 5 官方帮助的例子是 [cc\_groovy]square
-= { it \* it} println square(9)[/cc\_groovy] [cci\_groovy
-theme="dawn"]Output:81[/cci\_groovy] 闭包也可以当成方法的参数去传递； 如
-[cci\_groovy][ 1, 2, 3, 4 ].collect(square)[/cci\_groovy]
+闭包就像这样
+
+    s = {println it}
+
+一个变量名 指向一个代码块 调用s(5) 就会打印出 5 官方帮助的例子是
+
+    square = { it * it}
+
+    println square(9)
+
+[cci\_groovy theme="dawn"]Output:81[/cci\_groovy]
+闭包也可以当成方法的参数去传递； 如
+
+    [ 1, 2, 3, 4 ].collect(square)
+
 闭包在java成面就是groovy.util.Closure这个类，
 所以可以这样传递还可以理解。 关于闭包的参数；
 默认一个参数就是it，可以不用声明直接用便可。
-多于一个参数可以用下面这种方式来指定参数列表 [cci\_groovy]closure =
-{a,b,...n -\> code} closure(a,b,...n)[/cci\_groovy]
-还可以匿名[cci\_groovy][ "yue" : "wu", "lane" : "burks", "sudha" :
-"saseethiaseeleethialeselan" ].each( { key, value -\> println key + "="
-+ value })[/cci\_groovy] 闭包匿名的时候可以省略括号 [cci\_groovy][ "yue"
-: "wu", "lane" : "burks", "sudha" : "saseethiaseeleethialeselan" ].each
-{ key, value -\> println key + "=" + value }[/cci\_groovy] 还可以这样写
-[cc\_groovy]n = 5; ({ for(int i in 1..100) println i\*n }).call()
-[/cc\_groovy] 闭包内部可以调用其外部的变量 这个如何实现的也很好奇啊
-在官网上的例子还看过这么一个用法 [cc\_groovy]def groovyImage = new
-GroovyImage(); def argAndClosure = ['-d':{groovyImage.srcDir = new
-File(it)}, '-q':{groovyImage.outputPattern = it},
-'-p':{groovyImage.pattern = it},
-'-h':{groovyImage.help()}];[/cc\_groovy]
+多于一个参数可以用下面这种方式来指定参数列表
+
+    closure = {a,b,...n ->  code}
+    closure(a,b,...n)
+
+还可以匿名
+
+    [ "yue" : "wu", "lane" : "burks", "sudha" : "saseethiaseeleethialeselan" ].each(
+    {
+    key, value -> println key + "=" + value
+    })
+
+闭包匿名的时候可以省略括号
+
+    [ "yue" : "wu", "lane" : "burks", "sudha" : "saseethiaseeleethialeselan" ].each
+    {
+    key, value -> println key + "=" + value
+    }
+
+还可以这样写
+
+    n = 5;
+    ({
+    for(int i in 1..100)
+    println i*n
+    }).call()
+
+闭包内部可以调用其外部的变量 这个如何实现的也很好奇啊
+在官网上的例子还看过这么一个用法
+
+    def groovyImage = new GroovyImage();
+    def argAndClosure = ['-d':{groovyImage.srcDir = new File(it)},
+    '-q':{groovyImage.outputPattern = it},
+    '-p':{groovyImage.pattern = it},
+    '-h':{groovyImage.help()}];
+
 闭包当成Map的Value，直接Map[key].call()果然很方便。
 看了一天目前知道的差不多就这些，刚接触闭包，概念还待慢慢理解；Groovy其他的特点还待慢慢发掘。
 
-### Groovy的效率
+Groovy的效率
 
 最后再看看Groovy的效率如何，分别在Java、Python、Groovy上写了个生成素数表的方法，代码几乎一致。
-Java： [cc\_java] /\* \* To change this template, choose Tools |
-Templates \* and open the template in the editor. \*/ package
-org.dou.euler; import java.util.ArrayList; /\*\* \* \* @author DouO \*/
-public class Prime { public static ArrayList primes = new
-ArrayList(100); public static void buildPrimeTable(int n){
-primes.add(2L); primes.add(3L); int k = 2; long s = 5; for (int i = 0; i
-\< n-2; i++) { int j = 0; int q = (int) Math.ceil(Math.sqrt(s));; while
-(j \< i ) { if (primes.get(j)\<=q&&s % primes.get(j) == 0) { s+=k; k =
-(k+k)%6; q = (int) Math.ceil(Math.sqrt(s)); j = 0; } else { j++; } } j =
-0; primes.add(s); s+=k; k = (k+k)%6; q = (int) Math.ceil(Math.sqrt(s));
-} } public static void main(String[] args) { long t =
-System.currentTimeMillis(); buildPrimeTable(10001);
-System.out.println(System.currentTimeMillis() - t);
-System.out.println(primes.get(10000)); } } [/cc\_java] Python:
-[cc\_python] import math import time primes = [] def buildTable(n): \#
-if(len(primes)\<=0): \# primes.append(2) \# sindex = 1; \# else: \#
-sindex = len(primes+1); primes.append(2) primes.append(3) s = 5 k = 2
-for i in range(0,n): j=0 q = int(math.sqrt(s)+0.5) while(j
+Java：
+
+    /*
+     * To change this template, choose Tools | Templates
+     * and open the template in the editor.
+     */
+
+    package org.dou.euler;
+
+    import java.util.ArrayList;
+
+    /**
+     *
+     * @author DouO
+     */
+    public class Prime {
+     public static ArrayList primes = new ArrayList(100);
+        public static void buildPrimeTable(int n){
+            primes.add(2L);
+            primes.add(3L);
+            int k = 2;
+            long s = 5;
+            for (int i = 0; i < n-2; i++) {
+                int j = 0;
+                int q = (int) Math.ceil(Math.sqrt(s));;
+                while (j < i ) {
+                    if (primes.get(j)<=q&&s % primes.get(j) == 0) {
+                         s+=k;
+                         k = (k+k)%6;
+                         q = (int) Math.ceil(Math.sqrt(s));
+                          j = 0;
+                    } else {
+                        j++;
+                    }
+                }
+                j = 0;
+                primes.add(s);
+                s+=k;
+                k = (k+k)%6;
+                q = (int) Math.ceil(Math.sqrt(s));
+            }
+        }
+        public static void main(String[] args) {
+            long t = System.currentTimeMillis();
+            buildPrimeTable(10001);
+            System.out.println(System.currentTimeMillis() - t);
+            System.out.println(primes.get(10000));
+        }
+    }
+
+Python:
+
+    import math
+    import time
+    primes = []
+    def buildTable(n):
+    #    if(len(primes)<=0):
+    #        primes.append(2)
+    #        sindex = 1;
+    #    else:
+    #        sindex = len(primes+1);
+        primes.append(2)
+        primes.append(3)
+        s = 5
+        k = 2
+        for i in range(0,n):
+            j=0
+            q = int(math.sqrt(s)+0.5)
+            while(j
+
+Groovy:
+
+    primes = []
+    def buildPrimeTable(n){
+        primes.add(2)
+        primes.add(3)
+        s = 5
+        k = 2
+        for(i in 0..n-2){
+            j = 0
+            q = (int) Math.ceil(Math.sqrt(s))
+            while(j
+
+以生成前10000位素数为例，结果如下： Java:718ms，表现不错。
+Python:8833ms，8秒，java的10倍，也可能是我代码写的不好。
+Groovy:77484ms，没错，你没看错是5位数，77秒！几乎是java版的110倍。天啊，这也忒慢了吧，是不是我触犯了什么禁忌啊，很可能出现在列表结构上面，下次再弄清楚啦。

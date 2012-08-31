@@ -5,9 +5,9 @@ title: Passage,浓缩的人生
 tags: []
 categories:
 - Otaku
-status: private
+status: publish
 type: post
-published: false
+published: true
 meta:
   _edit_last: '1'
 postid: '769'
