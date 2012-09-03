@@ -4,10 +4,10 @@ layout: post
 title: Passage,浓缩的人生
 tags: []
 categories:
-- Otaku
-status: private
+- otaku
+status: publish
 type: post
-published: false
+published: true
 meta:
   _edit_last: '1'
 postid: '769'

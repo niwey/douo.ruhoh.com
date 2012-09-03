@@ -6,10 +6,10 @@ tags:
 - f
 - foobar2000
 categories:
-- Otaku
-status: private
+- otaku
+status: publish
 type: post
-published: false
+published: true
 meta:
   _edit_last: '1'
 postid: '753'

@@ -8,14 +8,13 @@ tags:
 - 插件翻译
 - 语法高亮
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842398'
-  dsq_needs_sync: '1'
 postid: '149'
 guid: http://dourok.info/?p=149
 ---
@@ -26,8 +25,11 @@ guid: http://dourok.info/?p=149
 
 ### CodeColorer
 
-CodeColorer是一款基于[GeSHi](http://qbnz.com/highlighter/)库的WordPress代码语法高亮插件。功能简单，使用方便，是一款比较轻量的插件。CodeColorer支持[cci\_ruby][cc
-lang="lang"]code[/cc][/cci\_ruby] 和 [cc inline="true"
+CodeColorer是一款基于[GeSHi](http://qbnz.com/highlighter/)库的WordPress代码语法高亮插件。功能简单，使用方便，是一款比较轻量的插件。CodeColorer支持
+
+    code
+
+和 [cc inline="true"
 lang="xml"]`code`{lang="lang"}[/cc]两种语法。[这里是插件的主页](http://kpumuk.info/projects/wordpress-plugins/codecolorer/)，本文据此翻译修改而成。
 
 属性说明及例子
@@ -190,7 +192,17 @@ lang="java"}
 短标签(Short Codes)
 -------------------
 
-上面提过可以用[cci][cc][/cci]来代替[cci]`[/cci]，可以避免使用code标签。作者还提供了跟简洁的语法[cci][ccMODE_LANG][/cci]来定义代码块。LANG就是指定语法高亮的语言，MODE可以是下面几个模式的一个或多个：`
+上面提过可以用
+
+    [cc]
+
+来代替
+
+，可以避免使用code标签。作者还提供了跟简洁的语法
+
+    [ccMODE_LANG]
+
+来定义代码块。LANG就是指定语法高亮的语言，MODE可以是下面几个模式的一个或多个：
 
 -   i – inline
 -   e – escaped
@@ -200,8 +212,25 @@ lang="java"}
 -   w – no\_wrap
 -   l – no\_links
 
-模式分大小写，小写表示打开，相应的大写表示关闭，比如[cci][cciL\_java][/cci]就如同[cci]`[/cci]，注意关闭标签要一致[cci][/cciL_java][/cci]，当然后面还可以再带属性。最后再看下实际的例子：  [cc theme="twitlight"][ccsW theme="dawn"] package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("This is a very very very very very very very very very very very very long String");     } }`{inline="true"
-no_links="false"} [/ccsW][/cc] [ccsW\_xml
+模式分大小写，小写表示打开，相应的大写表示关闭，比如
+
+    [cciL_java]
+
+就如同
+
+，注意关闭标签要一致
+
+    [/cciL_java]
+
+，当然后面还可以再带属性。最后再看下实际的例子： [cc
+theme="twitlight"][ccsW
 theme="dawn"]` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("This is a very very very very very very very very very very very very long String");     } }`{nowrap="false"
-lang="java"} [/ccsW\_xml]
-如果要显示[cci\_xml]``[/cci\_xml]，就得用短标签将其包围起来，如果要显示短标签[cci][cc][/cc][/cci]就得用不同的短标签将其包围起来。不知这样说的够明白没。
+lang="java"} [/ccsW][/cc] [ccsW\_xml
+theme="dawn"]` package dourok.info.test;  public class Main {     public static void main(String args[]){         System.out.println("This is a very very very very very very very very very very very very long String");     } }`{nowrap="false"
+lang="java"} [/ccsW\_xml] 如果要显示
+
+，就得用短标签将其包围起来，如果要显示短标签
+
+    [cc][/cc]
+
+就得用不同的短标签将其包围起来。不知这样说的够明白没。

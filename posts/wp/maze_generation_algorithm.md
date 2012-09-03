@@ -7,7 +7,7 @@ tags:
 - 图论
 - 迷宫
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true

@@ -8,7 +8,7 @@ tags:
 - J2ME文件系统
 - JSR 75
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true

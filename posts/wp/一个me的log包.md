@@ -6,7 +6,7 @@ tags:
 - J2ME
 - 控制台
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true
@@ -37,21 +37,33 @@ offset,int len)方法,居然可以最后一字节没被读出来；用new String
 -   [ConsolePainter](#ConsolePainter)
 
 Log是在Fire2里实现好的，有一系列的静态方法，包括添加和设置Logger，还有一系列记录消息的方法，Log里面的消息四个级别，分别为Info、Warn、ERROR、Debug。Log对象默认实现一个Logger，这个默认的Logger就是将消息打印在控制台(System.out.println())。
-Logger 是一个接口只有一个方法 [ccen\_java]public void println(String txt
-, int level);[/ccen\_java]
+Logger 是一个接口只有一个方法
+
+    public void println(String txt , int level);
+
 要自己实现logger只需实现这个接口便可，比如说把Log消息写文件里面去，发送到服务器等等。
 Console就是控制台，是一个独立的全屏的界面，继承了Canvas，实现了Logger接口。将Log记录下来的消息绘制到屏幕上。考虑到一个Midlet只需要一控制台，又必须给Console传入Display参数，所以便按单例模式实现Console。
 得到Console实例的方法有两个，getConsole(Display) 和getConsole()
 但要注意一点，第一次得到Console对象时，必须先使用getConsole(Display)，来为其传入Display对象。
 显示Console只需调用showConsole(Displayable
 screen)，传入的Displayable为调用显示控制台是的当前界面，从Console返回时会自动显示该界面。screen可以为null，当screen为null时Console无法返回。
-一个使用控制台的例程可以像这样 [ccE\_java]Display dis =
-Display.getDisplay(this); Console console = Console.getConsole(dis);
-Log.showDebug = true; Log.addLogDestination(console);
-Log.logInfo("console already"); Log.logDebug(Console.getMemoryInfo());
-try{ //一些可能抛出异常的操作 }catch(Exception e){ Log.logError("ERROR"
-, e); console.showConsole(null); }[/ccE\_java] Console还有个String
-getMemoryInfo()的方法，来得到当前虚拟机的内存信息。 ConsolePainter
+一个使用控制台的例程可以像这样
+
+    Display dis = Display.getDisplay(this);
+    Console console = Console.getConsole(dis);
+    Log.showDebug = true;
+    Log.addLogDestination(console);
+    Log.logInfo("console already");
+    Log.logDebug(Console.getMemoryInfo());
+    try{
+    //一些可能抛出异常的操作
+    }catch(Exception e){
+    Log.logError("ERROR" , e);
+    console.showConsole(null);
+    }
+
+Console还有个String getMemoryInfo()的方法，来得到当前虚拟机的内存信息。
+ConsolePainter
 是控制台画笔,负责把字符串绘制到屏幕上，ConsolePainter绘制字符串暂时还可以接受的，主要因为绘制的时候只有当前屏幕会显示到的字符串才会被绘制，具体留意下setTransition()。Console便是使用该类来绘制信息，同样的ConsolePainter实现了Logger接口，所以，也可直接在你的Canvas使用该画笔，来把Log消息直接绘制在Canvas上。
 再来看下ConsolePainter的构造函数ConsolePainter(Canvas canvas, boolean
 autoclean)，canvas为需要绘制画笔，ConsolePainter要获得Canvas的大小来布局字符串，绘制的时候需要在Canvas调用ConsolePainter.paint(Graphics

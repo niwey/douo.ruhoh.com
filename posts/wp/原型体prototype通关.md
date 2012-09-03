@@ -7,7 +7,7 @@ tags:
 - 原型体
 - 游戏
 categories:
-- Life
+- life
 status: publish
 type: post
 published: true

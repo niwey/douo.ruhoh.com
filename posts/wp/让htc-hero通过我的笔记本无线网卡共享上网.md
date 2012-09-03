@@ -9,7 +9,7 @@ tags:
 - HTC G3
 - 无线网卡
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true
@@ -33,7 +33,9 @@ AGN/5150/5350/6200/6250/6300 我的是5100
 AGN。安装的过程非常流畅，安装后程序会自动启动。这时只要启用了My
 WiFi技术，就可以在HERO上看WiFi热点了，不过，在你连接之前，还要改一下My
 WiFi的预配置，因为默认的密码是一串长达64位的随机字符串（真是随机的吗？）。大概类似：
-[cc]ch@R2ku9tAYz5aOkPDz31TAWXfCGpz72.muvx\#lugh9q6e97bo\~gzDiuf8DoK+P[/cc]
+
+    ch@R2ku9tAYz5aOkPDz31TAWXfCGpz72.muvx#lugh9q6e97bo~gzDiuf8DoK+P
+
 如果能在手机上一个个输完，那我真是五体投地。
 SSID是默认的计算机名，最好也改一下。如果想要换别的加密方式，比如wep，那必须新建一个配置。因为预配置只允许用WPA2-PSK加密。
 这样在计算机上的工作基本搞定了，HERO应该可以正常连接上来。如果一直卡在获取ip阶段，请确认下手机是不是开启了静态IP（无线局域网设置-\>menu键-\>高级），如果开启了最好关闭，因为Intel®

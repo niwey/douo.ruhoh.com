@@ -5,7 +5,7 @@ title: WebGL V5!
 tags:
 - WebGL
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true

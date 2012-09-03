@@ -5,10 +5,10 @@ title: J2ME对PNG格式的支持很诡异–不校检CRC?
 tags:
 - J2ME
 categories:
-- Coder
-status: private
+- coder
+status: publish
 type: post
-published: false
+published: true
 meta:
   _edit_last: '1'
 postid: '764'

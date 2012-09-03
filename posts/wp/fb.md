@@ -4,10 +4,10 @@ layout: post
 title: 哈哈，FB
 tags: []
 categories:
-- Life
-status: private
+- life
+status: publish
 type: post
-published: false
+published: true
 meta:
   _edit_last: '1'
 postid: '751'
