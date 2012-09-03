@@ -8,7 +8,7 @@ tags:
 - 算法
 - 线性代数
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true

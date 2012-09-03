@@ -6,7 +6,7 @@ tags:
 - Modis
 - MTK
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true
@@ -95,7 +95,7 @@ tcc编译出来的是obj文件，还要打包成lib库,用命令
 之后把lib加入工程的方法一开始说过了。但如果要把lib添加进模拟器中还需要多几个步骤。
 首先，这个lib库是用在真机上，而模拟器中的库是需要经过vc编译的。
 
-Modis
+### Modis
 
 如按照包含源码的第三方库第5步操作过，那么重新生成、编译模拟器就可以在模拟器中使用该库。在模拟器的目录Modis中可以库目录dou，dou.lib应该就在Debug目录下。这个dou.lib就是vc编译过的库。
 如果第三方要在模拟器里使用该库，那么可以按下面几个步骤操作。
@@ -110,7 +110,7 @@ Modis
 
 编译Modis，不报错便大功告成。
 
-PC Simulator
+### PC Simulator
 
 如果用PC Simulator
 ，并且确保代码是不依赖于MTK平台的，就是说没有使用MTK平台现有模块的任何函数，如dou.c。那么可以在VC6里面新建个静态库项目，把源文件添加进去，让编译打包成LIB库。再打开PC\_Simulator.dsw。在project→setting把新生成的lib添加进去。接着再tools→options加入Lib库的路径，有的话在加入头文件的路径。这样可以在模拟器里使用该库了。

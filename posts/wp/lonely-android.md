@@ -7,7 +7,7 @@ tags:
 - processing.js
 - wordpress插件
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true

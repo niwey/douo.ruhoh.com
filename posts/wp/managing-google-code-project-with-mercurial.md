@@ -8,7 +8,7 @@ tags:
 - hg
 - Mercurial
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true
@@ -26,7 +26,7 @@ code
 Mercurial用起来还是很方便的，见[Managing a Google Code project with
 Mercurial](http://blog.dreasgrech.com/2010/07/managing-google-code-project-with.html)。下面的内容就是翻译整理自这文章，权当记录一下。
 
-安装Mercurial
+### 安装Mercurial
 
 首先，需要在你的机器上安装Mercurial，从这里http://mercurial.selenic.com/downloads/选择适合自己系统的版本下载安装。Ubuntu用户可以直接
 
@@ -38,16 +38,16 @@ Mercurial](http://blog.dreasgrech.com/2010/07/managing-google-code-project-with.
 
 ，如果出现类似下面信息的话就OK了。
 
- >     分布式软件配置管理工具 - 水银 (版本 1.7.5)
- >     (see http://mercurial.selenic.com for more information)
- >
- >     Copyright (C) 2005-2010 Matt Mackall and others
- >     This is free software; see the source for copying conditions. There is NO
- >     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+>     分布式软件配置管理工具 - 水银 (版本 1.7.5)
+>     (see http://mercurial.selenic.com for more information)
+>
+>     Copyright (C) 2005-2010 Matt Mackall and others
+>     This is free software; see the source for copying conditions. There is NO
+>     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 找不到命令的话请检查下环境变量。
 
-设置默认用户
+### 设置默认用户
 
 当Mercurial成功安装后，还需要设置一个用户作为你提交到仓库的默认用户。
 windows用户的话，需要在用户目录（%USERPROFILE%）创建一个名为Mercurial.ini或者.hgrc的配置文件。比如创建
@@ -56,12 +56,12 @@ windows用户的话，需要在用户目录（%USERPROFILE%）创建一个名为
 
 Linux在\$HOME目录创建.hgrc文件 然后在创建好的文件里加上下面内容
 
- >     [ui]
- >     username = 你的名字 
+>     [ui]
+>     username = 你的名字 
 
 可以在[这里](http://www.selenic.com/mercurial/hgrc.5.html)找到配置文件的更多选项。
 
-创建项目
+### 创建项目
 
 点这个链接[Google Project
 Hosting](http://code.google.com/hosting/createProject)创建新项目，记得在版本控制工具（Version
@@ -100,7 +100,7 @@ googlecode.com密码.在项目的source页面下可以看到这个链接：[http
 
     hg push https://andreas:AbCdEfGHiJ12@myhgproject.googlecode.com/hg/
 
-不想每次提交都打地址？
+### 不想每次提交都打地址？
 
 没问题，其实可以直接键入
 
@@ -110,12 +110,12 @@ googlecode.com密码.在项目的source页面下可以看到这个链接：[http
 打开项目文件夹了的.hg文件夹，可以看到里面有个hgrc文件，如果没有的话也可以自己创建。
 在里面加入你的密码
 
- >     [paths]
- >     default = https://andreas:AbCdEfGHiJ12@myhgproject.googlecode.com/hg/
+>     [paths]
+>     default = https://andreas:AbCdEfGHiJ12@myhgproject.googlecode.com/hg/
 
 明文保存的，要小心密码被泄露。
 
-SVN转到Mercurial
+### SVN转到Mercurial
 
 可以参考这里[在Google Code上用 Mercurial 取代 Subversion
 管理你的项目](http://leeiio.me/googlecode-converting-svn-to-hg/)，我也没细看。

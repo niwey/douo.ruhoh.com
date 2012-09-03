@@ -4,7 +4,7 @@ layout: post
 title: Test
 tags: []
 categories:
-- Life
+- life
 status: draft
 type: post
 published: false

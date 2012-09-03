@@ -4,7 +4,7 @@ layout: post
 title: PNG格式与Me中的PNG
 tags: []
 categories:
-- Life
+- life
 status: private
 type: post
 published: false

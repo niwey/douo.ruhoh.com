@@ -4,7 +4,7 @@ layout: post
 title: I'm Back!
 tags: []
 categories:
-- Life
+- life
 status: publish
 type: post
 published: true

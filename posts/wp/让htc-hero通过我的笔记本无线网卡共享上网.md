@@ -9,7 +9,7 @@ tags:
 - HTC G3
 - 无线网卡
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true

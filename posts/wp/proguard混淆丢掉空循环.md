@@ -9,7 +9,7 @@ tags:
 - 多线程
 - 空循环
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true

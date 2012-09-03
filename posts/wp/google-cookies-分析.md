@@ -6,7 +6,7 @@ tags:
 - cookie
 - google
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true

@@ -7,7 +7,7 @@ tags:
 - wordpress插件
 - 随机副标题
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true

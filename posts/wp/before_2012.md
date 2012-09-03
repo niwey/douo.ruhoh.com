@@ -8,7 +8,7 @@ tags:
 - Wordpress Theme
 - 吐槽
 categories:
-- Life
+- life
 status: publish
 type: post
 published: true

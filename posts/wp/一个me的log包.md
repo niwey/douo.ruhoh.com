@@ -6,7 +6,7 @@ tags:
 - J2ME
 - 控制台
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true

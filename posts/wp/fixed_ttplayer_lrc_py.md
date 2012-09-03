@@ -8,8 +8,8 @@ tags:
 - python
 - 歌词搜索
 categories:
-- Coder
-- Otaku
+- coder
+- otaku
 status: publish
 type: post
 published: true

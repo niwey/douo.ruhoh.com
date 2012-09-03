@@ -4,7 +4,7 @@ layout: post
 title: 哈哈，FB
 tags: []
 categories:
-- Life
+- life
 status: publish
 type: post
 published: true

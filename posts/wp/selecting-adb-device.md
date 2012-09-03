@@ -7,7 +7,7 @@ tags:
 - ADT
 - Android
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true
@@ -26,10 +26,10 @@ $ adb hell
 即便有了方便的 Eclipse+ADT ，偶尔在命令行下敲个 adb
 也是少不了的。像我这样每天要切换操作系统的开发者，下面这个错误提示是每天都要遇到的：
 
- > Re-installation failed due to different application signatures. You
- > must perform a full uninstall of the application. WARNING: This will
- > remove the application data! Please execute 'adb uninstall
- > your.package.namespace' in a shell.[^1)^](#e1)
+> Re-installation failed due to different application signatures. You
+> must perform a full uninstall of the application. WARNING: This will
+> remove the application data! Please execute 'adb uninstall
+> your.package.namespace' in a shell.[^1)^](#e1)
 
 如果你忘记了你已连接了多台设备就兴匆匆地敲入，
 
@@ -163,7 +163,7 @@ hell 后，如果有多个设备的话，你应该可以看到文章一开始的
 不过这个脚本也是有缺陷的，不管 adb
 的子命令需不需要指定device，只要多于一个设备连接着，它都会提示选择设备。
 
-注解
+### 注解
 
 ​1)
 这个问题是由于不同的机器使用不同的**debug.keystore**，导致安装的时候验证错误。所有开发的机器使用相同的**debug.keystore**便可以避免这个问题再次发生。在

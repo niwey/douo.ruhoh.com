@@ -6,7 +6,7 @@ tags:
 - f
 - foobar2000
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true

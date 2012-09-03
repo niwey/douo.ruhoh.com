@@ -4,7 +4,7 @@ layout: post
 title: 成就狂!专属游戏Achievement Unlocked
 tags: []
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true

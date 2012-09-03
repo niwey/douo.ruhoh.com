@@ -4,7 +4,7 @@ layout: post
 title: Hello world！
 tags: []
 categories:
-- Life
+- life
 status: publish
 type: post
 published: true

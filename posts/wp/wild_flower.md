@@ -4,7 +4,7 @@ layout: post
 title: 野花
 tags: []
 categories:
-- Life
+- life
 status: publish
 type: post
 published: true

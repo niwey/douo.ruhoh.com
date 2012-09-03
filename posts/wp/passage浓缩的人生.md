@@ -4,7 +4,7 @@ layout: post
 title: Passage,浓缩的人生
 tags: []
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true

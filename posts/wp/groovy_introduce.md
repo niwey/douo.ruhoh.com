@@ -7,7 +7,7 @@ tags:
 - Java
 - 闭包
 categories:
-- Coder
+- coder
 status: publish
 type: post
 published: true
@@ -20,7 +20,7 @@ meta:
 postid: '446'
 guid: http://dourok.info/?p=446
 ---
-Groovy
+### Groovy
 
 Groovy是一种运行在Java虚拟机上的脚本语言，语法相比java起来简单很多。而且完全支持Java语法，这个不知道是不是好事，写习惯groovy再去写java会不会很容易混淆？所有Java的库都可以在Groovy上使用，可以说跟Java是互通的。Groovy的就是一跑在jvm上的脚本语言嘛，Groovy的代码最后也要被编译成为jvm上的字节码。
 一直都打算学一种脚本语言来写脚本和小程序的，本来是用python的，用了几天，一放松又用回Java了。Java虽然库比较熟悉，代码比较亲切，但是用来写脚本还是太繁琐了。接触都Groovy后，感觉就是它了，有脚本语言的语法和Java的库，对于会Java的人来说，学习Groovy几乎是零成本的！
@@ -65,7 +65,7 @@ groovy.util.\*
 [cci\_groovy theme="dawn"]Output:true[/cci\_groovy] 匹配结果 =\~
 会返回一个相当于java.util.regex.Matcher的对象。
 
-闭包(Closure)
+### 闭包(Closure)
 
 用python的时候还没用过闭包，毕竟是没接触过的特性所以有股阻力，Lisp则是想学还没动手，所以学Groovy也算是我第一次接触闭包了。
 闭包就像这样
@@ -125,7 +125,7 @@ groovy.util.\*
 闭包当成Map的Value，直接Map[key].call()果然很方便。
 看了一天目前知道的差不多就这些，刚接触闭包，概念还待慢慢理解；Groovy其他的特点还待慢慢发掘。
 
-Groovy的效率
+### Groovy的效率
 
 最后再看看Groovy的效率如何，分别在Java、Python、Groovy上写了个生成素数表的方法，代码几乎一致。
 Java：

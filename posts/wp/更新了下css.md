@@ -7,7 +7,7 @@ tags:
 - css
 - 通用字体
 categories:
-- Otaku
+- otaku
 status: publish
 type: post
 published: true
