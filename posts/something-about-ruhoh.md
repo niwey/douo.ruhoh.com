@@ -191,6 +191,10 @@ ruhoh 的插件的情況下，要解決基本無望。但是，我目前並沒�
 -  [Why I hate Markdown (and prefer reST)](http://blog.liancheng.info//why-i-hate-markdown)
 -  [The Unbearable Madness of Static Blog Generators](http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators)
 
+#### pandoc 增强
+
+http://www.ituring.com.cn/article/746
+
 ## Mathjax ##
 
 mathjax的使用非常方便，直接在頁面嵌入script就行，然後通過一個 widgets
