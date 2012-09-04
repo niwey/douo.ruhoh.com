@@ -3,7 +3,11 @@ title:
 date: '2010-04-20'
 description:
 ---
-
+``` ruby
+require 'redcarpet'
+markdown = Redcarpet.new("Hello World!")
+puts markdown.to_html
+```
 [苦逼][]的程序员，不值一提的小人物。
 
 联系我： [![my_mail][mail_img]][mail_gen]  
