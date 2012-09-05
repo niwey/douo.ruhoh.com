@@ -31,7 +31,10 @@ jn0101@netbeans.org
 Sources"按钮失效。我试过了确实会这样（linux下）。解决方法可以用[--userdir](http://wiki.netbeans.org/FaqAlternateUserdir)给netbeans
 7.1重新指定一个新userdir。不过，我是直接把.netbeans文件删掉，当然有先备份，然后，先配置好7.1的nbandroid，然后把sources.zip附到相应的android.jar。再把备份的7.0拷回来。可以把7.0的一些config拷给7.1，如：Editors和Keymaps等等。这样两个版本都可以正常工作了。
 [![](http://dourok.info/wp-content/uploads/2010/05/view_sources.png "view_sources")](http://dourok.info/wp-content/uploads/2010/05/view_sources.png)
+
 另外，意外的是在debug下还能工作的挺好的。
 [![](http://dourok.info/wp-content/uploads/2010/05/debug_view.png "debug_view")](http://dourok.info/wp-content/uploads/2010/05/debug_view.png)
+
 [NBANDROID-71](http://kenai.com/jira/browse/NBANDROID-71)基本可以算解决了。
+
 见此,如何[在Netbeans上配置Android开发环境](http://dourok.info/2010/05/%e5%9c%a8netbeans%e4%b8%8a%e9%85%8d%e7%bd%aeandroid%e5%bc%80%e5%8f%91%e7%8e%af%e5%a2%83/ "在Netbeans上配置Android开发环境")

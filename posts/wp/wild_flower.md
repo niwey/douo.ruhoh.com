@@ -21,4 +21,5 @@ guid: http://dourok.info/?p=666
 从不向人类乞求一分一毫，如此孤高冷傲，也不近人情[![](http://dourok.info/wp-content/uploads/2012/04/IMAG0034.jpg "IMAG0034")](http://dourok.info/wp-content/uploads/2012/04/IMAG0034.jpg)
 我还是天真的希望，此刻它的灿烂是因为我的注目。
 可惜我不懂花的语言，不敢开口，你现在是否在为我开放？[![](http://dourok.info/wp-content/uploads/2012/04/IMAG0160.jpg "IMAG0160")](http://dourok.info/wp-content/uploads/2012/04/IMAG0160.jpg)
+
 今天真是适合踏青的好天气，蓝天白云，风轻如梦，视野开阔。可惜手机的镜头不给力，拍不出这种开阔。[![](http://dourok.info/wp-content/uploads/2012/04/IMAG00061.jpg "IMAG0006")](http://dourok.info/wp-content/uploads/2012/04/IMAG00061.jpg)

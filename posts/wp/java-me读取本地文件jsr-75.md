@@ -40,12 +40,10 @@ guid: http://dourok.info/?p=8
 ### wtk模拟器的文件系统
 
 这里要说明一点，就是就是wtk模拟器的文件系统(FilesSystem)。我们在DefaultColorDevice上调用FileSystemRegistry.listRoots();一般都只会等到一个root1/文件夹。是模拟器的文件系统是绑定在本地目录的。运行模拟器时，NetBeans上的控制台，EclipseME也有，会打印出
-Running with storage root
-C:\\Users\\用户名\\j2mewtk\\2.5.2\\appdb\\temp.DefaultColorPhone162
+Running with storage root C:2mewtk.5.2.DefaultColorPhone162
 实际在这个目录下有个filesystem文件。打开就会发现root1
 文件夹了。如果不想每次运行都生成一个新的文件夹，可删除
-C:\\Users\\用户名\\j2mewtk\\2.5.2\\appdb\\DefaultColorPhone下的 in.use
-文件。 关于这个官方有这样一个描述：
+C:2mewtk.5.2 in.use 文件。 关于这个官方有这样一个描述：
 
 > **Local Files and Personal Information** The J2ME Wireless Toolkit
 > supports JSR 75, the PDA Optional Packages for the J2ME Platform,
@@ -61,18 +59,16 @@ C:\\Users\\用户名\\j2mewtk\\2.5.2\\appdb\\DefaultColorPhone下的 in.use
 > the FileConnection API. In the J2ME Wireless Toolkit emulator, a
 > simulated file system is maintained as a directory on your hard disk.
 > The files your application can access using FileConnection are stored
-> in subdirectories of \<toolkit\>\\appdb\\\<*skin*\>\\filesystem.,
-> where \<*toolkit*\> is the installation directory of the J2ME Wireless
-> Toolkit and \<*skin*\> is the name of the emulator skin. For example,
+> in subdirectories of \<toolkit\>&lt;*skin*\>., where \<*toolkit*\> is
+> the installation directory of the J2ME Wireless Toolkit and \<*skin*\>
+> is the name of the emulator skin. For example,
 > the DefaultColorPhone emulator skin comes with a root directory
 > installed called root1, which contains a file called Readme. The
-> file's full path is
-> \<*toolkit*\>\\appdb\\DefaultColorPhone\\filesystem\\root1\\Readme.
-> You can manage the root directories that are available by
-> choosing **MIDlet \> External events** from the emulator window's
-> menu. You'll see a small utility window for adding and removing roots.
-> These actions will also generate events for a registered listener
-> object.
+> file's full path is \<*toolkit*\>1. You can manage the root
+> directories that are available by choosing **MIDlet \> External
+> events** from the emulator window's menu. You'll see a small utility
+> window for adding and removing roots. These actions will also generate
+> events for a registered listener object.
 
 E文不好，不解释。
 
@@ -116,6 +112,7 @@ events****的****File Connection**来触发监听器。
 用wtk
 的模拟器默认读写文件的权限是每次询问，测试程序的时候觉得很烦的话，可以用ktoolbar来修改。选项在Edit\>\>preference\>\>Security将Security
 Domain修改为maximum便可。ktoolbar在 wtk的安装目录/bin/ktoolbar.exe
+
 还有注意一点，如果用户不允许应用程序访问文件系统。访问文件的方法会抛出SecurityException。
 
 ### 参考文献
