@@ -96,3 +96,6 @@ string
 
 ### 正则表达式 ###
 
+ruby 的 gsub sub 反斜槓 太噁心人了。
+
+"<script type=\"math/tex\">#{res['content']}</script>".gsub('\\\\','\\\\\\\\\\\\\\\\').gsub('_','\_').gsub('&amp;','&')

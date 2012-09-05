@@ -84,7 +84,11 @@ Devices，单击"New"，建好之后就可以重新回到NetBeans了。
 
 项目初始化后，在MainActivity写了些测试代码如下：
 
-    public void onCreate(Bundle icicle) { setTitle("Hello Android"); super.onCreate(icicle); setContentView(new AnalogClock(this)); }
+    public void onCreate(Bundle icicle) {
+    setTitle("Hello Android");
+    super.onCreate(icicle);
+    setContentView(new AnalogClock(this));
+    }
 
 现在就可以运行了，不过第一次运行要启动模拟器，相当的久，我差不多花了2分钟。而且，我第一次运行时程序没有载入，重新运行一次便可以了，因为不用启动模拟器第二次的运行快很多了，差不多10来秒。记得不要把模拟器关了，不然下次运行要重启模拟器，又要花很多时间。OK，我的第一个Android程序诞生鸟～
 

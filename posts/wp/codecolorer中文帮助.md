@@ -27,7 +27,7 @@ guid: http://dourok.info/?p=149
 
 CodeColorer是一款基于[GeSHi](http://qbnz.com/highlighter/)库的WordPress代码语法高亮插件。功能简单，使用方便，是一款比较轻量的插件。CodeColorer支持
 
-    [cc lang="lang"]code[/cc]
+    code
 
 和 [cc inline="true"
 lang="xml"]`code`{lang="lang"}[/cc]两种语法。[这里是插件的主页](http://kpumuk.info/projects/wordpress-plugins/codecolorer/)，本文据此翻译修改而成。

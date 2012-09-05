@@ -17,7 +17,11 @@ meta:
 postid: '854'
 guid: http://dourok.info/?p=854
 ---
-$ adb hell 1) HT18HTB00535 device 2) HT04RL901008 device Select the device to use,  to quit: 1 shell@android:/ $ 
+$ adb hell
+    1) HT18HTB00535 device
+    2) HT04RL901008 device
+    Select the device to use,  to quit: 1
+    shell@android:/ $
 
 即便有了方便的 Eclipse+ADT ，偶尔在命令行下敲个 adb
 也是少不了的。像我这样每天要切换操作系统的开发者，下面这个错误提示是每天都要遇到的：
@@ -49,28 +53,98 @@ $ adb hell 1) HT18HTB00535 device 2) HT04RL901008 device Select the device to us
 这个交互的 adb
 由两个脚本组成，第一个是**android-select-device**。用于提示用户选择设备。
 
-     #! /bin/bash # selects an android device
-    PROGNAME=$(basename 0)UNAME = (uname) DEVICE_OPT= for opt in "$@" do case "$opt" in -d|-e|-s) DEVICE_OPT=$opt ;; esac done [ -n "$DEVICE_OPT" ] && exit 0 DEV=$(adb devices 2&gt;&amp;1 | tail -n +2 | sed '/^$/d') if [ -z "$DEV" ] then echo "$PROGNAME: ERROR: There's no connected devices." >&2 exit 1 fi N=$(echo "$DEV" | wc -l | sed 's/ //g')
-    case $N in 1) # only one device detected D=$DEV ;;
-    *) # more than one device detected OLDIFS=$IFS IFS=" " PS3="Select the device to use,  to quit: " select D in $DEV do [ "$REPLY" = 'q' -o "$REPLY" = 'Q' ] &amp;&amp; exit 2 [ -n "$D" ] && break done
-    IFS=$OLDIFS ;; esac if [ -z "$D" ] then echo "$PROGNAME: ERROR: target device coulnd't be determined" >&2 exit 1 fi
-    this didn't work on Darwin
-    echo "-s ${D%% *}"
-    echo "-s $(echo D∣sedʹs / .  * //')" 
+    #! /bin/bash
+    # selects an android device
+
+    PROGNAME=$(basename $0)
+    UNAME=$(uname)
+    DEVICE_OPT=
+    for opt in "$@"
+    do
+    case "$opt" in
+    -d|-e|-s)
+    DEVICE_OPT=$opt
+    ;;
+    esac
+    done
+    [ -n "$DEVICE_OPT" ] && exit 0
+    DEV=$(adb devices 2>&1 | tail -n +2 | sed '/^$/d')
+    if [ -z "$DEV" ]
+    then
+    echo "$PROGNAME: ERROR: There's no connected devices." >&2
+    exit 1
+    fi
+    N=$(echo "$DEV" | wc -l | sed 's/ //g')
+
+    case $N in
+    1)
+    # only one device detected
+    D=$DEV
+    ;;
+
+    *)
+    # more than one device detected
+    OLDIFS=$IFS
+    IFS="
+    "
+    PS3="Select the device to use,  to quit: "
+    select D in $DEV
+    do
+    [ "$REPLY" = 'q' -o "$REPLY" = 'Q' ] && exit 2
+    [ -n "$D" ] && break
+    done
+
+    IFS=$OLDIFS
+    ;;
+    esac
+    if [ -z "$D" ]
+    then
+    echo "$PROGNAME: ERROR: target device coulnd't be determined" >&2
+    exit 1
+    fi
+
+    # this didn't work on Darwin
+    # echo "-s ${D%% *}"
+    echo "-s $(echo ${D} | sed 's/ .*$//')"
 
 把上面代码复制保存到 **android-select-device**
 这个文件里。第二个文件是**my-adb**，它是用来代替原本的adb的。当adb
 devices 多于一个的时候就会调用 **android-select-device**
 让用户选择设备。
 
-     #! /bin/bash # This command can be used as an alias for adb and it will prompt for the # device selection if needed # alias adb=my-adb
-    set +x PROGNAME=$(basename 0)ADB = (which adb) if [ -z "$ADB" ] then echo "$PROGNAME: ERROR: cannot found adb" exit 1 fi
-    set -e if [ $# == 0 ] then # no arguments exec $ADB elif [ "$1" == 'devices' ] then # adb devices should not accept -s, -e or -d exec $ADB devices else # because of the set -e, if selecting the device fails it exits S=$(android-select-device "$@") exec $ADB $S "$@" fi 
+    #! /bin/bash
+    # This command can be used as an alias for adb and it will prompt for the
+    # device selection if needed
+    # alias adb=my-adb
+
+    set +x
+    PROGNAME=$(basename $0)
+    ADB=$(which adb)
+    if [ -z "$ADB" ]
+    then
+    echo "$PROGNAME: ERROR: cannot found adb"
+    exit 1
+    fi
+
+    set -e
+    if [ $# == 0 ]
+    then
+    # no arguments
+    exec $ADB
+    elif [ "$1" == 'devices' ]
+    then
+    # adb devices should not accept -s, -e or -d
+    exec $ADB devices
+    else
+    # because of the set -e, if selecting the device fails it exits
+    S=$(android-select-device "$@")
+    exec $ADB $S "$@"
+    fi
 
 同样的把上面代码复制保存到文件 **my-adb** 。 接下来把这两个脚本加入到
 \$PATH 里面。我的做法是在 \$ANDROID\_SDK\_HOME 里面建个 my-tools
-文件夹，再把脚本放进去。然后直接在
-*P**A**T**H**里**添**加**这**个**目**录*[*c**c*~*b*~*a**s**h*]*e**x**p**o**r**t**P**A**T**H* = PATH:\$ANDROID\_SDK\_HOME/my-tools[/cc\_bash]
+文件夹，再把脚本放进去。然后直接在 \$PATH 里添加这个目录 \<pre\>\<code
+class="bash"\>export PATH=\$PATH:\$ANDROID\_SDK\_HOME/my-tools
 
 最后给 my-adb 加个 adb 别名，让它替换掉原来的 adb。
 
@@ -81,7 +155,11 @@ devices 多于一个的时候就会调用 **android-select-device**
 
 运行 adb hell 后，如果有多个设备的话，你应该可以看到文章一开始的输出：
 
-     $ adb hell 1) HT18HTB00535 device 2) HT04RL901008 device Select the device to use,  to quit: 1 shell@android:/ $ 
+    $ adb hell
+    1) HT18HTB00535 device
+    2) HT04RL901008 device
+    Select the device to use,  to quit: 1
+    shell@android:/ $
 
 不过这个脚本也是有缺陷的，不管 adb
 的子命令需不需要指定device，只要多于一个设备连接着，它都会提示选择设备。

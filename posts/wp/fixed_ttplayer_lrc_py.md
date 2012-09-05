@@ -17,9 +17,8 @@ meta:
   _edit_last: '1'
   _aioseop_keywords: python,foobar2000,foobar2000歌词,Lyrics Grabber2,foobar2000千千静听,千千静听,谷歌翻译api
   _aioseop_title: 修复了 Lyrics Grabber2 的千千静听歌词抓取脚本
-  _aioseop_description: ! 'Lyrics Grabber2 可以说我理想中的歌曲下载插件，主要是它可以批量抓取更新歌词，又可以自定义抓取脚本方便扩展，实在强大。
-
-    Lyrics Grabber2里面的千千静听歌词抓取脚本（TTPlayer(LRC).py）是用不了的。我修复了一下'
+  _aioseop_description: ! "Lyrics Grabber2 可以说我理想中的歌曲下载插件，主要是它可以批量抓取更新歌词，又可以自定义抓取脚本方便扩展，实在强大。\r\nLyrics
+    Grabber2里面的千千静听歌词抓取脚本（TTPlayer(LRC).py）是用不了的。我修复了一下"
   dsq_thread_id: '796842664'
 postid: '571'
 guid: http://dourok.info/?p=571
@@ -65,13 +64,41 @@ bug\_4:[42行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_l
 
 针对这些，增加了下面的新方法
 
-     def QianQianStringFilter(self,string): s = string # 英文转小写 s = s.lower() # 去括号，大中小还有全角的小括号 s = re.sub('(.?)|[.?]|{.?}|（.?）', '', s); # 去除半角特殊符号，空格，逗号，etc。 s = re.sub('[ -/:-@[-`{-~]+', '', s); # 繁（正）体转换为简体 s = translate(s,'zh-tw','zh-cn') s = unicode(s, 'utf_8') # 去除全角特殊符号 s = re.sub(u'[20142018201c202630013002300a300b300e300f3010301130fb0108090c1a1b1f5e5]+','',s) return s 
+    def QianQianStringFilter(self,string):
+    s = string
+    # 英文转小写
+    s = s.lower()
+    # 去括号，大中小还有全角的小括号
+    s = re.sub('\(.*?\)|\[.*?]|{.*?}|（.*?）', '', s);
+    # 去除半角特殊符号，空格，逗号，etc。
+    s = re.sub('[ -/:-@[-`{-~]+', '', s);
+    # 繁（正）体转换为简体
+    s = translate(s,'zh-tw','zh-cn')
+    s = unicode(s, 'utf_8')
+    # 去除全角特殊符号
+    s = re.sub(u'[\u2014\u2018\u201c\u2026\u3001\u3002\u300a\u300b\u300e\u300f\u3010\u3011\u30fb\uff01\uff08\uff09\uff0c\uff1a\uff1b\uff1f\uff5e\uffe5]+','',s)
+    return s
 
-     def translate(text,lang_from,lang_to): url = ('http://ajax.googleapis.com/ajax/services/language/translate?' + 'v=1.0&q='+urllib.quote(text)+'&langpair='+lang_from+'%7C'+lang_to) json = urllib.urlopen(url).read() # return json; p = re.compile('"translatedText":"(.+?)"') m = p.search(json); return m.group(1); 
+    def translate(text,lang_from,lang_to):
+    url = ('http://ajax.googleapis.com/ajax/services/language/translate?' +
+    'v=1.0&q='+urllib.quote(text)+'&langpair='+lang_from+'%7C'+lang_to)
+    json = urllib.urlopen(url).read()
+    # return json;
+    p = re.compile('"translatedText":"(.+?)"')
+    m = p.search(json);
+    return m.group(1);
 
 **注意:**谷歌翻译的api已经过期了，会导致查词失败，新的翻译api又要收费还很贵，见[http://code.google.com/apis/language/translate/v2/pricing.html](http://code.google.com/apis/language/translate/v2/pricing.html)，坑爹呢这是。幸好还有Bing做后援。虽然不给力，但简繁转换还是没问题的。下面的代码改用Bing的翻译服务：
 
-     def translate(text,lang_from,lang_to): url = ('http://api.microsofttranslator.com/V2/Ajax.svc/Translate?' + 'appId=DE2A1CAA235EB52E611BC1243F16E4D301BB600E' + '&from='+ lang_from +'&to='+ lang_to + '&text='+urllib.quote(text)) json = urllib.urlopen(url).read() p = re.compile('"(.+?)"') #對應必應 m = p.search(json); return m.group(1); 
+    def translate(text,lang_from,lang_to):
+    url = ('http://api.microsofttranslator.com/V2/Ajax.svc/Translate?' +
+    'appId=DE2A1CAA235EB52E611BC1243F16E4D301BB600E' +
+    '&from='+ lang_from +'&to='+ lang_to +
+    '&text='+urllib.quote(text))
+    json = urllib.urlopen(url).read()
+    p = re.compile('"(.+?)"') #對應必應
+    m = p.search(json);
+    return m.group(1);
 
 这样，大部分流行歌曲特别是华人音乐，都可以表示毫无压力。
 [![](http://dourok.info/wp-content/uploads/2011/08/t1.png "t1")](http://dourok.info/wp-content/uploads/2011/08/t1.png)

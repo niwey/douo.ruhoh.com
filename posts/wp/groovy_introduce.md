@@ -55,7 +55,10 @@ groovy.util.\*
 
 “==”操作符，不再比较引用，如下面的的代码输出2个true
 
-    a = new String("wtf") b = new String("wtf") println a == b println a.equals(b)
+    a = new String("wtf")
+    b = new String("wtf")
+    println a == b
+    println a.equals(b)
 
 [cci\_groovy theme="dawn"]Output:true true [/cci\_groovy]
 正则表达式也有独立的操作符，正则表达式要用两个斜杠包围起来。 是否匹配
@@ -77,6 +80,7 @@ groovy.util.\*
 一个变量名 指向一个代码块 调用s(5) 就会打印出 5 官方帮助的例子是
 
     square = { it * it}
+
     println square(9)
 
 [cci\_groovy theme="dawn"]Output:81[/cci\_groovy]
@@ -90,24 +94,39 @@ groovy.util.\*
 默认一个参数就是it，可以不用声明直接用便可。
 多于一个参数可以用下面这种方式来指定参数列表
 
-    closure = {a,b,...n -> code} closure(a,b,...n)
+    closure = {a,b,...n ->  code}
+    closure(a,b,...n)
 
 还可以匿名
 
-    [ "yue" : "wu", "lane" : "burks", "sudha" : "saseethiaseeleethialeselan" ].each( { key, value -> println key + "=" + value })
+    [ "yue" : "wu", "lane" : "burks", "sudha" : "saseethiaseeleethialeselan" ].each(
+    {
+    key, value -> println key + "=" + value
+    })
 
 闭包匿名的时候可以省略括号
 
-    [ "yue" : "wu", "lane" : "burks", "sudha" : "saseethiaseeleethialeselan" ].each { key, value -> println key + "=" + value }
+    [ "yue" : "wu", "lane" : "burks", "sudha" : "saseethiaseeleethialeselan" ].each
+    {
+    key, value -> println key + "=" + value
+    }
 
 还可以这样写
 
-    n = 5; ({ for(int i in 1..100) println i*n }).call() 
+    n = 5;
+    ({
+    for(int i in 1..100)
+    println i*n
+    }).call()
 
 闭包内部可以调用其外部的变量 这个如何实现的也很好奇啊
 在官网上的例子还看过这么一个用法
 
-    def groovyImage = new GroovyImage(); def argAndClosure = ['-d':{groovyImage.srcDir = new File(it)}, '-q':{groovyImage.outputPattern = it}, '-p':{groovyImage.pattern = it}, '-h':{groovyImage.help()}];
+    def groovyImage = new GroovyImage();
+    def argAndClosure = ['-d':{groovyImage.srcDir = new File(it)},
+    '-q':{groovyImage.outputPattern = it},
+    '-p':{groovyImage.pattern = it},
+    '-h':{groovyImage.help()}];
 
 闭包当成Map的Value，直接Map[key].call()果然很方便。
 
@@ -118,19 +137,86 @@ groovy.util.\*
 最后再看看Groovy的效率如何，分别在Java、Python、Groovy上写了个生成素数表的方法，代码几乎一致。
 Java：
 
-     /* * To change this template, choose Tools | Templates * and open the template in the editor. */
+    /*
+     * To change this template, choose Tools | Templates
+     * and open the template in the editor.
+     */
+
     package org.dou.euler;
+
     import java.util.ArrayList;
-    /** * * @author DouO */ public class Prime { public static ArrayList primes = new ArrayList(100); public static void buildPrimeTable(int n){ primes.add(2L); primes.add(3L); int k = 2; long s = 5; for (int i = 0; i < n-2; i++) { int j = 0; int q = (int) Math.ceil(Math.sqrt(s));; while (j < i ) { if (primes.get(j)<=q&&s % primes.get(j) == 0) { s+=k; k = (k+k)%6; q = (int) Math.ceil(Math.sqrt(s)); j = 0; } else { j++; } } j = 0; primes.add(s); s+=k; k = (k+k)%6; q = (int) Math.ceil(Math.sqrt(s)); } } public static void main(String[] args) { long t = System.currentTimeMillis(); buildPrimeTable(10001); System.out.println(System.currentTimeMillis() - t); System.out.println(primes.get(10000)); } } 
+
+    /**
+     *
+     * @author DouO
+     */
+    public class Prime {
+     public static ArrayList primes = new ArrayList(100);
+        public static void buildPrimeTable(int n){
+            primes.add(2L);
+            primes.add(3L);
+            int k = 2;
+            long s = 5;
+            for (int i = 0; i < n-2; i++) {
+                int j = 0;
+                int q = (int) Math.ceil(Math.sqrt(s));;
+                while (j < i ) {
+                    if (primes.get(j)<=q&&s % primes.get(j) == 0) {
+                         s+=k;
+                         k = (k+k)%6;
+                         q = (int) Math.ceil(Math.sqrt(s));
+                          j = 0;
+                    } else {
+                        j++;
+                    }
+                }
+                j = 0;
+                primes.add(s);
+                s+=k;
+                k = (k+k)%6;
+                q = (int) Math.ceil(Math.sqrt(s));
+            }
+        }
+        public static void main(String[] args) {
+            long t = System.currentTimeMillis();
+            buildPrimeTable(10001);
+            System.out.println(System.currentTimeMillis() - t);
+            System.out.println(primes.get(10000));
+        }
+    }
 
 Python:
 
-     import math import time primes = [] def buildTable(n): # if(len(primes)<=0): # primes.append(2) # sindex = 1; # else: # sindex = len(primes+1); primes.append(2) primes.append(3) s = 5 k = 2 for i in range(0,n): j=0 q = int(math.sqrt(s)+0.5) while(j<i): if(primes[j]<=q and s%primes[j]==0): s+=k k=(k+k)%6 q = int(math.sqrt(s)+0.5) j=0 else: j+=1 primes.append(s) s+=k k=(k+k)%6 q = int(math.sqrt(s)+0.5)
-    time.clock() buildTable(10000) print primes[10000] print time.clock() 
+    import math
+    import time
+    primes = []
+    def buildTable(n):
+    #    if(len(primes)<=0):
+    #        primes.append(2)
+    #        sindex = 1;
+    #    else:
+    #        sindex = len(primes+1);
+        primes.append(2)
+        primes.append(3)
+        s = 5
+        k = 2
+        for i in range(0,n):
+            j=0
+            q = int(math.sqrt(s)+0.5)
+            while(j
 
 Groovy:
 
-     primes = [] def buildPrimeTable(n){ primes.add(2) primes.add(3) s = 5 k = 2 for(i in 0..n-2){ j = 0 q = (int) Math.ceil(Math.sqrt(s)) while(j<i){ if(primes[j]<=q && s%primes[j]==0){ s+=k k=(k+k)%6 q = (int) Math.ceil(Math.sqrt(s)) j = 0 }else{ j++; } } primes.add(s) s+=k k = (k+k)%6 q = (int) Math.ceil(Math.sqrt(s)) } } t = System.currentTimeMillis() buildPrimeTable(10000) println System.currentTimeMillis() - t println primes[10000] 
+    primes = []
+    def buildPrimeTable(n){
+        primes.add(2)
+        primes.add(3)
+        s = 5
+        k = 2
+        for(i in 0..n-2){
+            j = 0
+            q = (int) Math.ceil(Math.sqrt(s))
+            while(j
 
 以生成前10000位素数为例，结果如下： Java:718ms，表现不错。
 Python:8833ms，8秒，java的10倍，也可能是我代码写的不好。

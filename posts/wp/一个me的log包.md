@@ -57,7 +57,18 @@ screen)，传入的Displayable为调用显示控制台是的当前界面，从Co
 
 一个使用控制台的例程可以像这样
 
-    Display dis = Display.getDisplay(this); Console console = Console.getConsole(dis); Log.showDebug = true; Log.addLogDestination(console); Log.logInfo("console already"); Log.logDebug(Console.getMemoryInfo()); try{ //一些可能抛出异常的操作 }catch(Exception e){ Log.logError("ERROR" , e); console.showConsole(null); }
+    Display dis = Display.getDisplay(this);
+    Console console = Console.getConsole(dis);
+    Log.showDebug = true;
+    Log.addLogDestination(console);
+    Log.logInfo("console already");
+    Log.logDebug(Console.getMemoryInfo());
+    try{
+    //一些可能抛出异常的操作
+    }catch(Exception e){
+    Log.logError("ERROR" , e);
+    console.showConsole(null);
+    }
 
 Console还有个String getMemoryInfo()的方法，来得到当前虚拟机的内存信息。
 

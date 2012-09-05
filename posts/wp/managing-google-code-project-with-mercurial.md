@@ -39,8 +39,12 @@ Mercurial](http://blog.dreasgrech.com/2010/07/managing-google-code-project-with.
 
 ，如果出现类似下面信息的话就OK了。
 
->     分布式软件配置管理工具 - 水银 (版本 1.7.5) (see http://mercurial.selenic.com for more information)
->     Copyright (C) 2005-2010 Matt Mackall and others This is free software; see the source for copying conditions. There is NO warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+>     分布式软件配置管理工具 - 水银 (版本 1.7.5)
+>     (see http://mercurial.selenic.com for more information)
+>
+>     Copyright (C) 2005-2010 Matt Mackall and others
+>     This is free software; see the source for copying conditions. There is NO
+>     warranty; not even for MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
 
 找不到命令的话请检查下环境变量。
 
@@ -49,11 +53,12 @@ Mercurial](http://blog.dreasgrech.com/2010/07/managing-google-code-project-with.
 当Mercurial成功安装后，还需要设置一个用户作为你提交到仓库的默认用户。
 windows用户的话，需要在用户目录（%USERPROFILE%）创建一个名为Mercurial.ini或者.hgrc的配置文件。比如创建
 
-    C:.ini
+    C:\Users\Andreas\Mercurial.ini
 
 Linux在\$HOME目录创建.hgrc文件 然后在创建好的文件里加上下面内容
 
->     [ui] username = 你的名字  
+>     [ui]
+>     username = 你的名字 
 
 可以在[这里](http://www.selenic.com/mercurial/hgrc.5.html)找到配置文件的更多选项。
 
@@ -108,7 +113,8 @@ googlecode.com密码.在项目的source页面下可以看到这个链接：[http
 打开项目文件夹了的.hg文件夹，可以看到里面有个hgrc文件，如果没有的话也可以自己创建。
 在里面加入你的密码
 
->     [paths] default = https://andreas:AbCdEfGHiJ12@myhgproject.googlecode.com/hg/ 
+>     [paths]
+>     default = https://andreas:AbCdEfGHiJ12@myhgproject.googlecode.com/hg/
 
 明文保存的，要小心密码被泄露。
 

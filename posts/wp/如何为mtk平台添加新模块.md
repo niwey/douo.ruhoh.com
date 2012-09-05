@@ -50,26 +50,39 @@ guid: http://dourok.info/?p=116
 
 比如说新建一个源文件dou.c，代码如下：
 
-     #include "dou.h" int dou_max(int a , int b){ return a>b?a:b; }
+    #include "dou.h"
+    int dou_max(int a , int b){
+    return a>b?a:b;
+    }
 
 接下来建立头文件dou.h,
 
-     #ifndef _DOU_H #define _DOU_H extern int dou_max(int a,int b); #endif
+    #ifndef _DOU_H
+    #define _DOU_H
+    extern int dou_max(int a,int b);
+    #endif
 
 若要将程序打包成库发布，这里跟上面添加包含源码的第三方库一样，在MTK软件系统根目录下，新增一个dou目录，在创建inc和src文件夹，把dou.h放在dou，dou.c放在dou。接着在make目录下新增一个dou目录,再添加4个新文件，分别是，dou.def、dou.inc、dou.lis、dou.pth。
 
 dou.inc添加
 
-    dou
-    dou.lis添加 [cc]dou.c
+    dou\inc
+
+dou.lis添加
+
+    dou\src\dou.c
 
 dou.pth添加
 
-    dou
-    .inc是头文件目录，.lis是源文件列表，.pth是源文件目录。
-    remake一下，完成后可在build文件夹里，搜索到dou.lib文件。接下来可以如上面所说的无源码的库的添加方法那样去添加。
+    dou\src
 
-    也可以不用remake，可以用命令行来编译 [cc]armcc [options] file1 file2 ... filen
+.inc是头文件目录，.lis是源文件列表，.pth是源文件目录。
+
+remake一下，完成后可在build文件夹里，搜索到dou.lib文件。接下来可以如上面所说的无源码的库的添加方法那样去添加。
+
+也可以不用remake，可以用命令行来编译
+
+    armcc [options] file1 file2 ... filen
 
 不过我用armmcc编译出来的obj文件加入MTK工程后链接出错。后来用
 
@@ -97,7 +110,8 @@ tcc编译出来的是obj文件，还要打包成lib库,用命令
 "\${modislibroot}\\\\\\\\dou\\\\.lib");[/cc]
 这里可以参考了其它\${modislibroot}里的lib库的添加方法。 然后
 
-    make gen_modis make codegen_modis
+    make gen_modis
+    make codegen_modis
 
 编译Modis，不报错便大功告成。
 

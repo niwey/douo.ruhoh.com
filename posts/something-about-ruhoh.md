@@ -177,9 +177,9 @@ bootstrap 更适合于这种布局
 
 現在主要影響比較大的有幾點：
 
-1  无法为 img 标签指定 class 
-2  無法爲文章生成 content
-3  實現擴展不容易
+1. 无法为 img 标签指定 class 
+2. 無法爲文章生成 content
+3. 實現擴展不容易
 
 第1點，是markdown 語義的限制，2，3 倒也不能怪 Markdown，不過在不動用
 ruhoh 的插件的情況下，要解決基本無望。但是，我目前並沒有放棄 Markdown
