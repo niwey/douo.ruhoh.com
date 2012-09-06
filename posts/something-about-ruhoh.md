@@ -33,6 +33,25 @@ categories:
 ruhoh實現的就先擱置，甚至不使用插件。如果可以用js實現的話，也值得考慮
 一下。
 
+看了 pluskid 的[文章]，我也跟着实现了保存的时候自动刷新页面。需要安装几个东西
+
+- [guard][]
+- [rack-livereload][]
+- [guard-livereload][]
+
+[guard]是一个监听文件系统变动的工具，[rack-livereload] 实现了自动刷新。安装和使用看一下各自的 readme 还是很容易明白的，但具体怎么工作我也没弄清楚，反正不用改动ruhoh的一个代码，很方便。不过我在 windows 下安装 [guard-livereload] 出了问题，原因是EventMachine 0.12.10 不能在跑着 ruy 1.9.2+ 的windows上工作。用 pre-release 的版本就可以解决问题，讨论在[stackoverflow](http://stackoverflow.com/questions/6927907/ruby-problem-installing-eventmachine-under-windows-7#) 上。
+
+	gem install eventmachine --pre
+
+
+[文章]: http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators/
+
+[guard-livereload]: https://github.com/guard/guard-livereload
+
+[rack-livereload]: https://github.com/johnbintz/rack-livereload
+
+[guard]: https://github.com/guard/guard
+
 ### 评论 ###
 
 ruhoh 用 widgets 實現。內置支持disqus。
@@ -191,6 +210,8 @@ ruhoh 的插件的情況下，要解決基本無望。但是，我目前並沒�
 -  [Why I hate Markdown (and prefer reST)](http://blog.liancheng.info//why-i-hate-markdown)
 -  [The Unbearable Madness of Static Blog Generators](http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators)
 
+markdown 的转义让人抓狂
+
 #### pandoc 增强
 
 http://www.ituring.com.cn/article/746
@@ -220,3 +241,5 @@ id="MathJax-Element-11">\begin{aligned}P\left( \sup_{f\in\mathcal{F}}
 
 
 到底是關注於博客系統還是博客本身呢，本末倒置了吧。整理一下現在還欠缺的內容。
+
+
