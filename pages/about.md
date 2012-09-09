@@ -46,4 +46,4 @@ puts markdown.to_html
   [mail_gen]: http://services.nexodyne.com/email/index.php
   [mail_img]: http://dourok.info/wp-content/uploads/2010/04/mail.png (点击跳转Email图片生成服务)
 
-damn again agian
+damn again agian agian
