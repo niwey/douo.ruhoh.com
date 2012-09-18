@@ -239,5 +239,16 @@ id="MathJax-Element-11">\begin{aligned}P\left( \sup_{f\in\mathcal{F}}
 - rss
 - less
 
+### RSS & sitemap ###
 
-到底是關注於博客系統還是博客本身呢，本末倒置了吧。整理一下現在還欠缺的內容。
+新版的ruhoh 已经内置 rss 生成插件，但是这个插件有不少问题，我参考了wordpress的rss改进了一下，见 [rss.rb][]。不过现在在goodle reader的日期还有问题。google reader 是分成两个日期的，分别是`已收到项目`和`已发布项目` 默认显示的是`已收到项目`。在rohoh 中就是rss.xml 的生成时间，结果导致所有文章的显示出来的日期都一样。
+
+sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一些根据wordpress的sitemap做了些改动，改动版在[这](https://gist.github.com/3736089)
+
+[Ruhoh Sitemap Generator]: https://gist.github.com/3705998
+
+[crchan]: https://github.com/crhan
+
+[rss.rb]: https://gist.github.com/3736010
+
+
