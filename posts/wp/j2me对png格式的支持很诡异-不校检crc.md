@@ -7,12 +7,11 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
 postid: '764'
 guid: http://dourok.info/?p=764
+type: draft
 ---
 先看下面一张图片先
 

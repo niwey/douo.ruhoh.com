@@ -9,13 +9,12 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796841088'
 postid: '854'
 guid: http://dourok.info/?p=854
+type: draft
 ---
 $ adb hell
     1) HT18HTB00535 device

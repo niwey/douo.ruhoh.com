@@ -10,14 +10,13 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
 postid: '778'
 guid: http://dourok.info/?p=778
+type: draft
 ---
-[![](http://dourok.info/wp-content/uploads/2012/05/light\_out\_banner.png "light\_out\_banner")](http://dourok.info/wp-content/uploads/2012/05/light\_out\_banner.png)
+[![]({{urls.media}}/wp-content/uploads/2012/05/light\_out\_banner.png "light\_out\_banner")]({{urls.media}}/wp-content/uploads/2012/05/light\_out\_banner.png)
 
 Lights Out(关灯游戏) 是一款经典的老游戏，维基百科上说Lights Out
 是在1995年由 [Tiger
@@ -39,7 +38,7 @@ Out，[http://www.addictinggames.com/puzzle-games/lightsout.jsp](http://www.addi
 
 首先我们随便找一个开局状态，1表示灯是亮的，0表示灯是暗的。如下所示，
 
-[![](http://dourok.info/wp-content/uploads/2012/05/light\_out\_state_1.png "light\_out\_state\_1")](http://dourok.info/wp-content/uploads/2012/05/light\_out\_state\_1.png)
+[![]({{urls.media}}/wp-content/uploads/2012/05/light\_out\_state_1.png "light\_out\_state\_1")]({{urls.media}}/wp-content/uploads/2012/05/light\_out\_state_1.png)
 
 
 <script type="math/tex; mode=display">\begin{vmatrix}1 & 0 & 0 & 0 & 0 \\1 & 1 & 1 & 1 & 0 \\1 & 1 & 1 & 1 & 1 \\1 & 1 & 1 & 1 & 0 \\1 & 0 & 0 & 0 & 0\\\end{vmatrix}</script>
@@ -106,3 +105,11 @@ I是一个 5 \* 5 的单位矩阵，O是一个 5 \* 5
 
 由此可见，5 \* 5
 游戏的解并不是唯一的，即便是灯光全暗，也不一定表示开关全部被关闭。另外，并不是所有可能性都有解。好了就先到这里，了解更多请见下面的链接：
+
+-   [gnome game
+    lightsout的源码](http://git.gnome.org/browse/gnome-games/tree/lightsoff)
+-   [Turning Lights Out with Linear
+    Algebra](www.math.ksu.edu/~dmaldona/math551/lights_out.pdf)
+-   [mathworld
+    上的一个讨论](http://mathworld.wolfram.com/LightsOutPuzzle.html)
+-   [高斯-若尔当消元法的算法](http://www.cnblogs.com/pegasus/archive/2011/07/31/2123195.html)

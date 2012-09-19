@@ -11,8 +11,6 @@ categories:
 - coder
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   _aioseop_keywords: python,foobar2000,foobar2000歌词,Lyrics Grabber2,foobar2000千千静听,千千静听,谷歌翻译api
@@ -22,6 +20,7 @@ meta:
   dsq_thread_id: '796842664'
 postid: '571'
 guid: http://dourok.info/?p=571
+type: draft
 ---
 之前修改过现在查词失败的同学请点[这里](#attention)
 
@@ -46,7 +45,7 @@ bug\_4:[42行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_l
 同样是编码问题，导致Levenshtein算法失效，因为比对的是两个不同编码的字符串。
 
 修复完bug后，就可以成功查词了。但是结果并不理想。
-[![](http://dourok.info/wp-content/uploads/2011/08/t2.png "t2")](http://dourok.info/wp-content/uploads/2011/08/t2.png)
+[![]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png "t2")]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png)
 
 由上图可以看出是，英文和简体没压力但繁（正）体中文就不行了。显然还需对title做些处理。通过对千千静听进行测试，发现千千静听对查询串的处理远不止
 [71](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#71)
@@ -101,19 +100,17 @@ bug\_4:[42行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_l
     return m.group(1);
 
 这样，大部分流行歌曲特别是华人音乐，都可以表示毫无压力。
-[![](http://dourok.info/wp-content/uploads/2011/08/t1.png "t1")](http://dourok.info/wp-content/uploads/2011/08/t1.png)
-千千静听的大部分歌词都是简体的……
+[![]({{urls.media}}/wp-content/uploads/2011/08/t1.png "t1")]({{urls.media}}/wp-content/uploads/2011/08/t1.png) 千千静听的大部分歌词都是简体的……
 
-歌名特殊符号的也能识别了
-[![](http://dourok.info/wp-content/uploads/2011/08/t3.png "t3")](http://dourok.info/wp-content/uploads/2011/08/t3.png)
+歌名特殊符号的也能识别了 [![]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png "t3")]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png)
 
-[![](http://dourok.info/wp-content/uploads/2011/08/t2_.png "t2_")](http://dourok.info/wp-content/uploads/2011/08/t2_.png)
-You Ain't Goin Nowhere在千千静听里面也是Fault。
+[![]({{urls.media}}/wp-content/uploads/2011/08/t2_.png "t2_")]({{urls.media}}/wp-content/uploads/2011/08/t2_.png) You Ain't Goin
+Nowhere在千千静听里面也是Fault。
 
 但是这样并不完美，毕竟是黑盒测试，比如
 中千千静听的**後**(/u8C5F)字并没有转换到**后**，如下图：
 
-[![](http://dourok.info/wp-content/uploads/2011/08/t4.png "t4")](http://dourok.info/wp-content/uploads/2011/08/t4.png)
+[![]({{urls.media}}/wp-content/uploads/2011/08/t4.png "t4")]({{urls.media}}/wp-content/uploads/2011/08/t4.png)
 
 **最後の放課後** 在千千静听中可以找到，**花は桜 君は美し
 -instrumental-** 则同样找不到

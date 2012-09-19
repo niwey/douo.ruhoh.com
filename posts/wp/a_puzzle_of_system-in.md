@@ -8,12 +8,11 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
 postid: '519'
 guid: http://dourok.info/?p=519
+type: draft
 ---
 先看下下面代码先
 
@@ -78,7 +77,7 @@ b, int off, int len) 的说明：
            static int read(InputStream in, byte b[], int off, int len) throws IOException {
             if (b == null) {
                 throw new NullPointerException();
-            } else if (off < 0 || len < 0 || len > b.length - off) {
+            } else if (off  b.length - off) {
                 throw new IndexOutOfBoundsException();
             } else if (len == 0) {
                 return 0;
@@ -92,32 +91,7 @@ b, int off, int len) 的说明：
 
             int i = 1;
             try {
-                for (; i < len; i++) {
-                        c = in.read();
-                        if (c == -1) {
-                            break;
-                        }
-                    b[off + i] = (byte) c;
-                }
-            } catch (IOException ee) {
-            }
-            return i;
-        }
-            @Override
-            public void run() {
-                try {
-                    InputStream in = System.in;
-                    OutputStream out = System.out;
-                    byte buffer[] = new byte[10];
-                    int i = 0;
-                        while ((i=read(in,buffer,0,buffer.length))!=-1) {
-                            out.write(buffer, 0, i);
-                        }
-                } catch (IOException ex) {
-                   ex.printStackTrace();
-                }
-            }
-        }
+                for (; i 
 
 Thread3跑起来果然跟Thread2不一样，算是比较可理解了，不管你按下多少次回车，只有但buffer读满了，read(in,buffer,0,buffer.length)才会返回。当然这并不是说明System.in有什么问题，System.in必须是InputStream的子类，read(byte[]
 b, int off, int len)
@@ -127,7 +101,7 @@ b, int off, int len)
            static int read(InputStream in, byte b[], int off, int len) throws IOException {
             if (b == null) {
                 throw new NullPointerException();
-            } else if (off < 0 || len < 0 || len > b.length - off) {
+            } else if (off  b.length - off) {
                 throw new IndexOutOfBoundsException();
             } else if (len == 0) {
                 return 0;
@@ -141,8 +115,7 @@ b, int off, int len)
 
             int i = 1;
             try {
-                for (; i < len; i++) {
-                    if (in.available() > 0) {
+                for (; i  0) {
                         c = in.read();
                         if (c == -1) {
                             break;

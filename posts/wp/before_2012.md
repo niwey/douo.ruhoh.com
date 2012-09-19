@@ -10,13 +10,12 @@ tags:
 categories:
 - life
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842635'
 postid: '636'
 guid: http://dourok.info/?p=636
+type: draft
 ---
 终于争取到在2012前上来吐槽下，记录下对博客做的修改和一些新理解。
 

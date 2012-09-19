@@ -11,13 +11,12 @@ tags:
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842493'
 postid: '102'
 guid: http://dourok.info/?p=102
+type: draft
 ---
 今天为了解决宿舍没有无线AP的情况，让hero可以上网（我只开了20M的GPRS消费）。捣鼓了一下让Hero通过[Ad-Hoc](http://en.wikipedia.org/wiki/Ad_hoc)连接我的笔记本来共享上网的问题，google一下，找到了两篇可以解决问题的文章，如下：
 
@@ -58,7 +57,7 @@ WiFi可以动态分配IP。如果要开启静态IP，默认的IP段是192.168.16
 WiFi的任务栏图标，右键可以开启。如果连接出现问题会有提示。
 最后再确定你连接互联网的连接是否已开启了Internet连接共享。具体设置如下图：
 
-[![](http://dourok.info/wp-content/uploads/2010/06/Internet-share.jpg "Internet share")](http://dourok.info/wp-content/uploads/2010/06/Internet-share.jpg)
+[![]({{urls.media}}/wp-content/uploads/2010/06/Internet-share.jpg "Internet share")]({{urls.media}}/wp-content/uploads/2010/06/Internet-share.jpg)
 
 现在正常情况下应该可以正常上网了。
 
@@ -67,7 +66,6 @@ WiFi技术应该是将无线网卡虚拟成无线AP，这样所有设置都在�
 
 最后贴上一张正常使用的软件界面图和任务栏图标的右键菜单状态：
 
-[![](http://dourok.info/wp-content/uploads/2010/06/MY_WIFI.jpg "MY_WIFI")](http://dourok.info/wp-content/uploads/2010/06/MY_WIFI.jpg)
-设置名称"HTC HERO"和图标是我自己改的。
+[![]({{urls.media}}/wp-content/uploads/2010/06/MY_WIFI.jpg "MY_WIFI")]({{urls.media}}/wp-content/uploads/2010/06/MY_WIFI.jpg) 设置名称"HTC HERO"和图标是我自己改的。
 
-[![](http://dourok.info/wp-content/uploads/2010/06/menu.jpg "menu")](http://dourok.info/wp-content/uploads/2010/06/menu.jpg)
+[![]({{urls.media}}/wp-content/uploads/2010/06/menu.jpg "menu")]({{urls.media}}/wp-content/uploads/2010/06/menu.jpg)

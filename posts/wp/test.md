@@ -6,8 +6,6 @@ tags: []
 categories:
 - life
 status: draft
-type: post
-published: false
 meta:
   _edit_last: '1'
 postid: '664'

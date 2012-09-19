@@ -11,13 +11,12 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '812017129'
 postid: '130'
 guid: http://dourok.info/?p=130
+type: draft
 ---
 项目正要发布时，我用proguard打了个混淆包，想不到运行的时候出错了。proguard是Netbeans6.9
 J2ME插件自带的，版本号是4.4。

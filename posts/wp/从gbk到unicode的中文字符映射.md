@@ -10,13 +10,12 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842619'
 postid: '85'
 guid: http://dourok.info/?p=85
+type: draft
 ---
 前言
 ----
@@ -39,7 +38,7 @@ GBK即汉字内码扩展规范，是“国家标准扩展”三个词的拼音�
 
 GBK既是字符集也是字符编码(够讨厌的吧…)[[2]](#ref2)。不过这不重要，解决问题的关键是摸清GBK的编码方式，才能找到GBK到Unicode的映射规律。在此贴下维基百科上的图片：
 
-[![](http://dourok.info/wp-content/uploads/2010/06/GBK%E7%BC%96%E7%A0%81%E8%8C%83%E5%9B%B4.jpg "GBK编码范围")](http://dourok.info/wp-content/uploads/2010/06/GBK%E7%BC%96%E7%A0%81%E8%8C%83%E5%9B%B4.jpg)
+[![]({{urls.media}}/wp-content/uploads/2010/06/GBK%E7%BC%96%E7%A0%81%E8%8C%83%E5%9B%B4.jpg "GBK编码范围")]({{urls.media}}/wp-content/uploads/2010/06/GBK%E7%BC%96%E7%A0%81%E8%8C%83%E5%9B%B4.jpg)
 ![](http://upload.wikimedia.org/wikipedia/en/thumb/0/0c/GBK_encoding.svg/500px-GBK_encoding.svg.png "GBK")
 
 由上表可见，GBK编码主要将字符分为五个区域。
@@ -60,7 +59,7 @@ Order Mark）。[[5]](#ref5)
 
 知道了这些基础，接下来就可以开始转换了。由于GBK到Unicode的汉字没有直接的映射关系，传说GBK是按拼音排序，Unicode是按部首排序的。所以要转换之前必须得有个对照表，一开始我就在网上找到这张表([附录1)](#add1)，表的结构如下所示。
 
-[![](http://dourok.info/wp-content/uploads/2010/06/%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81%E5%AF%B9%E7%85%A7%E8%A1%A8.jpg "汉字编码对照表")](http://dourok.info/wp-content/uploads/2010/06/%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81%E5%AF%B9%E7%85%A7%E8%A1%A8.jpg)
+[![]({{urls.media}}/wp-content/uploads/2010/06/%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81%E5%AF%B9%E7%85%A7%E8%A1%A8.jpg "汉字编码对照表")]({{urls.media}}/wp-content/uploads/2010/06/%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81%E5%AF%B9%E7%85%A7%E8%A1%A8.jpg)
 
 从上表比较相同汉字的
 unicode编码跟gbk编码确实看不出有什么规律。区位码是GB2312的特色，也可以说EUC的特色。注意上表的区位码是十进制的，比如汉字**‘一’**区位码5027，将50转换为16进制得0x32，加上0xa0得0xd2；同样的27+0xa0
@@ -71,7 +70,7 @@ UTF-16的单向转换，要对表做一些处理，实际上只需保存unicode�
 GBK的各个范围分段排列，不包括特殊符号只有三个段，分别对应GBK/1、GBK/2、GBK/3。在段内则按编码的数值大小排列。比如表的第一位是
 ‘啊’，是GBK/1的第一个字符，而它的UTF-16编码是0x554a。这样出来的结果是这样的：
 
-[![](http://dourok.info/wp-content/uploads/2010/06/Unicode.jpg "Unicode")](http://dourok.info/wp-content/uploads/2010/06/Unicode.jpg)
+[![]({{urls.media}}/wp-content/uploads/2010/06/Unicode.jpg "Unicode")]({{urls.media}}/wp-content/uploads/2010/06/Unicode.jpg)
 
 我还在表头添加了BOM以便文本编辑器能够识别，在这里用的是小尾序，所以添加的便是0xFFFE。整张表大小40.8KB((20902+1)\*2
 = 41806
@@ -125,8 +124,7 @@ LE 编码的文件。当然这个程序主要是用来测试的，不支持批�
 
 如 键入gbktoule gbkt.txt ule.txt。结果如下图所示：
 
-[![](http://dourok.info/wp-content/uploads/2010/06/result.jpg "result")](http://dourok.info/wp-content/uploads/2010/06/result.jpg)
-It work!
+[![]({{urls.media}}/wp-content/uploads/2010/06/result.jpg "result")]({{urls.media}}/wp-content/uploads/2010/06/result.jpg) It work!
 
 程序下载[点此](#add2)，其实符号索引是后来才生成。以便能够完整的转换GBK文档，但是GBK/4缺少的那101个字符还是让我觉得很诡异。[可在附录找到全部GBK符号](#add3)。
 
@@ -149,6 +147,6 @@ It work!
 
 * * * * *
 
-1.  [汉字编码对照表.xls](http://dourok.info/wp-content/uploads/2010/06/汉字编码对照表.xls)
+1.  [汉字编码对照表.xls](http://dourok.info/wp-content/uploads/2010/06/%E6%B1%89%E5%AD%97%E7%BC%96%E7%A0%81%E5%AF%B9%E7%85%A7%E8%A1%A8.xls)
 2.  [源码、编译的可执行文件、及ULE表都在这里](http://dourok.info/wp-content/uploads/2010/06/gbktoule.7z)
 3.  GBK/1、GBK/5符号集合，当然在我网页上显示的是UTF-8编码的：

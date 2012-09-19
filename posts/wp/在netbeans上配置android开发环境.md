@@ -9,8 +9,6 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   _aioseop_description: 安装与设置NBAndroid，在netbeans上查看Android源码（Attach Sources）
@@ -19,6 +17,7 @@ meta:
   dsq_thread_id: '796842468'
 postid: '50'
 guid: http://dourok.info/?p=50
+type: draft
 ---
 NBAndroid
 =========
@@ -37,11 +36,9 @@ Center），具体的步骤是：
 -   转到可用插件选项卡（Available
     Plugins），找到Android插件，安装。出现验证警告点继续就可以了。
 
-[![](http://dourok.info/wp-content/uploads/2010/05/11.png "添加NBAndroid更新中心")](http://dourok.info/wp-content/uploads/2010/05/11.png)
-添加NBAndroid更新中心
+[![]({{urls.media}}/wp-content/uploads/2010/05/1{{urls.media}}/wp-content/uploads/2010/05/21.png "添加NBAndroid更新中心")]({{urls.media}}/wp-content/uploads/2010/05/1{{urls.media}}/wp-content/uploads/2010/05/21.png) 添加NBAndroid更新中心
 
-[![](http://dourok.info/wp-content/uploads/2010/05/21.png "安装NBAndroid")](http://dourok.info/wp-content/uploads/2010/05/21.png)
-安装NBAndroid
+[![]({{urls.media}}/wp-content/uploads/2010/05/21.png "安装NBAndroid")]({{urls.media}}/wp-content/uploads/2010/05/21.png) 安装NBAndroid
 
 ~~安装的步骤很简单，下载后将压缩包解压，然后把所有\*.nbm的文件导入到netbeans便可。在netbeans中添加插件的方法也说一下，在"菜单栏"
 -\> 工具 -\> 插件
@@ -49,38 +46,32 @@ Center），具体的步骤是：
 
 接下来，指定Android SDK的位置，方法:"菜单栏" -\> 工具 -\>
 选项，点击"Android"标签页。就可以看到类似下面的界面：
-[![](http://dourok.info/wp-content/uploads/2010/05/android_tab.png "Xfce下的UI，2011-10-26截图")](http://dourok.info/wp-content/uploads/2010/05/android_tab.png)
-选择SDK的目录便可。
+[![]({{urls.media}}/wp-content/uploads/2010/05/android_tab.png "Xfce下的UI，2011-10-26截图")]({{urls.media}}/wp-content/uploads/2010/05/android_tab.png) 选择SDK的目录便可。
 
 如果还没有Google Android SDK 的话要先下载Android
 SDK，下载页在[这里](http://developer.android.com/sdk/index.html)。官方的安装说明在[这里(英文)](http://developer.android.com/sdk/installing.html)。（网站已被墙，推荐Google
 搜索GappProxy）安装SDK的步骤要多一些，将下载后的压缩包解压到你要放的位置。运行SDK
 Setup.exe应该会看到下面的界面，记得在win7下得用管理员权限运行。
-[![](http://dourok.info/wp-content/uploads/2010/05/nba3.png "nba3")](http://dourok.info/wp-content/uploads/2010/05/nba3.png)
-图3
+[![]({{urls.media}}/wp-content/uploads/2010/05/nba3.png "nba3")]({{urls.media}}/wp-content/uploads/2010/05/nba3.png) 图3
 
 我这张图是更新后截的，没更新前只有Android SDK Tools,revision
 6一个项。嗯，没错更新服务器也被墙了，可在setting了设置Http
 代理服务器，因为GappProxy对Https的支持不好，下图那个选项也打上勾。
 
-[![](http://dourok.info/wp-content/uploads/2010/05/nba4.png "nba4")](http://dourok.info/wp-content/uploads/2010/05/nba4.png)
-图4
+[![]({{urls.media}}/wp-content/uploads/2010/05/nba4.png "nba4")]({{urls.media}}/wp-content/uploads/2010/05/nba4.png) 图4
 
 更新好之后先别急着关掉，还要新建一个设备，选择Virtual
 Devices，单击"New"，建好之后就可以重新回到NetBeans了。
-[![](http://dourok.info/wp-content/uploads/2010/05/nba5.png "nba5")](http://dourok.info/wp-content/uploads/2010/05/nba5.png)
-图5
+[![]({{urls.media}}/wp-content/uploads/2010/05/nba5.png "nba5")]({{urls.media}}/wp-content/uploads/2010/05/nba5.png) 图5
 
 一个简单例子
 ============
 
 现在就可以创建项目了，见图8，我创建了一个AndroidHelloWorld的程序。默认平台已经选好了Android。还有最好也更改下包名。
 
-[![](http://dourok.info/wp-content/uploads/2010/05/nba8.png "nba8")](http://dourok.info/wp-content/uploads/2010/05/nba8.png)
-图8
+[![]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/attach_sources.png "nba8")]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/attach_sources.png) 图8
 
-[![](http://dourok.info/wp-content/uploads/2010/05/nba9.png "nba9")](http://dourok.info/wp-content/uploads/2010/05/nba9.png)
-图9
+[![]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/view_sources.png "nba9")]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/view_sources.png) 图9
 
 项目初始化后，在MainActivity写了些测试代码如下：
 
@@ -92,14 +83,12 @@ Devices，单击"New"，建好之后就可以重新回到NetBeans了。
 
 现在就可以运行了，不过第一次运行要启动模拟器，相当的久，我差不多花了2分钟。而且，我第一次运行时程序没有载入，重新运行一次便可以了，因为不用启动模拟器第二次的运行快很多了，差不多10来秒。记得不要把模拟器关了，不然下次运行要重启模拟器，又要花很多时间。OK，我的第一个Android程序诞生鸟～
 
-[![](http://dourok.info/wp-content/uploads/2010/05/nba10.png "nba10")](http://dourok.info/wp-content/uploads/2010/05/nba10.png)
-图10
+[![]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/attach_sources.png "nba10")]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/attach_sources.png) 图10
 
 还有一点就是NBAndroid的R.java不能实时自动生成，作者说过是在pre-build的时候生成，所以改动资源要习惯下按F11生成下项目才可以更新R.java。
 
 哦，在项目属性还有一些可以设置的,比如选择模拟器。
-[![](http://dourok.info/wp-content/uploads/2010/05/nba11.png "nba11")](http://dourok.info/wp-content/uploads/2010/05/nba11.png)
-图11
+[![]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/view_sources.png "nba11")]({{urls.media}}/wp-content/uploads/2010/05/nba{{urls.media}}/wp-content/uploads/2010/05/view_sources.png) 图11
 
 NBAndroid还支持Logcat，在窗口 -\> 输出 -\> ADB Log
 可以打开Logcat窗口，不过只能够通过PID来过滤消息。我第一次开的时候还遇到Bug，假死了，重启NetBeans才能恢复。
@@ -113,8 +102,7 @@ Tracking](http://kenai.com/jira/browse/NBANDROID)）。但相比Eclipse我又更
 Netbeans7.1终于有像Eclipse一样的Attach
 Sources按钮，可以为android.jar附加源码了。虽然现在Netbeans 7.1
 还处在测试阶段，但这个功能太重要了，迫不及待要去尝鲜，不过其实现在也足够稳定了。
-[![](http://dourok.info/wp-content/uploads/2010/05/attach_sources.png "attach_sources")](http://dourok.info/wp-content/uploads/2010/05/attach_sources.png)
-先下载[Netbeans 7.1
+[![](1{{urls.media}}/wp-content/uploads/2010/05/1{{urls.media}}/wp-content/uploads/2010/05/21.png "attach_sources")](1{{urls.media}}/wp-content/uploads/2010/05/1{{urls.media}}/wp-content/uploads/2010/05/21.png) 先下载[Netbeans 7.1
 beta](http://netbeans.org/community/releases/71/)，然后在这里：[http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/plugins/](http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/plugins/)
 可以下载到打包好android各版本的源码，这是个jar档案需要解压出来。
 
@@ -124,10 +112,10 @@ jn0101@netbeans.org
 的描述。如果7.1和旧版的netbeans共用一个userdir可能会导致"Attach
 Sources"按钮失效。我试过了确实会这样（linux下）。解决方法可以用[--userdir](http://wiki.netbeans.org/FaqAlternateUserdir)给netbeans
 7.1重新指定一个新userdir。不过，我是直接把.netbeans文件删掉，当然有先备份，然后，先配置好7.1的nbandroid和为项目的android.jar附加源码。再把备份的7.0拷回来。再把7.0的一些config拷给7.1，如：Editors和Keymaps等等。这样两个版本都可以正常工作了。
-[![](http://dourok.info/wp-content/uploads/2010/05/view_sources.png "view_sources")](http://dourok.info/wp-content/uploads/2010/05/view_sources.png)
+[![](1{{urls.media}}/wp-content/uploads/2010/05/21.png "view_sources")](1{{urls.media}}/wp-content/uploads/2010/05/21.png)
 
 另外，意外的是在debug下还能工作的挺好的。
-[![](http://dourok.info/wp-content/uploads/2010/05/debug_view.png "debug_view")](http://dourok.info/wp-content/uploads/2010/05/debug_view.png)
+[![](1{{urls.media}}/wp-content/uploads/2010/05/android_tab.png "debug_view")](1{{urls.media}}/wp-content/uploads/2010/05/android_tab.png)
 
 [NBANDROID-71](http://kenai.com/jira/browse/NBANDROID-71)基本可以算解决了。
 

@@ -6,13 +6,12 @@ tags: []
 categories:
 - life
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842308'
 postid: '1'
 guid: http://dourok.info/?p=1
+type: draft
 ---
 欢迎使用 WordPress
 。这是系统自动生成的演示文章。编辑或者删除它，开始您的博客！

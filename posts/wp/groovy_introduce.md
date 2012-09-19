@@ -9,8 +9,6 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   _aioseop_description: Groovy:77484ms，没错，你没看错是5位数，77秒！几乎是java版的110倍。天啊，这也忒慢了吧，是不是我触犯了什么禁忌啊，很可能出现在列表结构上面
@@ -19,6 +17,7 @@ meta:
   dsq_thread_id: '796842606'
 postid: '446'
 guid: http://dourok.info/?p=446
+type: draft
 ---
 ### Groovy
 
@@ -157,33 +156,7 @@ Java：
             primes.add(3L);
             int k = 2;
             long s = 5;
-            for (int i = 0; i < n-2; i++) {
-                int j = 0;
-                int q = (int) Math.ceil(Math.sqrt(s));;
-                while (j < i ) {
-                    if (primes.get(j)<=q&&s % primes.get(j) == 0) {
-                         s+=k;
-                         k = (k+k)%6;
-                         q = (int) Math.ceil(Math.sqrt(s));
-                          j = 0;
-                    } else {
-                        j++;
-                    }
-                }
-                j = 0;
-                primes.add(s);
-                s+=k;
-                k = (k+k)%6;
-                q = (int) Math.ceil(Math.sqrt(s));
-            }
-        }
-        public static void main(String[] args) {
-            long t = System.currentTimeMillis();
-            buildPrimeTable(10001);
-            System.out.println(System.currentTimeMillis() - t);
-            System.out.println(primes.get(10000));
-        }
-    }
+            for (int i = 0; i 
 
 Python:
 
@@ -191,19 +164,7 @@ Python:
     import time
     primes = []
     def buildTable(n):
-    #    if(len(primes)<=0):
-    #        primes.append(2)
-    #        sindex = 1;
-    #    else:
-    #        sindex = len(primes+1);
-        primes.append(2)
-        primes.append(3)
-        s = 5
-        k = 2
-        for i in range(0,n):
-            j=0
-            q = int(math.sqrt(s)+0.5)
-            while(j
+    #    if(len(primes)
 
 Groovy:
 

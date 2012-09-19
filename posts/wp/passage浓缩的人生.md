@@ -6,12 +6,11 @@ tags: []
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
 postid: '769'
 guid: http://dourok.info/?p=769
+type: draft
 ---
 ![Passage截图](http://www.dourok.info/wp-content/uploads/2010/01/passage.png "Passage")
 

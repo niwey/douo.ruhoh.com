@@ -10,8 +10,6 @@ tags:
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   _aioseop_title: 如何用Mercurial开始GoogleCode项目
@@ -19,6 +17,7 @@ meta:
   dsq_thread_id: '796842627'
 postid: '489'
 guid: http://dourok.info/?p=489
+type: draft
 ---
 最近打算对自己乱糟糟的代码整理规划下，把一些项目提交到在线的代码仓库。因为自己还算是一个windows用户，所以还是放弃github，选择google
 code

@@ -9,8 +9,6 @@ tags:
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   _aioseop_title: css通用字体
@@ -18,6 +16,7 @@ meta:
     其他通用字体的对应特定字体无法配置。\r\n要强制指定字体可用下面css配合 Chrome Stylist 实现。但会覆盖其他所有字体。"
 postid: '513'
 guid: http://dourok.info/?p=513
+type: draft
 ---
 Ubuntu 下的Chrome 11默认字体很糟糕，不像Chromium
 13，Chrome设置里只能改标准字体和等宽字体，经测试分别对应通用字体的fantasy(同未声明)和monospace。

@@ -9,8 +9,6 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   _aioseop_title: 迷宫生成算法
@@ -26,19 +24,20 @@ meta:
   _oembed_b0e15007ad454a31f7011315d9036493: ! '{{unknown}}'
 postid: '537'
 guid: http://dourok.info/?p=537
+type: draft
 ---
 迷宫,大家都在知道是什么吧.一种标准的迷宫可以是像下图这样的结构,
 
-[![](http://dourok.info/wp-content/uploads/2011/07/maze01.png "maze01")](http://dourok.info/wp-content/uploads/2011/07/maze01.png)
+[![]({{urls.media}}/wp-content/uploads/2011/07/maze0{{urls.media}}/wp-content/uploads/2011/07/maze3.png "maze01")]({{urls.media}}/wp-content/uploads/2011/07/maze0{{urls.media}}/wp-content/uploads/2011/07/maze3.png)
 
 一个矩形空间上,布置出错综复杂的墙,本文讨论的主要是这种结构的简单迷宫.可以想象出在下图这样的结构里,推倒某些墙壁.来生成迷宫.当然墙不是随便可以推倒的.
 
-[![](http://dourok.info/wp-content/uploads/2011/07/maze3.png "maze3")](http://dourok.info/wp-content/uploads/2011/07/maze3.png)
+[![]({{urls.media}}/wp-content/uploads/2011/07/maze3.png "maze3")]({{urls.media}}/wp-content/uploads/2011/07/maze3.png)
 
 这样的结构姑且称为完全方格图(square grid
 graph)吧.从图论角度上看,这样的结构等同于下面这张图.圆圈表示顶点,线段表示边.
 
-[![](http://dourok.info/wp-content/uploads/2011/07/maze2.png "maze2")](http://dourok.info/wp-content/uploads/2011/07/maze2.png)
+[![]({{urls.media}}/wp-content/uploads/2011/07/maze2.png "maze2")]({{urls.media}}/wp-content/uploads/2011/07/maze2.png)
 
 而最上面的迷宫,就可以认为上面那张完全方格图的[生成子图](http://zh.wikipedia.org/wiki/%E5%9B%BE#.E5.9F.BA.E6.9C.AC.E6.9C.AF.E8.AF.AD),仔细观察上面的迷宫,就会发现无论从那里开始走,都可以到达迷宫中的任意一个地方(顶点).用图论术语来讲也就是说迷宫它还必须是一个[连通图](http://zh.wikipedia.org/wiki/%E8%BF%9E%E9%80%9A%E5%9B%BE),这个可以理解,迷宫里到达不了的地方实际上没有意义.
 

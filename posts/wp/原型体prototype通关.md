@@ -9,13 +9,12 @@ tags:
 categories:
 - life
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842514'
 postid: '309'
 guid: http://dourok.info/?p=309
+type: draft
 ---
 ![](http://i563.photobucket.com/albums/ss74/naviichi/ad12.jpg "Big Boss is watching you")
 

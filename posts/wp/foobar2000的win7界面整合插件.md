@@ -8,12 +8,11 @@ tags:
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
 postid: '753'
 guid: http://dourok.info/?p=753
+type: draft
 ---
 剛剛在Foobar2000.org上獲知，foobar2000推出1.0beat版，乘機換掉一直在用的那個占用100M內存傻瓜整合版，因為這個整合版的功能很多我都不要用到。然而這個不帶插件的官方版沒有一個我覺得很實用的功能，具體見圖：
 

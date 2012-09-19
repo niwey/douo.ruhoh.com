@@ -9,13 +9,12 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842725'
 postid: '685'
 guid: http://dourok.info/?p=685
+type: draft
 ---
 两个月前，在某博客看到Android
 Developer的一个Flash广告挺有趣的，可以点下[Conveyor.swf](http://static.googleusercontent.com/external_content/untrusted_dlcp/www.android.com/zh-CN//swf/conveyor.swf "conveyor.swf")看看。就想把它做成WordPress

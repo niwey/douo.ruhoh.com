@@ -7,13 +7,12 @@ tags:
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842547'
 postid: '363'
 guid: http://dourok.info/?p=363
+type: draft
 ---
 CPU狂飙警告！！！
 

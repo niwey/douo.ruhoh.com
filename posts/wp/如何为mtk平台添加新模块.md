@@ -8,13 +8,12 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '812017495'
 postid: '116'
 guid: http://dourok.info/?p=116
+type: draft
 ---
 包含源码的第三方库
 ------------------

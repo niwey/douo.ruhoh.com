@@ -10,13 +10,12 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842379'
 postid: '8'
 guid: http://dourok.info/?p=8
+type: draft
 ---
 ### FCOP (File Connection optional package) JSR 75
 
@@ -79,8 +78,8 @@ E文不好，不解释。
 -   directorySize 返回目录占用的字节数，如果传递参数为true，则计算上子目录
     fileSize 返回文件占用的字节数
 -   getName 返回文件的名称
--   getPath 返回文件所在的目录，[file:///a/b/c](file:///\\a\b\c) 则返回
-    /a/b/ ，记住不包括file:// 协议名称
+-   getPath 返回文件所在的目录，[file:///a/b/c](file:///%5C%5Ca%5Cb%5Cc)
+    则返回 /a/b/ ，记住不包括file:// 协议名称
 -   getURL 返回路径和文件名称，包括file://
 -   isDirectory 是否是目录
 -   isHidden 是否可见

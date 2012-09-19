@@ -10,13 +10,12 @@ tags:
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842398'
 postid: '149'
 guid: http://dourok.info/?p=149
+type: draft
 ---
 写在前面
 --------
@@ -187,15 +186,20 @@ lang="java"}
 
 strict
 严格模式(strict-mode)的开关,不大清楚什么意思?根据下面的例子理解下或者看下这里的[说明](http://qbnz.com/highlighter/geshi-doc.html#using-strict-mode)
-strict="false"
-`nowrap自动换行的开关,默认是不换行(nowrap="true"),当代码宽度超过代码块宽度时,会出现横向滚动条. 下面的例子是nowrap="false"的情形  package dourok.info.test;`{strict="false"
-lang="php"}
+strict="false" ``{strict="false" lang="php"} strict="true"
+``{strict="true" lang="php"}
+
+### nowrap
+
+nowrap自动换行的开关,默认是不换行(nowrap="true"),当代码宽度超过代码块宽度时,会出现横向滚动条.
+下面的例子是nowrap="false"的情形
+` package dourok.info.test;`{strict="true" theme="twitlight"}
 
 public class Main { public static void main(String args[]){
 System.out.println("This is a very very very very very very very very
 very very very very very very very very very very very very very very
 very very long String"); } }
-` package dourok.info.test; public class Main { public static void main(String args[]){ System.out.println("This is a very very very very very very very very very very very very very very very very very very very very very very very very long String"); } } `{nowrap="false"
+` package dourok.info.test; public class Main { public static void main(String args[]){ System.out.println("This is a very very very very very very very very very very very very very very very very very very very very very very very very long String"); } } `{nowrap=""
 lang="java"}
 
 ### noborder
@@ -252,13 +256,13 @@ lang="java"}
 ，当然后面还可以再带属性。最后再看下实际的例子：
 
 [cc theme="twitlight"][ccsW
-theme="dawn"]` package dourok.info.test;`{nowrap="false" lang="java"}
+theme="dawn"]` package dourok.info.test;`{nowrap="" lang="java"}
 
 public class Main { public static void main(String args[]){
 System.out.println("This is a very very very very very very very very
 very very very very long String"); } } [/ccsW][/cc]
 
-[ccsW\_xml theme="dawn"]` package dourok.info.test;`{nowrap="false"
+[ccsW\_xml theme="dawn"]` package dourok.info.test;`{nowrap=""
 lang="java"}
 
 public class Main { public static void main(String args[]){

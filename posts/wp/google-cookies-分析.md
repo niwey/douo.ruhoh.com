@@ -8,12 +8,11 @@ tags:
 categories:
 - otaku
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
 postid: '6'
 guid: http://dourok.info/?p=6
+type: draft
 ---
 3:  set-cookie PREF= ID=8931acd2f4c3f634:            //全球唯一的标识符
 16\^16 NW=1:                    //不明 TM=1271669549:              

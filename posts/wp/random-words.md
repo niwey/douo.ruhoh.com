@@ -9,14 +9,13 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   _aioseop_keywords: 随机副标题,wordpress插件,随机格言插件
   dsq_thread_id: '796842318'
 postid: '397'
 guid: http://dourok.info/?p=397
+type: draft
 ---
 博客荒废了2个月，不忍让时间悄然飞逝，终于鼓起劲把博客重新整理下。其实不写博客还有另外一个原因，就是我习惯了用Evernote来记笔记。Evernote用起来是很方便，特别是做些文字剪辑。但是用久有些缺点还是很明显，如没有层次结构，用标签管理，如果标签没有规划好，就很容易乱了。得经常需要整理，而我又疏于整理，最后只能越来越乱了。确实不如wiki清晰，且页面间不能互相连接是个缺憾。
 

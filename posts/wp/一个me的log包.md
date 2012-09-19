@@ -8,13 +8,12 @@ tags:
 categories:
 - coder
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
   dsq_thread_id: '796842382'
 postid: '22'
 guid: http://dourok.info/2010/05/%e4%b8%80%e4%b8%aame%e7%9a%84log%e5%8c%85/
+type: draft
 ---
 写在前面
 --------
@@ -84,8 +83,8 @@ g)。很多时候消息太多会超过一屏，要在canvas实现滚屏那显的
 
 先来看下效果图先。这可是MTK真机上截的图哦。
 
-[![](http://dourok.info/wp-content/uploads/2010/05/console-e1274319179862-225x300.png "console")](http://dourok.info/wp-content/uploads/2010/05/console.png)
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+[![]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png "console")]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png)
+-----------------------------
 
 现在Console的问题应该是多多的，可定制性几乎没有。不过我目前用起来挺顺手的，以后还会一直用它，发现问题到时再来改吧。
 
@@ -94,5 +93,5 @@ g)。很多时候消息太多会超过一屏，要在canvas实现滚屏那显的
 [1].Fire2 是一款轻量级的J2ME
 UI库，可自定义主题，同时支持渲染xHtml/CSS，提供有xHtml浏览器组件。[这里](http://sourceforge.net/projects/fire-j2me/)是它的项目地址
 
-[![](http://dourok.info/wp-content/uploads/2010/05/console-e1274319179862-225x300.png "console")](http://dourok.info/wp-content/uploads/2010/05/console.png)
-------------------------------------------------------------------------------------------------------------------------------------------------------------
+[![]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png "console")]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png)
+-----------------------------

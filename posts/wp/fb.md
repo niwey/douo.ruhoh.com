@@ -6,12 +6,11 @@ tags: []
 categories:
 - life
 status: publish
-type: post
-published: true
 meta:
   _edit_last: '1'
 postid: '751'
 guid: http://dourok.info/?p=751
+type: draft
 ---
 凌晨1点多，终于有个安静的时候了，今天特别冷，外面风很大，窗户都被摇得咯咯作响。我的思维也很乱。想趁现在整理清楚……
 
