@@ -99,3 +99,11 @@ string
 ruby 的 gsub sub 反斜槓 太噁心人了。
 
 "<script type=\"math/tex\">#{res['content']}</script>".gsub('\\\\','\\\\\\\\\\\\\\\\').gsub('_','\_').gsub('&amp;','&')
+
+
+
+### 其他资料 ###
+
+终结的非常好的 slide
+
+http://saito.im/slide/ruby-new.html
