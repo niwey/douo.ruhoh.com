@@ -39,7 +39,7 @@ Out，[http://www.addictinggames.com/puzzle-games/lightsout.jsp](http://www.addi
 [![]({{urls.media}}/wp-content/uploads/2012/05/light\_out\_state_1.png "light\_out\_state\_1")]({{urls.media}}/wp-content/uploads/2012/05/light\_out\_state_1.png)
 
 ```mathjax
-\begin{vmatrix}1 &amp; 0 &amp; 0 &amp; 0 &amp; 0 \1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 \1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \1 &amp; 1 &amp; 1 &amp; 1 &amp; 0 \1 &amp; 0 &amp; 0 &amp; 0 &amp; 0\\end{vmatrix}
+\begin{vmatrix}1 & 0 & 0 & 0 & 0 \\1 & 1 & 1 & 1 & 0 \\1 & 1 & 1 & 1 & 1 \\1 & 1 & 1 & 1 & 0 \\1 & 0 & 0 & 0 & 0\\\end{vmatrix}
 ```
 
 把这些数字放到一列里并标上号，就成了向量`$\vec b=(b\_{1,1},b\_{1,2},\cdots,b\_{1,5},b\_{2,1},\cdots,b_{5,5})^T$`
@@ -76,14 +76,14 @@ Out，[http://www.addictinggames.com/puzzle-games/lightsout.jsp](http://www.addi
 的矩阵：
 
 ```mathjax
-A = \begin{vmatrix}B &amp; I &amp; O &amp; O &amp; O \I &amp; B &amp; I &amp; O &amp; O \O &amp; I &amp; B &amp; I &amp; O \O &amp; O &amp; I &amp; B &amp; I \O &amp; O &amp; O &amp; I &amp; B \\end{vmatrix}
+A = \begin{vmatrix}B & I & O & O & O \\I & B & I & O & O \\O & I & B & I & O \\O & O & I & B & I \\O & O & O & I & B \\\end{vmatrix}
 ```
 
 I是一个 5 \* 5 的单位矩阵，O是一个 5 \* 5
 其元全部为零的矩阵。而B是这样一个矩阵：
 
 ```mathjax
-B = \begin{vmatrix}1 &amp; 1 &amp; 0 &amp; 0 &amp; 0 \1 &amp; 1 &amp; 1 &amp; 0 &amp; 0 \0 &amp; 1 &amp; 1 &amp; 1 &amp; 0 \0 &amp; 0 &amp; 1 &amp; 1 &amp; 1 \0 &amp; 0 &amp; 0 &amp; 1 &amp; 1 \\end{vmatrix}
+B = \begin{vmatrix}1 & 1 & 0 & 0 & 0 \\1 & 1 & 1 & 0 & 0 \\0 & 1 & 1 & 1 & 0 \\0 & 0 & 1 & 1 & 1 \\0 & 0 & 0 & 1 & 1 \\\end{vmatrix}
 ```
 
 如果把 I, O, B 代入 A 那么 A 的每一列都对应着一个开关的s向量。
