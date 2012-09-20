@@ -141,15 +141,15 @@ json 对象:
     <li><a href="#Green">green</a></li>
     <li><a href="#Blue">blue</a></li>
 
-要一点要注意一下，对于  `"tags"=>["forkosh", "LaTex", "mathtex"]` 这样列表或者数组(top-level-array)，没有 key 所以要这样处理
+对于  `"tags"=>["forkosh", "LaTex", "mathtex"]` 这样列表或者数组(top-level-array)，没有 key 所以要这样处理
 
     <ul>
       {{#tags}}
-      <li>{{& .}}</li>
-      {{/tags}}
+      <li>{{& .}}</li>  <!-- 等同于 {{{ . }}} 不转义html字符 -->
+      {{/tags}} 
     </ul>
 
-可以这样来实现 if-else 结构
+下面基本上就是 if-else 结构，但是功能有限
 
     {{#repo}}
       <b>{{name}}</b>
