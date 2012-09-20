@@ -230,8 +230,9 @@ mathjax的使用非常方便，直接在頁面嵌入腳本就行，然後通過�
 來載入 mathjax 的腳本。就可以展示公式了，現在的主要問題還是要不要通過
 插件來簡化語法。而且已經有同學實現了[這個插件](https://gist.github.com/2699636)了。
 
-<script type="math/tex; mode=display"
-id="MathJax-Element-11">e^{i\pi} + 1 = 0</script>
+```mathjax
+e^{i\pi} + 1 = 0
+```
 
 ### RSS & sitemap ###
 
