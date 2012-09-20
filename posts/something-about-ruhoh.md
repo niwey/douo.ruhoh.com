@@ -200,10 +200,7 @@ bootstrap 更适合于下面这种布局，很不错的设计，正在考虑要�
 2. 無法爲文章生成 content
 3. 實現擴展不容易
 
-第1點，是markdown 語義的限制，2，3 倒也不能怪 Markdown，不過在不動用
-ruhoh 的插件的情況下，要解決基本無望。但是，我目前並沒有放棄 Markdown
-的打算，我覺得它的簡潔很漂亮，而且也是有它的道理的，先習慣一下，不過應
-該也是逃不了自己再擴展的命運了。
+第1點，是markdown 語義的限制，2，3 倒也不能怪 Markdown，不過在不動用 ruhoh 的插件的情況下，要解決基本無望。但是，我目前並沒有放棄 Markdown 的打算，我覺得它的簡潔很漂亮，而且也是有它的道理的，先習慣一下，不過應該也是逃不了自己再擴展的命運了。
 
 再羅列一下，其他朋友對Markdown的批評:
 
@@ -216,9 +213,20 @@ markdown 的转义让人抓狂
 
 http://www.ituring.com.cn/article/746
 
+#### pandoc 增强2
+
+
+##### pandoc 增强3
+
+##### pandoc 增强4
+
+###### pandoc 增强5
+
+#### pandoc 增强6
+
 ### Mathjax ###
 
-mathjax的使用非常方便，直接在頁面嵌入script就行，然後通過一個 widgets
+mathjax的使用非常方便，直接在頁面嵌入腳本就行，然後通過一個 widgets
 來載入 mathjax 的腳本。就可以展示公式了，現在的主要問題還是要不要通過
 插件來簡化語法。而且已經有同學實現了[這個插件](https://gist.github.com/2699636)了。
 
@@ -249,7 +257,5 @@ sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一�
 - 为每篇文章增加id 为 disque 所用
 - 生成content
 
-
-
-
 ### TEST ####
+
