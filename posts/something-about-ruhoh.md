@@ -255,7 +255,7 @@ sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一�
 - <del>rss</del>
 - less
 - processing.js
-- 为每篇文章增加id 为 disque 所用
+gi
 - 生成content
 
 ### TEST ####
