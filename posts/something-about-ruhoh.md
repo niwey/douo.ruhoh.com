@@ -253,10 +253,13 @@ sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一�
 - <del>wp 轉換程序，codecolor 插件 短標籤的問題</del>
 - <del>sitemap</del>
 - <del>rss</del>
+- <del>生成 toc</del>
 - less
 - processing.js
 - 为每篇文章增加id 为 disque 所用
-- 生成content
+- css 微调
+- img 增强
+- blog 结构优化
 
 ### TEST ####
 
