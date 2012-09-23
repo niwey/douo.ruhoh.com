@@ -1,17 +1,22 @@
 ---
-title: 关于ruhoh的一些记录
+title: ruhoh 札记
 date: '2012-08-20'
 description:
 categories:
 - coder
 - life
+tags:
+- ruhoh
+- ruby
+- bootstrap
+- markdown
 ---
 {{! 关闭掉mustache的默认分隔符，因为要罗列mustache的代码}}
 {{=<% %>=}}
 
 ### ruhoh ###
 
-这里也许会成为我第一篇ruhoh的博客，先罗列一下常用的命令吧。
+这里<del>也许</del>会成为我第一篇ruhoh的博客，先罗列一下常用的命令吧。
 
     rackup -p 9292  # 启动 web 服务在 9292 端口
 	ruhoh page about.md  #创建一个页面，支持子目录 
@@ -24,48 +29,23 @@ categories:
     http://localhost:9292/dash
 
 
-将 ruhoh 打造成一个个人的 blog ，知识管理系统 （类wiki），日记。
-因为要要作为日记使用，还需要提供类似 evernote 的加密方案。
+断断续续用了 ruhoh 已不止一个月了，用的都是些碎片时间，所以进展并没有多少，现在基本完成作为博客的功能，也扩展了 `note` 和 `diary` 两个新命令，还非常初步，要完善想必得花不少时间吧，但是我觉得用静态网站生成系统来做个人的文章输出平台是非常值得做的尝试。强大的版本控制；数据安全，纯文件，你可以备份到各个云存储平台，各个git仓库；无网络的时候可以离线编辑和预览；markdown 的易读性；还有十足的可操纵感；当然要享受这些好处的前提就是得有一个折腾得起的心。
 
-目前，我對ruhoh的態度是，能用ruhoh 基本功能實現的就用ruhoh，不能用
-ruhoh實現的就先擱置，甚至不使用插件。如果可以用js實現的話，也值得考慮
-一下。
+ruhoh 效率问题暂且不提，现在内容不多也感觉不出来。部署到虚拟主机可能会是比较麻烦的问题，不过我现在在 webfaction 上用着还是很舒服的。另外 plusjade 还提供免费的主机作为普通的博客用绝对绰绰有余，当然不支持插件。另外部署到其他支持 ruby 云主机上应该不会有什么问题。虚拟主机的话，每次更新都要重新编译再上传数据，想想就害怕。
 
-看了 pluskid 的[文章]，我也跟着实现了保存的时候自动刷新页面。需要安装几个东西
+ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，themes 和 plugins，widgets 定义一些可复用的页面代码块，plugins 则是系统扩展，通过ruby脚本实现。像评论模块、google prettify 用 widgets 单独实现就很完美，生成 rss、sitemap 则可以用plugins 单独实现。但是实际用起来发觉这三者之间的耦合太大了，比如本博的 toc 和 fancybox 功能。就必须用 plugins 的自定义转换器，来改动 redcarpet 生成的目标代码。然后又得把那些特定的 js 文件、html 代码块放到 widgets 里面，widgets 和 plugins 紧紧的联系在一起，这样还不如把 widget 直接放到主题里。
 
-- [guard][]
-- [rack-livereload][]
-- [guard-livereload][]
 
-[guard]是一个监听文件系统变动的工具，[rack-livereload] 实现了自动刷新。安装和使用看一下各自的 readme 还是很容易明白的，但具体怎么工作我也没弄清楚，反正不用改动ruhoh的一个代码，很方便。不过我在 windows 下安装 [guard-livereload] 出了问题，原因是EventMachine 0.12.10 不能在跑着 ruy 1.9.2+ 的windows上工作。用 pre-release 的版本就可以解决问题，讨论在[stackoverflow](http://stackoverflow.com/questions/6927907/ruby-problem-installing-eventmachine-under-windows-7#) 上。
-
-	gem install eventmachine --pre
-
-今天发现 guard 这货在 win7 cygwin 下进程占用CPU 100%，不知道是什么情况。
-
-[文章]: http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators/
-
-[guard-livereload]: https://github.com/guard/guard-livereload
-
-[rack-livereload]: https://github.com/johnbintz/rack-livereload
-
-[guard]: https://github.com/guard/guard
 
 ### 评论 ###
 
 静态博客的评论系统只能通过第三方评论系统来实现，ruhoh 是用 widgets 来嵌入第三方评论。內置支持disqus。
 
-我的目的是實現，ruhoh 和  wordpress 的相同篇文章共用一個評論。disqus
-提供了這種可能性
-[Why are the same comments showing up on multiple pages?] wordpress 的
-disqus 插件使用了 文章的post\_id 和 guid 作爲 disqus\_identifier ，模
-式如下
+我的目的是實現，ruhoh 和  wordpress 的相同篇文章共用一個評論，disqus 提供了這種可能性 [Why are the same comments showing up on multiple pages?]。wordpress 的 disqus 插件使用了 文章的 post_id 和 guid作爲 disqus\_identifier ，模式如下
 
 	post_id + ' ' + guid
 
-所以在 [wp\_to\_ruhoh](https://gist.github.com/3415268) 里，我就這兩個屬性也保留下來。但是 ruhoh 的
-widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只能把代碼
-放到 theme 的 layout 里。如下:
+所以在 [wp_to_ruhoh](https://gist.github.com/3415268) 里，我就這兩個屬性也保留下來。但是 ruhoh 的 widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只能把代碼放到 theme 的 layout 里。如下:
 
     <div id="disqus_thread"></div>
             <script type="text/javascript">
@@ -87,21 +67,16 @@ widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只�
                 powered by <span class="logo-disqus">Disqus</span></a>
 
 
-
-
-另外，对于 ruhoh 的 post ，如果不想以后换个标题，或者换个域名，都要重新整合评论，最好每篇文章提供一个 unique id 作为 disque_indentifier 使用。[Some Jekyll Hacks][] 希望可以得到一些启示。
-
-[Some Jekyll Hacks]: http://brizzled.clapper.org/blog/2010/12/20/some-jekyll-hacks/
+另外，对于 ruhoh 的 post ，如果不想以后换个标题，或者换个域名，都要重新整合评论，最好每篇文章提供一个 unique id 作为 disque_indentifier 使用。post 已经有 id 属性了，用的是相对的文件路径。
 
 
 [issue52]: https://github.com/ruhoh/ruhoh.rb/issues/52
 
 [Why are the same comments showing up on multiple pages?]: http://help.disqus.com/customer/portal/articles/662547-why-are-the-same-comments-showing-up-on-multiple-pages-
 
-
 ### mustache ###
 
-一个Logic Less（不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简洁[stackoverflow][]）的模板语言，所以同样以语言无关为目标的 ruhoh 采用了它作为模板语言。参考它的 [demo][] 可以大致了解它的特性
+一个Logic Less（不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简洁。见[stackoverflow][]）的模板语言，所以同样以语言无关为目标的 ruhoh 采用了它作为模板语言。参考它的 [demo][] 可以大致了解它的特性
 
 json 对象:
 
@@ -169,21 +144,28 @@ json 对象:
 <%={{ }}=%>
 {{! 切换回默认的分隔符，免得出现奇怪的问题}} 
 
-### bootstrap ###
+### 主题 ###
 
-折騰了幾下，感覺目前我弄的這個主題，並不能發揮bootstrap作爲脚
-手架的能力，用它的栅格系统总是不能把边栏设计地让人满意。不過响应式布局（responsive）這個特性實在太強了，基本可以保證在不同分辨率
-的設備上都可以保持比較好的閱讀體驗，不过我分别实现了两个导航栏对应移动设备和pc，从语义上讲就很糟糕了。不過單單用它的那些小工具也非常值得，
-bootstrap 的設計真的很漂亮，像我這種沒有前端經驗的碼農，也可以用的很舒
-服。
+关于主题，折騰了幾下，感覺目前我弄的這個主題，並不能發揮bootstrap作爲脚手架的能力，用它的栅格系统总是不能把边栏设计地让人满意。不過响应式布局（responsive）這個特性實在太強了，基本可以保證在不同分辨率的設備上都可以保持比較好的閱讀體驗，不过我分别实现了两个导航栏对应移动设备和pc，从语义上讲这个做法非常糟糕。不過單單用 bootstrap 的那些小工具也非常值得，bootstrap 的設計真的很漂亮，像我這種沒有前端經驗的碼農，也可以用的很舒服。
 
-如前面所说主題左邊那個固定的導航欄不能利用到bootstrap的栅格系统，只能用原來那
-種方法，還是很遺憾的。
+特别遗憾的就是主題左邊那個固定的導航欄不能利用到bootstrap的栅格系统，只能用原來那種方法。
 
-bootstrap 更适合于下面这种布局，很不错的设计，正在考虑要不要偷过来。
+主题的设计偷着下面的这些网站，说好听就是参考了-_-，肯定不止这些的只是我确实想不起来了。
 
-- http://www.kissuki.com/
+- http://www.sitepoint.com/pure-css3-paper-curl/
+- http://yihui.name/cn/
 - http://freemind.pluskid.org
+
+相比 wordpress 那未完成的主题，主颜色换成蓝色，去掉了圆角，背景多了些阴影。感觉还不错。
+
+另外还用了下面这些工具，
+
+- http://dublue.com/plugins/toc/
+- http://www.appelsiini.net/projects/lazyload
+- http://fancyapps.com/fancybox/
+- http://ajaxload.info/ 
+
+也没办法一一列举了。
 
 这个 ruhoh 主题可以在这里找到： [Moon]
 
@@ -191,54 +173,35 @@ bootstrap 更适合于下面这种布局，很不错的设计，正在考虑要�
 
 ### Markdown ###
 
-用了一段時間的 Markdown ，發現 Markdown 主要的缺陷就是太簡單了，優點也
-是太簡單了，非常直觀。真是矛盾。
+用了一段時間的 Markdown ，發現 Markdown 主要的缺陷就是太簡單了，優點也是太簡單了，真是矛盾。
 
-現在主要影響比較大的有幾點：
+折腾一个主题基本上不能回避对  markdown 的转换器做一些改动。幸好 redcarpet 扩展起来十分方便。不过这样就牺牲默认用底层语言实现的转换器的效率。另外万不得已的时候决不对 Markdown 的语法进行扩展，优先用一些现成的扩展版本，幸好现在还不需要到这一步。之前考虑过换一些更强大的标记语言，不过现在看起来还没这个必要放棄 Markdown ，Markdown 很簡潔很漂亮，而且那些简化也是有它的道理的，觉得不爽的时候，还是先坚持一下。
 
-1. 无法为 img 标签指定 class 
-2. 無法爲文章生成 content
-3. 實現擴展不容易
-
-第1點，是markdown 語義的限制，2，3 倒也不能怪 Markdown，不過在不動用 ruhoh 的插件的情況下，要解決基本無望。但是，我目前並沒有放棄 Markdown 的打算，我覺得它的簡潔很漂亮，而且也是有它的道理的，先習慣一下，不過應該也是逃不了自己再擴展的命運了。
-
-再羅列一下，其他朋友對Markdown的批評:
+这里有其他同学對Markdown的批評:
 
 -  [Why I hate Markdown (and prefer reST)](http://blog.liancheng.info//why-i-hate-markdown)
 -  [The Unbearable Madness of Static Blog Generators](http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators)
 
-markdown 的转义让人抓狂
+不过 Markdown 的转义让人抓狂
 
-#### pandoc 增强
+pandoc 增强的 Markdown 语法 http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html 
 
-http://www.ituring.com.cn/article/746
-
-#### pandoc 增强2
-
-
-##### pandoc 增强3
-
-##### pandoc 增强4
-
-###### pandoc 增强5
-
-#### pandoc 增强6
 
 ### Mathjax ###
 
-mathjax的使用非常方便，直接在頁面嵌入腳本就行，然後通過一個 widgets
-來載入 mathjax 的腳本。就可以展示公式了，現在的主要問題還是要不要通過
-插件來簡化語法。而且已經有同學實現了[這個插件](https://gist.github.com/2699636)了。
+mathjax的使用非常方便，直接在頁面嵌入腳本就行，然後通過一個 widgets 來載入 mathjax 的腳本。就可以展示公式了，再扩展一下转换器插件來簡化語法。用的是[plusjade實現的语法](https://gist.github.com/2699636)了。
 
 ```mathjax
 e^{i\pi} + 1 = 0
 ```
 
+mathjax 好像会不定时的出现一些布局错乱的问题。
+
 ### RSS & sitemap ###
 
-新版的ruhoh 已经内置 rss 生成插件，但是这个插件有不少问题，我参考了wordpress的rss改进了一下，见 [rss.rb][]。不过现在在goodle reader的日期还有问题。google reader 是分成两个日期的，分别是`已收到项目`和`已发布项目` 默认显示的是`已收到项目`。在rohoh 中就是rss.xml 的生成时间，结果导致所有文章的显示出来的日期都一样。
+新版的ruhoh 已经内置 rss 生成插件，但是这个插件有不少问题，我参考了wordpress 的 rss 改进了一下，见 [rss.rb][]，rss的标准没有详细了解，希望实现不要不伦不类。
 
-sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一些根据wordpress的sitemap做了些改动，改动版在[这](https://gist.github.com/3736089)
+sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一些根据wordpress的sitemap做了些改动：[改动版](https://gist.github.com/3736089)
 
 [Ruhoh Sitemap Generator]: https://gist.github.com/3705998
 
@@ -246,20 +209,64 @@ sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一�
 
 [rss.rb]: https://gist.github.com/3736010
 
-### TODO ###
+### 搬家 ###
 
-- <del>Mathjax</del>
-- <del>moon 主題</del>
-- <del>wp 轉換程序，codecolor 插件 短標籤的問題</del>
-- <del>sitemap</del>
-- <del>rss</del>
-- <del>生成 toc</del>
-- less
-- 生成content
-- 为每篇文章增加id 为 disque 所用
-- css 微调
-- img 增强
-- blog 结构优化
+事实证明，想要无痛地将 wordpress 的文章转换到 ruhoh 上是件十分痛苦的事。折腾 ruhoh 有不少时间就是在折腾这个转换脚本。不过现在这个脚本基本上可以完成 90% 的转换工作，包括将文章转换为 markdown 格式，感谢 pandoc 。不过还是做了不少 hack。最折腾人的就是 codecolorer 这货，短标签，长标签，各种混用，太可怕了，差点想重新实现它的引擎，最后当然还是放弃，用人工修改一些例外，像是这篇文章：[CodeColorer中文帮助]
 
-### TEST ####
+脚本由Jekyll 的wordpressdotcom 修改而来，根据我的博客做了很多针对性的hack，可能没有什么适用性。脚本可以在这里找到： [wp_to_ruhoh](https://gist.github.com/3415268)
 
+[CodeColorer中文帮助]: /2010/08/03/codecolorer-doc-cn
+
+### 其他 ###
+
+#### 自动刷新 ####
+
+看了 pluskid 的[文章]，我也跟着实现了保存的时候自动刷新页面。需要安装几个东西
+
+- [guard][]
+- [rack-livereload][]
+- [guard-livereload][]
+
+[guard]是一个监听文件系统变动的工具，[rack-livereload] 实现了自动刷新。安装和使用看一下各自的 readme 还是很容易明白的，但具体怎么工作我也没弄清楚，反正不用改动ruhoh的一个代码，很方便。不过我在 windows 下安装 [guard-livereload] 出了问题，原因是EventMachine 0.12.10 不能在跑着 ruy 1.9.2+ 的windows上工作。用 pre-release 的版本就可以解决问题，讨论在[stackoverflow](http://stackoverflow.com/questions/6927907/ruby-problem-installing-eventmachine-under-windows-7#) 上。
+
+	gem install eventmachine --pre
+
+今天发现 guard 这货在 win7 cygwin 下进程占用CPU 100%，不知道是什么情况。
+
+[文章]: http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators/
+
+[guard-livereload]: https://github.com/guard/guard-livereload
+
+[rack-livereload]: https://github.com/johnbintz/rack-livereload
+
+[guard]: https://github.com/guard/guard
+
+#### 部署 ####
+
+webfaction 真心不错。给 git 加个钩子，用 post-receive 解决全部问题
+
+```bash
+#!/bin/bash
+
+HOME=/home/xxx
+LOG=$HOME/ruhoh.log
+BUILD_DIR=$HOME/tmp/
+SITE_DIR=$BUILD_DIR/compiled/
+DEPLOY_DIR=$HOME/deploy/
+source $HOME/.rvm/scripts/rvm
+date >>  $LOG 
+unset GIT_DIR
+cd $BUILD_DIR
+PATH=$HOME/douo-ruhoh/bin:$PATH  #use custom ruhoh to compile
+#echo $PATH >>  $LOG
+git pull  >>  $LOG
+which ruhoh >> $LOG
+ruhoh compile >> $LOG
+rsync -a --delete-after $SITE_DIR $DEPLOY_DIR >>  $LOG
+```
+
+#### TODO ####
+
+好多呀~ 好困。
+
+接下来完善笔记功能，打造出一个知识管理系统（类wiki），还有日记，因为要作为日记使用，还需要提供类似 evernote 的加密方案。

@@ -25,31 +25,49 @@ loop](http://en.wikipedia.org/wiki/Busy_waiting)被去掉了
 
 原代码大概如下:
 
-    boolean a = false;
 
-    new Thread().start
 
-    while(a);
+```java
+boolean a = false;
+
+new Thread().start
+
+while(a);
+```
+
+
 
 混淆后的代码while(a);这句已经不见了 加上个括号也不行
 
-    boolean a = false;
 
-    new Thread().start
 
-    while(a){ }
+```java
+boolean a = false;
+
+new Thread().start
+
+while(a){ }
+```
+
+
 
 必须做些操作,循环才会正确运行。
 
-    boolean a = false;
 
-    new Thread().start
 
-    while(a){
+```java
+boolean a = false;
 
-    System.out.print("");
+new Thread().start
 
-    }
+while(a){
+
+System.out.print("");
+
+}
+```
+
+
 
 想必是proguard给优化掉，Google了一下居然被我找到了一段Troubleshooting([原文地址](http://docs.huihoo.com/proguard/manual/troubleshooting.html#Disappearingloops))，摘录如下：
 **Disappearing loops**
@@ -70,4 +88,8 @@ option.
 关键字后，空循环还是照样被移除。而且我调用的方法已经加了synchronized，我的代码也没有必要为这个变量加上**valatile**
 ，最后只能非常不爽地在项目的混淆选项界面里的其他混淆设置中添上一行
 
-    -dontoptimize
+
+```
+-dontoptimize
+```
+

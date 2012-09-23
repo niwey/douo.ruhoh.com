@@ -46,52 +46,84 @@ guid: http://dourok.info/?p=116
 生成自己的Lib库
 ---------------
 
-比如说新建一个源文件dou.c，代码如下：
+比如说新建一个源文件dou.c，代码如下： 
 
-    #include "dou.h"
-    int dou_max(int a , int b){
-    return a>b?a:b;
-    }
+```c
+#include "dou.h"
+int dou_max(int a , int b){
+return a>b?a:b;
+}
+```
 
-接下来建立头文件dou.h,
 
-    #ifndef _DOU_H
-    #define _DOU_H
-    extern int dou_max(int a,int b);
-    #endif
+接下来建立头文件dou.h, 
+
+```c
+#ifndef _DOU_H
+#define _DOU_H
+extern int dou_max(int a,int b);
+#endif
+```
+
+
 
 若要将程序打包成库发布，这里跟上面添加包含源码的第三方库一样，在MTK软件系统根目录下，新增一个dou目录，在创建inc和src文件夹，把dou.h放在dou，dou.c放在dou。接着在make目录下新增一个dou目录,再添加4个新文件，分别是，dou.def、dou.inc、dou.lis、dou.pth。
 
-dou.inc添加
+dou.inc添加 
 
-    dou\inc
+```
+dou\inc
+```
 
-dou.lis添加
 
-    dou\src\dou.c
 
-dou.pth添加
+dou.lis添加 
 
-    dou\src
+```
+dou\src\dou.c
+```
+
+
+
+dou.pth添加 
+
+```
+dou\src
+```
+
+
 
 .inc是头文件目录，.lis是源文件列表，.pth是源文件目录。
 
 remake一下，完成后可在build文件夹里，搜索到dou.lib文件。接下来可以如上面所说的无源码的库的添加方法那样去添加。
 
-也可以不用remake，可以用命令行来编译
+### 也可以不用remake，可以用命令行来编译 
 
-    armcc [options] file1 file2 ... filen
+```
+armcc [options] file1 file2 ... filen
+```
+
+
 
 不过我用armmcc编译出来的obj文件加入MTK工程后链接出错。后来用
 
-    tcc
+
+```
+tcc
+```
+
+
 
 就OK了。
 用armcc还是tcc，在Option.mak里是有定义的，具体看COMPILE\_MODE这个参数。好像默认就是tcc。
 
-tcc编译出来的是obj文件，还要打包成lib库,用命令
+tcc编译出来的是obj文件，还要打包成lib库,用命令 
 
-    armar -r libfile objfile...
+```
+armar -r libfile objfile...
+```
+
+
 
 之后把lib加入工程的方法一开始说过了。但如果要把lib添加进模拟器中还需要多几个步骤。
 
@@ -104,14 +136,22 @@ tcc编译出来的是obj文件，还要打包成lib库,用命令
 确保lib文件是vc编译的 将lib复制到 \_lib..
 这个目录是不确定的，在CreateModis.pl里有定义，具体可查看\${modislibroot}这个变量
 
-在CreateModis.pl里，添加一句 [cc\_perl]push(@liblist,
-"\${modislibroot}\\\\\\\\dou\\\\.lib");[/cc]
+在CreateModis.pl里，添加一句 
+
+```
+push(@liblist, "${modislibroot}\\dou\.lib");
+```
+
+
 这里可以参考了其它\${modislibroot}里的lib库的添加方法。 然后
 
-    make gen_modis
-    make codegen_modis
 
-编译Modis，不报错便大功告成。
+```
+make gen_modis
+make codegen_modis
+```
+
+ 编译Modis，不报错便大功告成。
 
 ### PC Simulator
 
