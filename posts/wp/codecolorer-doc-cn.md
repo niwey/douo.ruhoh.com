@@ -88,10 +88,6 @@ public class Main {
 </code>
 ```
 
-
-
-
-
 ```java
 package dourok.info.test;
 
