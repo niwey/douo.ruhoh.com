@@ -267,6 +267,7 @@ rsync -a --delete-after $SITE_DIR $DEPLOY_DIR >>  $LOG
 
 #### TODO ####
 
-好多呀~ 好困。
-
 接下来完善笔记功能，打造出一个知识管理系统（类wiki），还有日记，因为要作为日记使用，还需要提供类似 evernote 的加密方案。
+
+好多呀~ 好困。 
+ 
