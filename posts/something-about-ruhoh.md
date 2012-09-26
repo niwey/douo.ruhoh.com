@@ -31,9 +31,11 @@ tags:
 
 断断续续用了 ruhoh 已不止一个月了，用的都是些碎片时间，所以进展并没有多少，现在基本完成作为博客的功能，也扩展了 `note` 和 `diary` 两个新命令，还非常初步，要完善想必得花不少时间吧，但是我觉得用静态网站生成系统来做个人的文章输出平台是非常值得做的尝试。强大的版本控制；数据安全，纯文件，你可以备份到各个云存储平台，各个git仓库；无网络的时候可以离线编辑和预览；markdown 的易读性；还有十足的可操纵感；当然要享受这些好处的前提就是得有一个折腾得起的心。
 
-ruhoh 效率问题暂且不提，现在内容不多也感觉不出来。部署到虚拟主机可能会是比较麻烦的问题，不过我现在在 webfaction 上用着还是很舒服的。另外 plusjade 还提供免费的主机作为普通的博客用绝对绰绰有余，当然不支持插件。另外部署到其他支持 ruby 云主机上应该不会有什么问题。虚拟主机的话，每次更新都要重新编译再上传数据，想想就害怕。
+ruhoh 效率问题暂且不提，现在内容不多也感觉不出来。部署到虚拟主机可能会是比较麻烦的问题，不过我现在在 webfaction 上用着还是很舒服的。另外 plusjade 还提供免费的主机作为普通的博客用绝对绰绰有余，当然不支持插件。另外部署到其他支持 ruby 云服务平台上应该不会有什么问题，如 Heroku。虚拟主机的话，每次更新都要重新编译再上传数据，想想就害怕。
 
-ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，themes 和 plugins，widgets 定义一些可复用的页面代码块，plugins 则是系统扩展，通过ruby脚本实现。像评论模块、google prettify 用 widgets 单独实现就很完美，生成 rss、sitemap 则可以用plugins 单独实现。但是实际用起来发觉这三者之间的耦合太大了，比如本博的 toc 和 fancybox 功能。就必须用 plugins 的自定义转换器，来改动 redcarpet 生成的目标代码。然后又得把那些特定的 js 文件、html 代码块放到 widgets 里面，widgets 和 plugins 紧紧的联系在一起，这样还不如把 widget 直接放到主题里。
+ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，themes 和 plugins，widgets 定义一些可复用的页面代码块，plugins 则是系统扩展，通过ruby脚本实现，有点像动态网站的后台逻辑部分。而像评论模块、google prettify 这些载入js就可以解决的功能，用 widgets 和 themes 实现就很完美，生成 rss、sitemap 则可以用plugins 单独实现。但是实际用起来发觉这三者之间的耦合太大了，比如本博的 toc 和 fancybox 功能。就必须用 plugins 的自定义转换器，来改动 redcarpet 生成的目标代码。然后又得把那些特定的 js 文件、html 代码块放到 widgets 里面，widgets 和 plugins 紧紧的联系在一起，这样要实现一个功能必须得同时使用 plugins 和 widgets ，这样还不如把前端代码直接放到 themes 里来的清晰。当然啦，像 toc 完全前端实现也是可以的，见：[Generating a Table of Contents in Octopress]。
+
+[Generating a Table of Contents in Octopress]: http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/
 
 
 
