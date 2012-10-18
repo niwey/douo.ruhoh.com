@@ -44,6 +44,6 @@ puts markdown.to_html
   [腾讯微博]: http://t.qq.com/fukctengx
   
   [mail_gen]: http://services.nexodyne.com/email/index.php
-  [mail_img]: http://dourok.info/wp-content/uploads/2010/04/mail.png (点击跳转Email图片生成服务)
+  [mail_img]: {{urls.media}}/mail.png (点击跳转Email图片生成服务)
 
 
