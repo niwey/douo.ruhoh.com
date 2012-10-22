@@ -1,3 +1,9 @@
+---
+title:  PC折腾记录
+date: '2012-09-07'
+description:
+---
+
 ## win7
 win7 64 位. 已经成功安装在uefi + gpt 上了.
 通过刷 slic2.1 的bios. 修改方法见 bios card.已经成功实现硬激活.
