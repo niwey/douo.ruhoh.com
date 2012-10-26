@@ -13,8 +13,7 @@ postid: '666'
 guid: http://dourok.info/?p=666
 ---
 路边的野花独自开得这般灿烂，可曾有人为你驻足?
-[![]({{urls.media}}/wp-content/uploads/2012/04/IMAG00071.jpg "IMAG0007")]({{urls.media}}/wp-content/uploads/2012/04/IMAG00071.jpg)
-可野花从不管有没有人欣赏都照样开放。
+[![]({{urls.media}}/wp-content/uploads/2012/04/IMAG00071.jpg "IMAG0007")]({{urls.media}}/wp-content/uploads/2012/04/IMAG00071.jpg) 可野花从不管有没有人欣赏都照样开放。
 从不向人类乞求一分一毫，如此孤高冷傲，也不近人情[![]({{urls.media}}/wp-content/uploads/2012/04/IMAG0034.jpg "IMAG0034")]({{urls.media}}/wp-content/uploads/2012/04/IMAG0034.jpg)
 我还是天真的希望，此刻它的灿烂是因为我的注目。
 可惜我不懂花的语言，不敢开口，你现在是否在为我开放？[![]({{urls.media}}/wp-content/uploads/2012/04/IMAG0160.jpg "IMAG0160")]({{urls.media}}/wp-content/uploads/2012/04/IMAG0160.jpg)

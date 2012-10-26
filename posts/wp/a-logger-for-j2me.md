@@ -40,13 +40,7 @@ Log是在Fire2里实现好的，有一系列的静态方法，包括添加和设
 
 Logger 是一个接口只有一个方法
 
-
-
-```java
-public void println(String txt , int level);
-```
-
-
+    public void println(String txt , int level);
 
 要自己实现logger只需实现这个接口便可，比如说把Log消息写文件里面去，发送到服务器等等。
 
@@ -61,24 +55,18 @@ screen)，传入的Displayable为调用显示控制台是的当前界面，从Co
 
 一个使用控制台的例程可以像这样
 
-
-
-```java
-Display dis = Display.getDisplay(this);
-Console console = Console.getConsole(dis);
-Log.showDebug = true;
-Log.addLogDestination(console);
-Log.logInfo("console already");
-Log.logDebug(Console.getMemoryInfo());
-try{
-//一些可能抛出异常的操作
-}catch(Exception e){
-Log.logError("ERROR" , e);
-console.showConsole(null);
-}
-```
-
-
+    Display dis = Display.getDisplay(this);
+    Console console = Console.getConsole(dis);
+    Log.showDebug = true;
+    Log.addLogDestination(console);
+    Log.logInfo("console already");
+    Log.logDebug(Console.getMemoryInfo());
+    try{
+    //一些可能抛出异常的操作
+    }catch(Exception e){
+    Log.logError("ERROR" , e);
+    console.showConsole(null);
+    }
 
 Console还有个String getMemoryInfo()的方法，来得到当前虚拟机的内存信息。
 
@@ -95,7 +83,7 @@ g)。很多时候消息太多会超过一屏，要在canvas实现滚屏那显的
 先来看下效果图先。这可是MTK真机上截的图哦。
 
 [![]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png "console")]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png)
------------------------------------------------------
+-----------------------------
 
 现在Console的问题应该是多多的，可定制性几乎没有。不过我目前用起来挺顺手的，以后还会一直用它，发现问题到时再来改吧。
 
@@ -105,4 +93,4 @@ g)。很多时候消息太多会超过一屏，要在canvas实现滚屏那显的
 UI库，可自定义主题，同时支持渲染xHtml/CSS，提供有xHtml浏览器组件。[这里](http://sourceforge.net/projects/fire-j2me/)是它的项目地址
 
 [![]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png "console")]({{urls.media}}/wp-content/uploads/2010/05/console-e1274319179862-225x300.png)
------------------------------------------------------
+-----------------------------

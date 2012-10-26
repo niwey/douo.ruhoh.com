@@ -12,10 +12,8 @@ meta:
   _edit_last: '1'
   _aioseop_title: css通用字体
   _wp_old_slug: ! '%e6%9b%b4%e6%96%b0%e4%ba%86%e4%b8%8bcss'
-  _aioseop_description: ! '在Linux版Chrome11中，自定义字体只能够配置两种，分别是标准字体和宽度固定的字体，经测试分别对应Fantasy和Monospace，
-    其他通用字体的对应特定字体无法配置。
-
-    要强制指定字体可用下面css配合 Chrome Stylist 实现。但会覆盖其他所有字体。'
+  _aioseop_description: ! "在Linux版Chrome11中，自定义字体只能够配置两种，分别是标准字体和宽度固定的字体，经测试分别对应Fantasy和Monospace，
+    其他通用字体的对应特定字体无法配置。\r\n要强制指定字体可用下面css配合 Chrome Stylist 实现。但会覆盖其他所有字体。"
 postid: '513'
 guid: http://dourok.info/?p=513
 ---

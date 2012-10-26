@@ -38,13 +38,7 @@ AGN。安装的过程非常流畅，安装后程序会自动启动。这时只�
 WiFi技术，就可以在HERO上看WiFi热点了，不过，在你连接之前，还要改一下My
 WiFi的预配置，因为默认的密码是一串长达64位的随机字符串（真是随机的吗？）。大概类似：
 
-
-
-```
-ch@R2ku9tAYz5aOkPDz31TAWXfCGpz72.muvx#lugh9q6e97bo~gzDiuf8DoK+P
-```
-
-
+    ch@R2ku9tAYz5aOkPDz31TAWXfCGpz72.muvx#lugh9q6e97bo~gzDiuf8DoK+P
 
 如果能在手机上一个个输完，那我真是五体投地。
 
@@ -71,7 +65,6 @@ WiFi技术应该是将无线网卡虚拟成无线AP，这样所有设置都在�
 
 最后贴上一张正常使用的软件界面图和任务栏图标的右键菜单状态：
 
-[![]({{urls.media}}/wp-content/uploads/2010/06/MY_WIFI.jpg "MY_WIFI")]({{urls.media}}/wp-content/uploads/2010/06/MY_WIFI.jpg) 设置名称"HTC
-HERO"和图标是我自己改的。
+[![]({{urls.media}}/wp-content/uploads/2010/06/MY_WIFI.jpg "MY_WIFI")]({{urls.media}}/wp-content/uploads/2010/06/MY_WIFI.jpg) 设置名称"HTC HERO"和图标是我自己改的。
 
 [![]({{urls.media}}/wp-content/uploads/2010/06/menu.jpg "menu")]({{urls.media}}/wp-content/uploads/2010/06/menu.jpg)

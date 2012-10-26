@@ -12,9 +12,8 @@ categories:
 - otaku
 meta:
   _edit_last: '1'
-  _aioseop_description: ! 'Lyrics Grabber2 可以说我理想中的歌曲下载插件，主要是它可以批量抓取更新歌词，又可以自定义抓取脚本方便扩展，实在强大。
-
-    Lyrics Grabber2里面的千千静听歌词抓取脚本（TTPlayer(LRC).py）是用不了的。我修复了一下'
+  _aioseop_description: ! "Lyrics Grabber2 可以说我理想中的歌曲下载插件，主要是它可以批量抓取更新歌词，又可以自定义抓取脚本方便扩展，实在强大。\r\nLyrics
+    Grabber2里面的千千静听歌词抓取脚本（TTPlayer(LRC).py）是用不了的。我修复了一下"
   _aioseop_title: 修复了 Lyrics Grabber2 的千千静听歌词抓取脚本
   dsq_thread_id: '796842664'
   _aioseop_keywords: python,foobar2000,foobar2000歌词,Lyrics Grabber2,foobar2000千千静听,千千静听,谷歌翻译api
@@ -45,7 +44,7 @@ bug\_4:[42行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_l
 同样是编码问题，导致Levenshtein算法失效，因为比对的是两个不同编码的字符串。
 
 修复完bug后，就可以成功查词了。但是结果并不理想。
-[![]({{urls.media}}/wp-content/uploads/2011/08/t2.png "t2")]({{urls.media}}/wp-content/uploads/2011/08/t2.png)
+[![]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png "t2")]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png)
 
 由上图可以看出是，英文和简体没压力但繁（正）体中文就不行了。显然还需对title做些处理。通过对千千静听进行测试，发现千千静听对查询串的处理远不止
 [71](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#71)
@@ -61,62 +60,48 @@ bug\_4:[42行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_l
 
 繁（正）体转换为简体，找不到好的现成方案（针对unicode字符集uft-8编码的）。只能动用谷歌翻译的api了。没想到谷歌翻译倒工作的很好。不过毕竟是多一个网络请求，建议不需要的时候可以把它注释掉，以加快查询速度。其他过滤功能也可以根据情况去掉，已加强效率。FYI:脚本更改后立即生效，无须重启foobar2000的。
 
-针对这些，增加了下面的新方法 
+针对这些，增加了下面的新方法
 
-```python
-def QianQianStringFilter(self,string):
-s = string
-# 英文转小写
-s = s.lower()
-# 去括号，大中小还有全角的小括号
-s = re.sub('\(.*?\)|\[.*?]|{.*?}|（.*?）', '', s);
-# 去除半角特殊符号，空格，逗号，etc。
-s = re.sub('[ -/:-@[-`{-~]+', '', s);
-# 繁（正）体转换为简体
-s = translate(s,'zh-tw','zh-cn')
-s = unicode(s, 'utf_8')
-# 去除全角特殊符号
-s = re.sub(u'[\u2014\u2018\u201c\u2026\u3001\u3002\u300a\u300b\u300e\u300f\u3010\u3011\u30fb\uff01\uff08\uff09\uff0c\uff1a\uff1b\uff1f\uff5e\uffe5]+','',s)
-return s
-```
+    def QianQianStringFilter(self,string):
+    s = string
+    # 英文转小写
+    s = s.lower()
+    # 去括号，大中小还有全角的小括号
+    s = re.sub('\(.*?\)|\[.*?]|{.*?}|（.*?）', '', s);
+    # 去除半角特殊符号，空格，逗号，etc。
+    s = re.sub('[ -/:-@[-`{-~]+', '', s);
+    # 繁（正）体转换为简体
+    s = translate(s,'zh-tw','zh-cn')
+    s = unicode(s, 'utf_8')
+    # 去除全角特殊符号
+    s = re.sub(u'[\u2014\u2018\u201c\u2026\u3001\u3002\u300a\u300b\u300e\u300f\u3010\u3011\u30fb\uff01\uff08\uff09\uff0c\uff1a\uff1b\uff1f\uff5e\uffe5]+','',s)
+    return s
 
- 
-
-```python
-def translate(text,lang_from,lang_to):
-url = ('http://ajax.googleapis.com/ajax/services/language/translate?' +
-'v=1.0&q='+urllib.quote(text)+'&langpair='+lang_from+'%7C'+lang_to)
-json = urllib.urlopen(url).read()
-# return json;
-p = re.compile('"translatedText":"(.+?)"')
-m = p.search(json);
-return m.group(1);
-```
-
-
+    def translate(text,lang_from,lang_to):
+    url = ('http://ajax.googleapis.com/ajax/services/language/translate?' +
+    'v=1.0&q='+urllib.quote(text)+'&langpair='+lang_from+'%7C'+lang_to)
+    json = urllib.urlopen(url).read()
+    # return json;
+    p = re.compile('"translatedText":"(.+?)"')
+    m = p.search(json);
+    return m.group(1);
 
 **注意:**谷歌翻译的api已经过期了，会导致查词失败，新的翻译api又要收费还很贵，见[http://code.google.com/apis/language/translate/v2/pricing.html](http://code.google.com/apis/language/translate/v2/pricing.html)，坑爹呢这是。幸好还有Bing做后援。虽然不给力，但简繁转换还是没问题的。下面的代码改用Bing的翻译服务：
 
-
-```python
-def translate(text,lang_from,lang_to):
-url = ('http://api.microsofttranslator.com/V2/Ajax.svc/Translate?' +
-'appId=DE2A1CAA235EB52E611BC1243F16E4D301BB600E' +
-'&from='+ lang_from +'&to='+ lang_to +
-'&text='+urllib.quote(text))
-json = urllib.urlopen(url).read()
-p = re.compile('"(.+?)"') #對應必應
-m = p.search(json);
-return m.group(1);
-```
-
+    def translate(text,lang_from,lang_to):
+    url = ('http://api.microsofttranslator.com/V2/Ajax.svc/Translate?' +
+    'appId=DE2A1CAA235EB52E611BC1243F16E4D301BB600E' +
+    '&from='+ lang_from +'&to='+ lang_to +
+    '&text='+urllib.quote(text))
+    json = urllib.urlopen(url).read()
+    p = re.compile('"(.+?)"') #對應必應
+    m = p.search(json);
+    return m.group(1);
 
 这样，大部分流行歌曲特别是华人音乐，都可以表示毫无压力。
-[![]({{urls.media}}/wp-content/uploads/2011/08/t1.png "t1")]({{urls.media}}/wp-content/uploads/2011/08/t1.png)
-千千静听的大部分歌词都是简体的……
+[![]({{urls.media}}/wp-content/uploads/2011/08/t1.png "t1")]({{urls.media}}/wp-content/uploads/2011/08/t1.png) 千千静听的大部分歌词都是简体的……
 
-歌名特殊符号的也能识别了
-[![]({{urls.media}}/wp-content/uploads/2011/08/t3.png "t3")]({{urls.media}}/wp-content/uploads/2011/08/t3.png)
+歌名特殊符号的也能识别了 [![]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png "t3")]({{urls.media}}/wp-content/uploads/2011/08/t{{urls.media}}/wp-content/uploads/2011/08/t2_.png)
 
 [![]({{urls.media}}/wp-content/uploads/2011/08/t2_.png "t2_")]({{urls.media}}/wp-content/uploads/2011/08/t2_.png) You Ain't Goin
 Nowhere在千千静听里面也是Fault。

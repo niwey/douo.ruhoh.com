@@ -21,7 +21,7 @@ guid: http://dourok.info/?p=537
 ---
 迷宫,大家都在知道是什么吧.一种标准的迷宫可以是像下图这样的结构,
 
-[![]({{urls.media}}/wp-content/uploads/2011/07/maze01.png "maze01")]({{urls.media}}/wp-content/uploads/2011/07/maze01.png)
+[![]({{urls.media}}/wp-content/uploads/2011/07/maze0{{urls.media}}/wp-content/uploads/2011/07/maze3.png "maze01")]({{urls.media}}/wp-content/uploads/2011/07/maze0{{urls.media}}/wp-content/uploads/2011/07/maze3.png)
 
 一个矩形空间上,布置出错综复杂的墙,本文讨论的主要是这种结构的简单迷宫.可以想象出在下图这样的结构里,推倒某些墙壁.来生成迷宫.当然墙不是随便可以推倒的.
 
