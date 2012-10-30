@@ -15,3 +15,6 @@ description:
 机器性的工作可以坚持不分心
 
 探索性的工作却常常四处分心
+
+
+Palatino, Cambria, Georgia, serif 字体不错

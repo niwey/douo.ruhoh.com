@@ -136,3 +136,13 @@ description:
     end #Ruhoh
 
 具體看看 rss 和 sitemap 的實現
+
+### 扩展命令的流程
+
+1 在 client 中声明命令,和命令的处理方法
+2 在Ruhoh::Names 中增加命令名称
+3 Ruhoh::Paths 中声明需要用到的路径
+4 Ruhoh::Urls 中声明url
+5 实现新的parser,新文件要在gemspec中声明
+6 在Ruhoh::DB 中的 whitelist 声明新的parser,顺序很重要
+7.在Ruhoh::Config 聲明默認模板
