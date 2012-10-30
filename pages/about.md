@@ -33,7 +33,7 @@ puts markdown.to_html
   [stackoverflow]: http://stackoverflow.com/users/851344/douo
   [douban]: http://www.douban.com/people/douo/
   [google code]: http://code.google.com/u/dourokinga/
-  [github]: https://github.com/dourokinga
+  [github]: https://github.com/douo
   [quora]: http://www.quora.com/Tiao-Lims
   [picasa]: https://picasaweb.google.com/102537448648560113422
   [segmentfault]: http://segmentfault.com/user/1410/douo
@@ -44,6 +44,6 @@ puts markdown.to_html
   [腾讯微博]: http://t.qq.com/fukctengx
   
   [mail_gen]: http://services.nexodyne.com/email/index.php
-  [mail_img]: http://dourok.info/wp-content/uploads/2010/04/mail.png (点击跳转Email图片生成服务)
+  [mail_img]: {{urls.media}}/mail.png (点击跳转Email图片生成服务)
 
 

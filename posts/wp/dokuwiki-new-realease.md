@@ -30,16 +30,79 @@ ASCII
 :?: ，这些服务器都可能会出问题。
 
 还有一点，将文件名的编码设置成utf-8的格式，那些之前用URL编码保存的文件dokuwiki是不会帮你重命名的，也就说之前的写好的wiki条目都访问不了，是很郁闷的一件事啊！于是乎趁php还未手生写了个批量重命名的php脚本。脚本如下：
-`=ord("0") && $x=ord('A')&amp;&amp;$x"; dp = dir(path); while(file = dp->read()) if($file!='.'&amp;&amp;$file!='..'){ // nfile = toUTF8(file); //亲测可用 nfile = urldecode(file); //php自带urldeconde,这个健壮性会好很多吧 ...汗 echo "rename " . $file."</strong> to <strong>" .$nfile . ""; echo rename($path."/".$file , $path."/".$nfile)?"success":"fail" ; echo ""; rename_data(path. ʹ / ʹ. nfile); } $dp->close(); }`{lang="php"}
 
-} echo "";
 
-//可能要动手修改的地方\
-\$ds =dirname(\_\_FILE\_\_) . "/data"; //默认同目录下的data文件夹 //\$ds
-= "/xxxx/dourok.info/wiki/data"; //自己指定data文件夹\
-rename\_data(\$ds);
+```php
+<?php 
+/*  
+*  fixfn.php  
+*  !!!注意，转换前千万个一定要备份原数据!!!!  
+*  跟要修改的data文件夹放在同目录，一般是dokuwiki的根目录。  
+*  也可以放在任意位置，但要自己修改dokuwiki的data文件夹位置,在最下面的$ds变量指定  
+*  访问执行一次便可。  
+*  对文件名里有"%"符号的文件才会有影响  
+*  重复运行虽无影响,但运行完还是删了好  
+*  如果文件名中"%"出现在不应该出现的地方,那文件名肯定会错乱滴  
+*  !!!注意，转换前千万个一定要备份原数据!!!!  
+*/
+function simpleHexToNum($s){
+	$s=strtoupper($s);
+	$x = ord($s);
+	
+    if($x>=ord("0") && $x<=ord("9")){
+       return $x-ord('0');
+    }
+    if($x>=ord('A')&&$x<=ord('F')){
+       return $x-ord('A')+10;
+    }
+    return -1;
+}
+function toUTF8($str){  //文件名中百分号(%)后面必须跟着两位16进制数才能正常工作  
+	$len = strlen($str);
+	$result ='';
+	$i=0;
+	while($i<$len){
+		if($str[$i] == "%"){
+			$i++;
+			$d = simpleHexToNum($str[$i++])*16+simpleHexToNum($str[$i++]); //DIG
+			$result =$result . chr($d);
+		}else{
+			$result =$result . $str[$i++];
+		}
 
-echo "if everything running fine,delete this php file"; ?\>
+	}
+	return $result;
+}
+function rename_data($path){
+        if(is_dir($path)){
+				echo $path . "<br />";
+                $dp=dir($path);
+                while($file=$dp->read())
+                        if($file!='.'&&$file!='..'){
+							//	$nfile = toUTF8($file); //亲测可用  
+								$nfile = urldecode($file);   //php自带urldeconde,这个健壮性会好很多吧 ...汗  
+								echo "rename <strong>" . $file."</strong> to <strong>" .$nfile . "</strong><br />";
+								echo  rename($path."/".$file , $path."/".$nfile)?"<font color=\"#00FF00\">success</font>":"<font color=\"#FF0000\">fail</font>" ;
+								echo "<br />";
+                                rename_data($path.'/'.$nfile);
+						}
+                $dp->close();
+        }
+        
+}
+echo "<html><head><meta http-equiv=\"Content-Type\" content=\"text/html; charset=UTF-8\"></head>";
+
+//可能要动手修改的地方  
+$ds =dirname(__FILE__) . "/data";  //默认同目录下的data文件夹  
+//$ds = "/xxxx/dourok.info/wiki/data";  //自己指定data文件夹  
+rename_data($ds); 
+
+
+echo "<font color=\"#FF0000\">if everything running fine,delete this php file</font></html>";
+?>
+```
+
+
 对跟我一样只有FTP权限的童鞋应该有帮助，将上面的代码复制下来，保存成php文件如fixfn.php，最好UTF8编码的，上传到服务器，位置见代码注释，访问一下搞定。再次提醒一定得**备份原数据**啊！php菜鸟一个，你们懂的。
 
 突然想来一段FML:

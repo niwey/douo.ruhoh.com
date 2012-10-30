@@ -18,7 +18,8 @@ guid: http://dourok.info/?p=606
 Netbeans7.1终于有像Eclipse一样的Attach
 Sources按钮，可以为android.jar附加源码了。虽然现在Netbeans 7.1
 还处在测试阶段，但这个功能太重要了，迫不及待要去尝鲜，不过其实现在也足够稳定了。
-[![]({{urls.media}}/wp-content/uploads/2010/05/attach_sources.png "attach_sources")]({{urls.media}}/wp-content/uploads/2010/05/attach_sources.png) 先下载[Netbeans 7.1
+[![]({{urls.media}}/wp-content/uploads/2010/05/attach_sources.png "attach_sources")]({{urls.media}}/wp-content/uploads/2010/05/attach_sources.png)
+先下载[Netbeans 7.1
 beta](http://netbeans.org/community/releases/71/)，然后在这里：[http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/plugins/](http://adt-addons.googlecode.com/svn/trunk/source/com.android.ide.eclipse.source.update/plugins/)
 可以下载到打包好android各版本的源码，这是个jar档案需要解压出来。
 另外，如果已安装有旧版本的netbeans，如7.0；需要注意一个问题，如[Bug

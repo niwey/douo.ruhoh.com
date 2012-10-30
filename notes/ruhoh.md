@@ -116,7 +116,11 @@ markdown引擎
     end
 
 #### Compiler Methods ####
-
+---
+title:  Ruhoh
+date: '2012-09-01'
+description:
+---
 增加編譯任務，基本結構如下，Task 是自定義的任務名，必須有一個 run 的類
 方法。
     

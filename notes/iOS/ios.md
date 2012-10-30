@@ -2,7 +2,6 @@
 title: ios 筆記
 date: '2012-08-11'
 description:
-categories:
 ---
 
 ### strong weak ###
