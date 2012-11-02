@@ -106,6 +106,10 @@ Unicode 編碼的任意語言的字符串
 
 immutable
 
+#### 连接字符串
+
+
+
 ### NSMutableString
 
 mutable 的 NSString
@@ -141,6 +145,16 @@ Mutable 繼承  NSArray
 immutable hash 表
 
 ### NSMutableDiction
+
+	//遍历 key 和 value
+	NSEnumerator *enumerator = [dic keyEnumerator];
+    id key;
+    NSLog(@"%@",template);
+    while ((key = [enumerator nextObject]))
+    {
+		NSLog(@">>>>>>>>>@@@>>>%@:%@", key,[dic valueForKey:key]);
+    
+    }
 
 ### NSSet
 

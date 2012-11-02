@@ -18,3 +18,7 @@ description:
 
 
 Palatino, Cambria, Georgia, serif 字体不错
+
+
+好像得把知识记下来，才是自己的，还得加一句，“让人看到”，这种感觉真讨厌，
+功利，却真实，无法回避。
