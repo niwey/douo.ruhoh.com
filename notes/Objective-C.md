@@ -30,7 +30,6 @@ description:
 
 	@package
 
-士大夫
 
 ### id
 
