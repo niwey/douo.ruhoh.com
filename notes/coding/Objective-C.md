@@ -1,0 +1,166 @@
+---
+title: Objective-C
+date: '2012-11-02'
+description:
+---
+
+
+
+### 程序入口
+
+### 静态成员
+
+### 实例成员
+
+### 变量修饰符
+
+
+
+
+
+- 运行时系统
+- 内存管理
+
+
+
+
+
+### 类
+
+	myRectangle = [[Rectangle alloc] init];   //alloc , init 都是NSObject的实例方法.alloc 开辟内存空间 init 初始化对象
+	
+*TODO*
+
+#### 声明
+
+分为 接口声明 .h
+
+	@interface ClassName : ItsSuperclass 
+		// Method and property declarations.
+	@end 
+
+和实现 .m
+
+	@implementation ClassName
+	{
+		// Instance variable declarations.
+	}
+	// Method definitions.
+	@end
+
+在类内部使用`self`来表示当前实例。
+
+
+#### 属性（property）声明
+
+
+	@property (attributes) Type propertyName;
+
+**TODO**
+
+
+### 方法
+
+objc 用`:`来传递参数，参数可以出现在方法体的任意位置。让代码看起来更像是英语，如：
+
+	- (void) setColorToRed: (float)red Green: (float)green Blue:(float)blue; /* 宣告方法 */
+	[myColor setColorToRed: 1.0 Green: 0.8 Blue: 0.2]; /* 呼叫方法 */
+	
+括号内声明 (类型) . 感觉好读,但是又好罗嗦.
+
+`[receiver message]`
+
+`[nil message]`  向nil发送消息将返回nil。
+
+**TODO**
+
+### 作用域
+
+与java相同的实例变量作用域
+
+	@private
+	@protected
+	@public
+	@package
+
+
+### id
+
+id 是对象的标识符，类似于 java 中的 Object 
+
+id 为一个 objc_object 的结构指针
+
+	typedef struct objc_object {
+		Class isa;
+	} *id;
+	
+所以每个对象都有一个 isa 变量
+
+	- setMyValue:(id) foo;
+
+该声明表示“foo”可以是任何类的实例。
+ 
+	 - setMyValue:(id <aProtocol>) foo;
+
+该声明表示“foo”可以是任何类的实例，但它必须符合“aProtocol”协议。
+
+	- setMyValue:(NSNumber*) foo;
+
+### Dot Syntax
+
+`.` 操作符可以用来访问对象的accessor methods ，即java 中实例变量的get
+方法。
+
+	self.age = 10;
+	
+等于
+
+	[self setAge:10];
+	
+如果没有用 `self.`, 将自己访问实例变量本身。下面例子中, age 的 set 并
+没有被调用
+
+	age = 10;
+	
+### @ 符号
+
+很多Objective-C 关键字都有个`@`作为前缀,目的是为了避免和C/C++的关键字冲突，让其面向对象的语法可以和C/C++共存。
+
+下面是部分关键字的列表
+
+- @implementation
+- @interface
+- @end
+- @synthesize
+- @dynamic
+- @public
+- @private
+- @property
+
+`@""` 是 NSString 的语法.
+
+`%@` 用于格式化语法，打印出 Obj-C 对象的字符串表示，`descriptionWithLocale:`。注意，这个不是Obj-C语法的一部分，而是框架级的。
+
+详细见：http://stackoverflow.com/questions/25749/what-does-the-symbol-represent-in-objective-c
+
+### 协议 代理 类别
+
+协议:
+
+	@protocol Locking
+	- (void)lock;
+	- (void)unLock;
+	@end
+	/*类似 java中的接口
+	在类中这样声明表示,实现协议(接口)*/
+	@interface MyClass:SuperClass <Locking>
+	@end
+
+### 常量
+
+- 使用c的预处理#define来设置常量。
+- const关键字
+
+	常量也是大小写混排的驼峰命名规则，首字母小写，另外，第一个字母是k。
+	
+http://marshal.easymorse.com/archives/4149
