@@ -6,20 +6,9 @@ description:
 
 
 
-### 程序入口
-
-### 静态成员
-
-### 实例成员
-
-### 变量修饰符
 
 
 
-
-
-- 运行时系统
-- 内存管理
 
 
 
@@ -58,6 +47,32 @@ description:
 
 **TODO**
 
+#### 静态成员
+
+#### 实例成员
+
+
+
+#### 實例化
+
+數組中的元素都是strong 
+
+所有類必須爲子類提供一個初始化方法
+
+init 方法應當返回 **id**
+
+一個初始化的例句
+
+    @implementation MyObject
+    - (id) init{
+    	self = [super init]; // self 只是一個本地指針
+    	if(self){ 
+    		// initialize our subclass here
+    	}
+    	return self;
+    }
+    @end
+
 
 ### 方法
 
@@ -72,6 +87,43 @@ objc 用`:`来传递参数，参数可以出现在方法体的任意位置。让
 
 `[nil message]`  向nil发送消息将返回nil。
 
+#### 類方法 vs 實例方法 
+
+**Struct 和 Object 的區別**
+
+##### 聲明
+
+    - (BOOL) isRignt; // 實例方法，以 *-* 開始
+    
+    + (id)alloc;  //類方法，以*+* 開始
+
+##### 作用 
+
+類方法主要就是爲創建對象和工具方法使用
+
+##### 調用
+
+    [<pointer to instance> method]; //實例方法
+    [Class method]; //類方法
+	[[instance class] method] //調用instance 的類方法
+	
+self/super  同 java 的 this/super
+
+
+### nil
+
+nill  = 0
+
+所有synthesize 的實體變量都是nil
+
+if(obj)  可以判斷是否爲nil
+
+向nil發送消息，不會導致異常，實際上沒有任何代碼被執行。
+如果方法有返回值，那他將返回 0
+
+    int i = [obj methodWhichReturnsAnInt]  // 如果 obj爲nil，那麼i將等於0
+
+
 **TODO**
 
 ### 作用域
@@ -83,28 +135,6 @@ objc 用`:`来传递参数，参数可以出现在方法体的任意位置。让
 	@public
 	@package
 
-
-### id
-
-id 是对象的标识符，类似于 java 中的 Object 
-
-id 为一个 objc_object 的结构指针
-
-	typedef struct objc_object {
-		Class isa;
-	} *id;
-	
-所以每个对象都有一个 isa 变量
-
-	- setMyValue:(id) foo;
-
-该声明表示“foo”可以是任何类的实例。
- 
-	 - setMyValue:(id <aProtocol>) foo;
-
-该声明表示“foo”可以是任何类的实例，但它必须符合“aProtocol”协议。
-
-	- setMyValue:(NSNumber*) foo;
 
 ### Dot Syntax
 
@@ -164,3 +194,67 @@ id 为一个 objc_object 的结构指针
 	常量也是大小写混排的驼峰命名规则，首字母小写，另外，第一个字母是k。
 	
 http://marshal.easymorse.com/archives/4149
+
+### 程序入口
+Objc 的入口还是main函数，这是iOS程序的入口
+    
+    int main(int argc, char *argv[])
+    {
+        NSLog(@"%d,%s",argc,*argv);
+        @autoreleasepool {
+            return UIApplicationMain(argc, argv, nil, NSStringFromClass([DemoAppDelegate class]));
+        }
+    }
+
+	
+### BOOL ###
+
+objc 的布爾類型，實際是用了typedef
+NO 等於 0 ，YES 爲非零
+
+### 动态编程
+
+#### id
+
+id 是对象的标识符，类似于 java 中的 Object 
+
+id 为一个 objc_object 的结构指针
+
+	typedef struct objc_object {
+		Class isa;
+	} *id;
+	
+所以每个对象都有一个 isa 变量
+
+	- setMyValue:(id) foo;
+
+该声明表示“foo”可以是任何类的实例。
+ 
+	 - setMyValue:(id <aProtocol>) foo;
+
+该声明表示“foo”可以是任何类的实例，但它必须符合“aProtocol”协议。
+
+	- setMyValue:(NSNumber*) foo;
+
+#### Dynamic Binding (動態綁定)
+
+固定類型，只是方便debug，固定類型和id在運行時是沒有區別的。
+
+#### Object Typing
+
+跟java 有不少區別，找課件
+
+isKindOfClass
+isMemberOfClass
+respondsToSelector
+
+@selector() 將方法名轉換爲 selector
+
+[obj respondsToSelector:@selector(method)]; 
+
+selector 非常酷，更有面向函數語言的感覺了。
+
+
+### 运行时系统
+### 内存管理
+
