@@ -2,7 +2,13 @@
 title:  Evernote
 date: '2012-08-22'
 description:
+tags:
+- ruhoh
+- ruby
+- mustache
 ---
+
+{{tags}}
 ### 为什么不用 Evernote 来管理知识 ###
 
 Evernote，很方便，很适合用于快速记录。这也不见得是优点，没有一个正向力推动你去整理，最后你的笔记也是乱糟糟的。
