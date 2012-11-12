@@ -3,7 +3,6 @@ title: Mustache
 date: '2012-11-06'
 description:
 tags:
-- ruby
 ---
 
 
@@ -58,6 +57,8 @@ json 对象:
       {{/tags}} 
     </ul>
 
+**scope 内部可否访问外部数据**
+
 下面基本上就是 if-else 结构，但是功能有限
 
     {{#repo}}
@@ -82,7 +83,7 @@ tags_list 是
       <a href="{{ url }}">{{ name }} <span>{{ count }}</span></a>
     </li>
 
-模板是在运行时渲染，可以用独立文件另外配置，增加了可定制的能力。
+模板是在运行时渲染，可以用独立文件另外配置，增加了自定制和模块化的能力。
 但上例中的两个文件可以整合成一个
    
     {{# tags }}
@@ -91,9 +92,9 @@ tags_list 是
        </li>
     {{/ tags }}
 
-Mustache 通过调用partial(name)来获取模板。看起来可以为 Mustache 增加递归的能力，未测试。
+Mustache 通过调用partial(name)来获取模板，默认行为是在当前目录读取`name.mustache`文件。看起来可以为 Mustache 增加递归的能力，未测试。
 
-如果好奇为什么我可以显示`{{ }}`,请参考[mustache(5)][] 的Set Delimiter。
+要显示`{{ }}`，参考[mustache(5)][] 的Set Delimiter，用`{{=xx xx=}}`代替更改默认的语法标识符。当然 ruhoh 还有个 raw_code 来 escape。
 
 [mustache(5)]: http://mustache.github.com/mustache.5.html
 [stackoverflow]: http://stackoverflow.com/questions/3896730/whats-the-advantage-of-logic-less-template-such-as-mustache
