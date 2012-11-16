@@ -155,3 +155,8 @@ helper的模式来加入toc
 
 只能支持markdown
 必须解析两次
+
+
+分為兩個部分toc 生成,正文生成
+
+將tocplus 改為默認隱藏
