@@ -146,3 +146,12 @@ description:
 5 实现新的parser,新文件要在gemspec中声明
 6 在Ruhoh::DB 中的 whitelist 声明新的parser,顺序很重要
 7.在Ruhoh::Config 聲明默認模板
+
+### TOC
+
+之前用自定义的Markdown converter 实现了toc，但只能将toc 加到文档的前面，
+或者markdown渲染出来的文件的其他地方。太不灵活了，希望可以通过Mustache
+helper的模式来加入toc
+
+只能支持markdown
+必须解析两次
