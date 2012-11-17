@@ -16,4 +16,8 @@ ruby的功力显然不够，先争取点时间把 Metaprogramming Ruby 看完。
 过普通超链接的方式，引用系统内的图片也是一样。如果这一点不能实现也就谈
 不上是wiki系统了。要在markdown的语法上实现这个功能，还需要再慢慢考虑。
 
+之前的笔记记录在这个 [dokuwiki][] 上，现已停止更新。
+
+[dokuwiki]: http://wiki.dourok.info
+
 [站点日志](/notes/站点日志)可以看到本站包括博客系统的更新记录。
