@@ -1,7 +1,10 @@
 ---
-title: 读书笔记
+title: 买书，读书
 date: '2012-11-05'
 description:
+categories: otaku
+tags:
+- 读书
 ---
 
 又在京东败了300元的书，当然了实付一半。如今每每买书内心必感愧疚，究
@@ -35,10 +38,6 @@ description:
 强撑着疲惫的眼睛，写下上面这些罗嗦的文字。只为知乎上这么一个[问题][]，正好我也有此
 困惑，所以听从建议。无他，打打字练练手感而已。倦意十足，睡了~
 
-攻打中：
-
-- [卓有成效的程序员][]
-
 [豆列]: http://book.douban.com/doulist/1553961/
-[卓有成效的程序员]: {{site.note.url}}/reading/卓有成效的程序员
 [问题]: http://www.zhihu.com/question/20508838
+[笔记系统]: /notes

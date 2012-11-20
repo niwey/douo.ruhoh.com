@@ -1,5 +1,5 @@
 ---
-title: ruhoh 札记
+title: Ruhoh 札记
 date: '2012-08-20'
 description:
 categories:
@@ -77,76 +77,6 @@ ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，
 
 [Why are the same comments showing up on multiple pages?]: http://help.disqus.com/customer/portal/articles/662547-why-are-the-same-comments-showing-up-on-multiple-pages-
 
-### mustache ###
-
-一个Logic Less（不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简洁。见[stackoverflow][]）的模板语言，所以同样以语言无关为目标的 ruhoh 采用了它作为模板语言。参考它的 [demo][] 可以大致了解它的特性
-
-json 对象:
-
-    {
-      "header": "Colors",
-      "items": [
-          {"name": "red", "first": true, "url": "#Red"},
-          {"name": "green", "link": true, "url": "#Green"},
-          {"name": "blue", "link": true, "url": "#Blue"}
-      ],
-      "empty": false
-    }
-
-模板：
-
-    <h1>{{header}}</h1>
-    {{#bug}}
-    {{/bug}}
-    
-    {{#items}}
-      {{#first}}
-        <li><strong>{{name}}</strong></li>
-      {{/first}}
-      {{#link}}
-        <li><a href="{{url}}">{{name}}</a></li>
-      {{/link}}
-    {{/items}}
-    
-    {{#empty}}
-      <p>The list is empty.</p>
-    {{/empty}}
-
-结果：
-
-    <h1>Colors</h1>
-    <li><strong>red</strong></li>
-    <li><a href="#Green">green</a></li>
-    <li><a href="#Blue">blue</a></li>
-
-对于  `"tags"=>["forkosh", "LaTex", "mathtex"]` 这样列表或者数组(top-level-array)，没有 key 所以要这样处理
-
-    <ul>
-      {{#tags}}
-      <li>{{& .}}</li>  <!-- 等同于 {{{ . }}} 不转义html字符 -->
-      {{/tags}} 
-    </ul>
-
-下面基本上就是 if-else 结构，但是功能有限
-
-    {{#repo}}
-      <b>{{name}}</b>
-    {{/repo}}
-    {{^repo}}
-      No repos :(
-    {{/repo}}
-
-`{{! ignore me }}` `"!"`用于注释
-
-如果好奇为什么我可以显示`{{ }}`,请参考[mustache(5)][] 的Set Delimiter。
-
-[mustache(5)]: http://mustache.github.com/mustache.5.html
-[stackoverflow]: http://stackoverflow.com/questions/3896730/whats-the-advantage-of-logic-less-template-such-as-mustache
-[demo]: http://mustache.github.com/#demo
-
-<%={{ }}=%>
-{{! 切换回默认的分隔符，免得出现奇怪的问题}} 
-
 ### 主题 ###
 
 关于主题，折騰了幾下，感覺目前我弄的這個主題，並不能發揮bootstrap作爲脚手架的能力，用它的栅格系统总是不能把边栏设计地让人满意。不過响应式布局（responsive）這個特性實在太強了，基本可以保證在不同分辨率的設備上都可以保持比較好的閱讀體驗，不过我分别实现了两个导航栏对应移动设备和pc，从语义上讲这个做法非常糟糕。不過單單用 bootstrap 的那些小工具也非常值得，bootstrap 的設計真的很漂亮，像我這種沒有前端經驗的碼農，也可以用的很舒服。
@@ -174,6 +104,20 @@ json 对象:
 
 [Moon]: https://github.com/douo/douo.ruhoh.com/tree/master/themes/moon
 
+### mustache ###
+
+一个Logic Less（不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简
+洁。见[stackoverflow][]）的模板语言，所以同样以语言无关为目标的 ruhoh
+采用了它作为模板语言。参考它的 [demo][] 可以大致了解它的特性，也可以参
+考一下[我的笔记][]。
+
+[stackoverflow]: http://stackoverflow.com/questions/3896730/whats-the-advantage-of-logic-less-template-such-as-mustache
+[demo]: http://mustache.github.com/#demo
+[我的笔记]: /notes/coding/mustache
+
+<%={{ }}=%>
+{{! 切换回默认的分隔符，免得出现奇怪的问题}} 
+
 ### Markdown ###
 
 用了一段時間的 Markdown ，發現 Markdown 主要的缺陷就是太簡單了，優點也是太簡單了，真是矛盾。
@@ -189,62 +133,25 @@ json 对象:
 
 pandoc 增强的 Markdown 语法 http://johnmacfarlane.net/pandoc/demo/example9/pandocs-markdown.html 
 
+### RSS & Sitemap ###
 
-### Mathjax ###
+RSS 和 Sitemap 基本上是每个博客都必备的了。新版的ruhoh 已经内置 rss 生成插件，但是这个插件有不少问题，我参考了wordpress 的 rss 改进了一下，见 [rss.rb][]，rss的标准没有详细了解，希望实现不要不伦不类。
 
-mathjax的使用非常方便，直接在頁面嵌入腳本就行，然後通過一個 widgets 來載入 mathjax 的腳本。就可以展示公式了，再扩展一下转换器插件來簡化語法。用的是[plusjade實現的语法](https://gist.github.com/2699636)了。
-
-```mathjax
-e^{i\pi} + 1 = 0
-```
-
-mathjax 好像会不定时的出现一些布局错乱的问题。
-
-### RSS & sitemap ###
-
-新版的ruhoh 已经内置 rss 生成插件，但是这个插件有不少问题，我参考了wordpress 的 rss 改进了一下，见 [rss.rb][]，rss的标准没有详细了解，希望实现不要不伦不类。
-
-sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，做了一些根据wordpress的sitemap做了些改动：[改动版](https://gist.github.com/3736089)
+Sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，根据wordpress的Sitemap做了一些做了些改动：[改动版](https://gist.github.com/3736089)
 
 [Ruhoh Sitemap Generator]: https://gist.github.com/3705998
-
 [crchan]: https://github.com/crhan
-
 [rss.rb]: https://gist.github.com/3736010
 
 ### 搬家 ###
 
-事实证明，想要无痛地将 wordpress 的文章转换到 ruhoh 上是件十分痛苦的事。折腾 ruhoh 有不少时间就是在折腾这个转换脚本。不过现在这个脚本基本上可以完成 90% 的转换工作，包括将文章转换为 markdown 格式，感谢 pandoc 。不过还是做了不少 hack。最折腾人的就是 codecolorer 这货，短标签，长标签，各种混用，太可怕了，差点想重新实现它的引擎，最后当然还是放弃，用人工修改一些例外，像是这篇文章：[CodeColorer中文帮助]
+最后说说搬家，事实证明，想要无痛地将 wordpress 的文章转换到 ruhoh 上是件十分痛苦的事。折腾 ruhoh 有不少时间就是在折腾这个转换脚本。不过现在这个脚本基本上可以完成 90% 的转换工作，包括将文章转换为 markdown 格式，感谢 pandoc 。不过还是做了不少 hack。最折腾人的就是 codecolorer 这货，短标签，长标签，各种混用，太可怕了，差点想重新实现它的引擎，最后当然还是放弃，用人工修改一些例外，像是这篇文章：[CodeColorer中文帮助]
 
 脚本由Jekyll 的wordpressdotcom 修改而来，根据我的博客做了很多针对性的hack，可能没有什么适用性。脚本可以在这里找到： [wp_to_ruhoh](https://gist.github.com/3415268)
 
 [CodeColorer中文帮助]: /2010/08/03/codecolorer-doc-cn
 
-### 其他 ###
-
-#### 自动刷新 ####
-
-看了 pluskid 的[文章]，我也跟着实现了保存的时候自动刷新页面。需要安装几个东西
-
-- [guard][]
-- [rack-livereload][]
-- [guard-livereload][]
-
-[guard]是一个监听文件系统变动的工具，[rack-livereload] 实现了自动刷新。安装和使用看一下各自的 readme 还是很容易明白的，但具体怎么工作我也没弄清楚，反正不用改动ruhoh的一个代码，很方便。不过我在 windows 下安装 [guard-livereload] 出了问题，原因是EventMachine 0.12.10 不能在跑着 ruy 1.9.2+ 的windows上工作。用 pre-release 的版本就可以解决问题，讨论在[stackoverflow](http://stackoverflow.com/questions/6927907/ruby-problem-installing-eventmachine-under-windows-7#) 上。
-
-	gem install eventmachine --pre
-
-今天发现 guard 这货在 win7 cygwin 下进程占用CPU 100%，不知道是什么情况。
-
-[文章]: http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators/
-
-[guard-livereload]: https://github.com/guard/guard-livereload
-
-[rack-livereload]: https://github.com/johnbintz/rack-livereload
-
-[guard]: https://github.com/guard/guard
-
-#### 部署 ####
+### 部署 ###
 
 webfaction 真心不错。给 git 加个钩子，用 post-receive 解决全部问题
 
@@ -267,6 +174,42 @@ which ruhoh >> $LOG
 ruhoh compile >> $LOG
 rsync -a --delete-after $SITE_DIR $DEPLOY_DIR >>  $LOG
 ```
+
+
+### 其他 ###
+
+#### Mathjax ####
+
+Mathjax的使用非常方便，直接在頁面嵌入腳本就行，然後通過一個 widgets 來載入 mathjax 的腳本。就可以展示公式了。关键是如何定义插入公式的语法，刚好 plusjade 扩展一下转换器插件实现了这个語法：[mathjax.rb](https://gist.github.com/2699636)。
+
+```mathjax
+e^{i\pi} + 1 = 0
+```
+
+我考虑是否要为页面加入一个Mathjax开关，因为大部分博文都无需用到Mathjax。
+另外，Mathjax 好像会不定时的出现一些布局错乱的问题。
+
+#### 自动刷新 ####
+
+看了 pluskid 的[文章]，我也跟着实现了保存的时候自动刷新页面。需要安装几个东西
+
+- [guard][]
+- [rack-livereload][]
+- [guard-livereload][]
+
+[guard]是一个监听文件系统变动的工具，[rack-livereload] 实现了自动刷新。安装和使用看一下各自的 readme 还是很容易明白的，但具体怎么工作我也没弄清楚，反正不用改动ruhoh的一个代码，很方便。不过我在 windows 下安装 [guard-livereload] 出了问题，原因是EventMachine 0.12.10 不能在跑着 ruy 1.9.2+ 的windows上工作。用 pre-release 的版本就可以解决问题，讨论在[stackoverflow](http://stackoverflow.com/questions/6927907/ruby-problem-installing-eventmachine-under-windows-7#) 上。
+
+	gem install eventmachine --pre
+
+今天发现 guard 这货在 win7 cygwin 下进程占用CPU 100%，不知道是什么情况。
+
+[文章]: http://freemind.pluskid.org/technology/the-unbearable-madness-of-static-blog-generators/
+
+[guard-livereload]: https://github.com/guard/guard-livereload
+
+[rack-livereload]: https://github.com/johnbintz/rack-livereload
+
+[guard]: https://github.com/guard/guard
 
 #### TODO ####
 

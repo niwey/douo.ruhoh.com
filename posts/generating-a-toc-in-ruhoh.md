@@ -47,8 +47,22 @@ html后，才知道目录是长什么样的，而这个过程是在Mustach rende
 整体上讲，以ruby的灵活性，应该有更好的实现方法，不过目前实力不够，只能
 够先把需求实现了，顾不上优雅了。
 
-代码见 toc_render.rb. 在 custom.rb 实现 toc 的 mustache helper , limdown.rb 为
-header 加上 id。另外，可以建立名为 toc\_wrapper 的partial 作为目录的模板。
+代码见 [toc_render.rb][]. 在 [custom.rb][] 实现 toc 的 mustache helper，
+[limdown.rb][] 为header 加上 id。另外，可以建立名为 [toc_wrapper][] 的
+partial 作为目录的模板。为了让笔记系统可以使用与博客不同的toc_wrapper，
+还实现了一个可以传入模板名的Block Helper。
+
+    {{#toc_wrapper}}
+    toc_wrapper_note
+    {{/toc_wrapper}}
+
+[toc_wrapper]: https://github.com/douo/douo.ruhoh.com/blob/master/themes/moon/partials/toc_wrapper.html
+
+[limdown.rb]: https://github.com/douo/douo.ruhoh.com/blob/master/plugins/converters/limdown.rb
+
+[custom.rb]: https://github.com/douo/douo.ruhoh.com/blob/master/plugins/custom.rb
+
+[toc_render.rb]: https://github.com/douo/douo.ruhoh.com/blob/master/plugins/toc_render.rb
 
 <%={{ }}=%>
 
