@@ -1,5 +1,5 @@
 ---
-title: 买书，读书
+title: 囤书成疾
 date: '2012-11-05'
 description:
 categories: otaku
