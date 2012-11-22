@@ -15,7 +15,77 @@ irb 是ruby的交互 shell
 
 ruby 的语法糖很多，记起来真麻烦
 
-### 变量与函数的命名规则 ###
+### 编码风格 & 规范
+
+[Ruby ＆ Rails 风格指导][] 提供了一份相当详细的编码风格指导。这里记录一些要点。
+
+- for 并没有包含一个新的视野(不像是 each ）而在这个区块中定义的变量将会被外部所看到。
+- 不要忘了`unless`，但是如果需要用到`else`就不要用`unless`了。
+
+布尔表达式使用 `&&/||`，控制流程使用 `and/or`。 （经验法则：如果你需要使用外部括号，你正在使用错误的操作符。）
+
+    # 布尔表达式
+    if some_condition && some_other_condition
+      do_something
+    end
+    
+    # 控制流程
+    document.saved? or document.save!
+
+#### 注解
+	
+- 使用 `TODO` 来标记之后应被加入的未实现功能或特色。
+
+- 使用 `FIXME` 来标记一个需要修复的代码。
+
+- 使用 `OPTIMIZE` 来标记可能影响效能的缓慢或效率低落的代码。
+
+- 使用 `HACK` 来标记代码异味，其中包含了可疑的编码实践以及应该需要重构。
+
+- 使用 `REVIEW` 来标记任何需要审视及确认正常动作的地方。
+
+如:
+`REVIEW: 我们确定用户现在是这么做的吗？`
+
+#### Struct.new
+
+考虑使用 Struct.new，它替你定义了那些琐碎的存取器（accessors），建构式（constructor）以及比较操作符（comparison operators）。
+
+    # 好
+    class Person
+      attr_reader :first_name, :last_name
+    
+      def initialize(first_name, last_name)
+        @first_name = first_name
+        @last_name = last_name
+      end
+    end
+    
+    # 较佳
+    class Person < Struct.new (:first_name, :last_name)
+    end
+
+#### 正则表达式
+
+针对复杂的正則表示法，使用 x 修饰符。这让它们的可读性更高并且你可以加入有用的注释。只是要小心忽略的空白。
+
+    regexp = %r{
+      start # 一些文字
+      \s # 空白字元
+      (group) # 第一组
+      (?:alt1|alt2) # 一些替代方案
+      end
+    }x
+
+针对复杂的替换，sub 或 gsub 可以与区块或哈希来使用。
+
+对于有多个 `/` 字元的正则表达式，可以用 `%r`。
+
+	%r(^/blog/2011/(.*)$)
+
+[Ruby ＆ Rails 风格指导]: http://guides.ruby.tw/ruby-rails-style-guides/zhCN/
+
+#### 变量与函数的命名规则
 
 乍看之下与Perl的命名规则有些类似，不过Perl的命名用来区分标量、数组与映射；而Ruby的命名规则用来表示变量与类型的关系。Ruby的变量有以下几种：
 
