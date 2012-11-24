@@ -51,9 +51,197 @@ description:
 
 **monkey patch** 就是指在运行时更改某个类的结构。https://en.wikipedia.org/wiki/Monkey_patch 。**monkey patch** 是个贬义词？
 
+
+
 #### The Truth About Classes
 
-类的实例变量，跟这个类没有关系，实例变量只在这个类的对象中，一旦对实例对象赋值了它才存在
+> "object," refers to a particular instance of a class.
+>
+> --英文维基百科:Object_(computer_science)
+
+`class A;end` 定义一个类`A`，`A`在这里其实是一个常量（Constant），它指向Class的一个实例。在Ruby 中所有类名都是这样的一个常量。
+
+`A.new` 返回A实例。实例变量，跟这个类（A）没有关系，实例变量只在这个类的对象中，一旦对实例变量赋值了它才存在。与Java表现出来的完全不同。
 
     obj.instance_variables
 	
+Object that share the same class also share the same methods,so the methods must be stored in the class, not the object.
+
+对象的方法，也称类的实例方法，同一个类的不同对象共享相同的方法.对象的方法都存储在其类中中，obj只是保存了到其类(`.class`)的引用。
+
+    String.instance_methods == "abc".methods # => true
+    String.methods == "abc".methods # => false
+	
+如果没有为`A`定义任何**类方法**，那么
+
+     A.methods == Class.instance_methods  # => true
+
+如果为A定义一个类方法，
+
+	class A
+	  def self.wtf
+		  "wtf"
+	  end
+	end
+
+那么:
+
+	A.methods == Class.instance_methods  # => false
+	
+既然`A`是`Class`的实例，`A`的方法就是就是`Class`的实例方法，但是`:wtf`并没有在`Class`的实例方法里面，怎么解释呢？我也不知道。看来读完第一章对Class的理解还不全面。
+
+##### Module & Class
+
+Class 继承自 Module， 多了 `[:superclass, :allocate, :new]`。
+
+>Usually, you pick a module when you mean it to be included somewhere (or maybe to be used as a Namespace), and you pick a class when you mean it to be instantiated or inherited. 
+
+如果准备把代码导入到其他地方，或者需要一个命名空间，那么使用`module`。
+如果是一般类用法，如实例化，继承。那么用`class`。
+
+##### Constant
+
+常量（Constant） 是一个以首字母大写的驼峰式命名的变量，类和模块的名称也是一个常量。比如`A`就是`main`里面的一个常量，常量的作用域只在于当前命名空间。
+
+module M
+  Y = 'another constant'
+  class C
+    X = 'a constant'
+    ::M::Y # => "another constant"
+  end
+  C::X # => "a constant"
+end
+M::C::X # => "a constant"
+
+
+##### 总结
+
+>Object, a bunch of instance variables, plus a link to a class.
+>
+>Class, just an object instnce of Class, plus a list of instance methods and a linkto a superclass.
+
+
+#### Method Call
+
+方法调用的过程:
+
+1. 找到这个方法
+2. 执行它
+
+似乎在各种语言中都是一样的。
+
+##### Method Lookup
+
+![Method lookup goes "one step to the right, then up."]({{urls.media}}/ruby/method_call_path.PNG)
+
+通过ancestors方法可以获得方法调用的查找路径。
+
+    MySubclass.ancestors # => [MySubclass, MyClass, Object, Kernel, BasicObject]
+
+在这里Kernel并不是Object的超类，而是 Object 导入的一个模块。
+
+如果我们在某个类中导入某个模块，那么这个模块也会出现在，这个类的ancestors中。
+
+    module M
+      def my_method
+        'M#my_method()'
+      end
+    end
+    class C
+      include M
+    end
+    class D < C; end
+    D.new.my_method() # => "M#my_method()"
+    
+    D.ancestors # => [D, C, M, Object, Kernel, BasicObject]
+
+
+
+##### Kernel
+
+Kernel 里定义了一下看起来像ruby关键字的方法，如`p`,`puts`,`proc`,`class`,etc.
+
+这些方法你可以在Ruby代码的"任意地方"调用，其实它们都是Kernel 的私有实例方法
+
+	Kernel.private_instance_methods
+	
+所有不能强制加上接收器（reciever），如`"wtf".puts`是不合法。
+
+还可以重新打开 Kernel 来定义自己的"关键字"。
+
+	module Kernel
+	  def gem(gem_name, *version_requirements)
+        # ...
+
+#### Method Execution
+	
+Ruby 中的每一行代码都是在对象里执行的，这个对象可称之为**当前对象(current object)**。`self` 关键字就是指向这个对象的引用。
+
+    class MyClass
+      def testing_self
+        @var = 10 # An instance variable of self
+        my_method() # Same as self.my_method()
+        self
+      end
+      def my_method
+        @var = @var + 1
+      end
+    end
+    obj = MyClass.new
+    obj.testing_self # => #<MyClass:0x510b44 @var=11>
+
+在方法里面的`self`变成了这个方法的接收者，所有`@var`就是`obj`的实例变量。
+
+>“If you want to become a master of Ruby,you should always know which object has the role self at any given moment.”
+
+
+##### 回到Kernel
+
+Kernel 的私有方法在可以在"任意地方"调用，为什么加上引号呢？因为这是错的。
+
+    class MyClass < BasicObject
+      puts "MyClass"  # => MyClass 因为这里面self => MyClass
+                      # MyClass 是 Class 的对象
+      def method_1
+        puts "method_1"
+      end
+    end
+    
+    
+    obj = MyClass.new
+    obj.method_1
+
+    # => NoMethodError: undefined method `puts' for #<MyClass:0x2026bf7c>
+
+因为Kernel 是Object导入模块，如果你的类不继承Object那就不能调用那些看起来像是Ruby关键字的方法了。
+
+	MyClass.ancestors  # => [MyClass, BasicObject]
+	
+Metaprogramming Ruby 并没有说明这种情况。参考: http://stackoverflow.com/questions/6258512/ruby-methods-without-class
+
+##### private method
+
+在ruby中，所谓私有方法就是不能显性声明接收者的方法。如果没有显性声明接收者，那么其接收者便是`self`，而`self`就是当前对象，所以私有方法便只能在当前对象里调用。像这样调用私有方法：
+
+    class C
+      def public_method
+        self.private_method
+      end
+      private
+      def private_method; end
+    end
+
+#### 总结
+
+- An object is composed of a bunch of instance variables and a link to a class.
+- The methods of an object live in the object’s class (from the point of view of the class, they’re called instance methods).
+- The class itself is just an object of class Class. The name of the class is just a constant.
+- Class is a subclass of Module. A module is basically a package of methods. In addition to that, a class can also be instantiated (with new( )) or arranged in a hierarchy (through its superclass( )).
+- Constants are arranged in a tree similar to a ﬁle system, where the names of modules and classes play the part of directories and regular constants play the part of ﬁles.
+- Each class has an ancestors chain, beginning with the class itself and going up to BasicObject.
+- When you call a method, Ruby goes right into the class of the receiver and then up the ancestors chain, until it either ﬁnds the method or reaches the end of the chain.
+- Every time a class includes a module, the module is inserted in the ancestors chain right above the class itself.
+- When you call a method, the receiver takes the role of self.
+- When you’re deﬁning a module (or a class), the module takes the role of self.
+- Instance variables are always assumed to be instance variables of self.
+- Any method called without an explicit receiver is assumed to be a method of self.
