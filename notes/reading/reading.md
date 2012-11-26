@@ -38,7 +38,9 @@ description:
 攻打中：
 
 - [卓有成效的程序员][]
+- [Metaprogramming Ruby][]
 
+[Metaprogramming Ruby]: {{site.note.url}}/coding/ruby/metaprogramming-ruby
 [豆列]: http://book.douban.com/doulist/1553961/
 [卓有成效的程序员]: {{site.note.url}}/reading/卓有成效的程序员
 [问题]: http://www.zhihu.com/question/20508838

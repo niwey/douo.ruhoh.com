@@ -79,8 +79,8 @@ Object that share the same class also share the same methods,so the methods must
 如果为A定义一个类方法，
 
 	class A
-	  def self.wtf
-		  "wtf"
+	  def self.foo
+		  "foo"
 	  end
 	end
 
@@ -88,7 +88,13 @@ Object that share the same class also share the same methods,so the methods must
 
 	A.methods == Class.instance_methods  # => false
 	
-既然`A`是`Class`的实例，`A`的方法就是就是`Class`的实例方法，但是`:wtf`并没有在`Class`的实例方法里面，怎么解释呢？我也不知道。看来读完第一章对Class的理解还不全面。
+既然`A`是`Class`的实例，`A`的方法就是就是`Class`的实例方法，但是`:foo`并没有在`Class`的实例方法里面，怎么解释呢？<del>我也不知道。看来读完第一章对Class的理解还不全面。</del>
+
+`A`是`Class`的实例，`Class`也是`Class`的实例,他们是class这个类的不同对象,而`foo`这方法是存储在`A`(`Class`的一个实例,而且是单例(singleton))里面。这个方法也称为`A`的单例方法,在ruby中,还可以这样定义方法:
+
+	def obj.method_name;end
+
+跟上面的定义是一样的道理。
 
 ##### Module & Class
 
@@ -102,16 +108,16 @@ Class 继承自 Module， 多了 `[:superclass, :allocate, :new]`。
 ##### Constant
 
 常量（Constant） 是一个以首字母大写的驼峰式命名的变量，类和模块的名称也是一个常量。比如`A`就是`main`里面的一个常量，常量的作用域只在于当前命名空间。
-
-module M
-  Y = 'another constant'
-  class C
-    X = 'a constant'
-    ::M::Y # => "another constant"
-  end
-  C::X # => "a constant"
-end
-M::C::X # => "a constant"
+    
+    module M
+      Y = 'another constant'
+      class C
+        X = 'a constant'
+        ::M::Y # => "another constant"
+      end
+      C::X # => "a constant"
+    end
+    M::C::X # => "a constant"
 
 
 ##### 总结
@@ -165,7 +171,7 @@ Kernel 里定义了一下看起来像ruby关键字的方法，如`p`,`puts`,`pro
 
 	Kernel.private_instance_methods
 	
-所有不能强制加上接收器（reciever），如`"wtf".puts`是不合法。
+所有不能强制加上接收器（reciever），如`"foo".puts`是不合法。
 
 还可以重新打开 Kernel 来定义自己的"关键字"。
 
@@ -245,3 +251,110 @@ Metaprogramming Ruby 并没有说明这种情况。参考: http://stackoverflow.
 - When you’re deﬁning a module (or a class), the module takes the role of self.
 - Instance variables are always assumed to be instance variables of self.
 - Any method called without an explicit receiver is assumed to be a method of self.
+
+
+### Methods
+
+`MyClass#my_mfethod()` 表示`MyClass`的实例方法`my_method`
+
+#### Dynamic Methods
+
+##### Dynamic Dispatch
+`Object#send(symbol [, args...])` 可以动态地调用类的实例方法。这个方法可以调用类的私有方法。
+
+`Object#public_send` 则只可以调用类的公共实例方法。
+
+
+
+##### Defining Methods Dynamically
+
+`Module#define_method()` 动态地定义一个新方法，另外`define_method`是私有方法，不能够显性地指明接收者。
+
+    
+    class MyClass
+      define_method :my_method do |my_arg|  # 注意self是MyClass
+        my_arg * 3
+      end
+    end
+    obj = MyClass.new
+    obj.my_method(2) # => 6
+
+	
+#### Symbols
+
+以`:`开头的字符串, used as names of things
+	
+	# 字符串转换为符号
+    String#to_sym
+    String#intern
+	
+	# 符号转换为字符串
+    Symbol#to_S
+    Symbol#id2name
+
+
+#### method_missing()
+
+
+`Kernel#method_missing`，当调用的方法不存在时，对象会调用这个方法。默认会抛出`NoMethodError`。
+
+##### Ghost Method
+
+可以调用但是并不是实际存在的方法，称为**幽灵方法(Ghost Method)**，当调用这种方法的时候方法名会作为参数传递到`method_missing`中处理。不能通过`Object#methods`来列出这些方法。如，OpenStruct的实现
+
+    class MyOpenStruct
+      def initialize
+        @attributes = {}
+      end
+      def method_missing(name, *args)
+        attribute = name.to_s
+        if attribute =~ /=$/
+          @attributes[attribute.chop] = args[0]
+        else
+          @attributes[attribute]
+        end
+      end
+    end
+    icecream = MyOpenStruct.new
+    icecream.flavor = "vanilla"
+    icecream.flavor     # => "vanilla"
+	
+
+可以重写 `respond_to?()` 让Object可以检测出幽灵方法
+
+##### Blank Slate
+
+用幽灵方法的时候要注意其与真实存在的方法名冲突的问题，如果这个真实存在的方法不需要，可以将他移除。
+
+`Module#undef_method()` removes all methods, including the inherited ones. 
+
+`Module#remove_method()` removes the method from the receiver, but it leaves inherited methods alone. 
+
+    class BlankSlate
+      # Hide the method named +name+ in the BlankSlate class. Don't
+      # hide +instance_eval+ or any method beginning with "__".
+      def self.hide(name)
+        if instance_methods.include?(name.to_s) and
+            name !~ /^(__|instance_eval)/   # 移除已"__"开头的ruby保留方法会被警告
+          @hidden_methods ||= {}
+          @hidden_methods[name.to_sym] = instance_method(name)
+          undef_method name
+        end
+      end
+      instance_methods.each { |m| hide(m) }
+      # ...
+
+
+##### BasicObject
+
+在 Ruby 1.9 中 `BasicObject` 代替 `Object` 作为所有类的根类，它提供了一些必须的实例方法
+
+	[:==, :equal?, :!, :!=, :instance_eval, :instance_exec, :__send__]
+	
+让一个类继承自 BasicObject 可以实现 Blank Slates。但是注意`Kernel`里的方法也都不见了。
+
+##### const_missing
+
+还有个跟`Object#method_missing()`相似的方法: `Module#const_missing`
+
+
