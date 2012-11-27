@@ -107,7 +107,9 @@ Class 继承自 Module， 多了 `[:superclass, :allocate, :new]`。
 
 ##### Constant
 
-常量（Constant） 是一个以首字母大写的驼峰式命名的变量，类和模块的名称也是一个常量。比如`A`就是`main`里面的一个常量，常量的作用域只在于当前命名空间。
+
+
+常量（Constant） 是一个以首字母大写的驼峰式命名的变量，Ruby会把首字母大写的变量当初常量类和模块的名称也是一个常量。比如`A`就是`main`里面的一个常量，常量与本地变量不同，它的作用域在于当前命名空间。
     
     module M
       Y = 'another constant'
@@ -118,6 +120,8 @@ Class 继承自 Module， 多了 `[:superclass, :allocate, :new]`。
       C::X # => "a constant"
     end
     M::C::X # => "a constant"
+
+重新初始化常量会有警告。
 
 
 ##### 总结
@@ -358,3 +362,136 @@ Metaprogramming Ruby 并没有说明这种情况。参考: http://stackoverflow.
 还有个跟`Object#method_missing()`相似的方法: `Module#const_missing`
 
 
+
+
+### Blocks
+
+
+
+Blocks 是 "callable objects" 中的一种，在Ruby中用`{}`或者`do...end`来定义Blocks，一般偏向于当行用`{}`，多行用`do...end`。只有作为方法参数传递时才能定义Blocks，在方法体内用`yield`关键字调用Block，Block也可以有参数
+
+    def a_method(a, b)
+      a + yield(a, b)
+    end
+    a_method(1, 2) {|x, y| (x + y) * 3 } # => 10
+
+`Kernel#block_given?()` 可以判断当前方法的调用有没有传递参数。
+
+#### Closures
+
+> You can't run code in vacuum. When code runs, it needs an environment
+
+
+##### Scope (作用域!!?)
+
+Ruby 代码无时不刻，都在Scope里面，Scope里有这些Bindings
+
+- local variables
+- self （当前对象方法 实例变量）
+- tree of constants
+- global variables
+
+在Ruby中，当离开当前Scope的时候进入一个新的Scope，当前的bindings会被新的bindings代替。也就是说，每次Scope变动，之前的另一个Scope的本地变量都不能在新的Scope内访问，不管新的Scope是不是在另一个里面，这一点与java不同。
+
+Scope 不同于Block，在Ruby中只有三个地方程序会离开当前scope，并进入开一个新的Scope：
+
+- Class 定义 (`class`)
+- Module 定义 (`module`)
+- 方法  (`def`)
+
+这个三个地方可称为`Scope Gate`，def 跟 class、module有些不同，在class或者module里定义的代码会被立即执行。方法里定义的代码会在会在你调用的时候才执行。
+
+通过下面这种方法（Flat Scope），以特定的方法调用代替直接声明，可以去掉Scope的限制，共享了本地变量。
+
+    my_var = "Success"
+    MyClass = Class.new do
+      puts
+      "#{my_var} in the class definition!"
+      define_method :my_method do
+        puts
+        "#{my_var} in the method!"
+      end
+    end
+    MyClass.new.my_method
+    # ⇒ Success in the class definition!
+    #   Success in the method!
+	
+
+#### instance_eval()
+
+`instance_eval` 可以传递一个block到reciever，block中的`self`就是reciever，可以使用外层scope的本地变量，这样的block称为**Context Probe**
+
+    v = 2
+    obj.instance_eval { @v = v }
+    obj.instance_eval { @v } # => 2
+
+`instance_exec` 是1.9引入的，与`instance_eval`相似，但支持传递参数。
+
+	C.new.instance_exec(3) {|arg| (@x + @y) * arg } # => 9
+	
+
+#### Callable Objects
+
+除了block外，Callable Object 还有下面3种：
+
+- proc
+- lambda
+- method
+
+#### Procs
+
+将block变成对象就是proc，测试化proc有三种方法：
+
+    # 初始化
+    inc = Proc.new {|x| x+1 }
+    inc = proc {|x| x+1}  # Kernel#proc
+    inc = lambda {|x| x+1} # Kernel#lambda
+    # 调用
+    inc.call(2) # => 3
+
+proc将block转变为对象，而 `&` 将proc转变回block
+
+    my_method(){block}
+    # 等于
+    my_proc = proc {block}
+    my_method(&my_proc)
+
+
+##### Procs vs. Lambdas
+
+`return` 的意义不一样，在lambdas中，`return` 就是从当前lambda返回。在procs中，`return` 是从**定义这个proc的scope**里返回（不是调用这个proc的scope），跟block一样。
+
+另外，对待参数的方法不一样，当传递的参数与定义的参数数量（Proc#arity）不一样时，proc会自适应它。
+
+    p = Proc.new {|a, b| [a, b]}
+    p.call(1, 2, 3) # => [1, 2]
+    p.call(1) # => [1, nil]
+	
+而lambdas会抛出`ArgumentError`
+
+lambdas 表现出来与方法(method)更相似.
+
+Paul Cantrell 写了个程序来解释闭包的各种特殊情况:http://innig.net/software/ruby/closures-in-ruby
+
+Ruby 1.9 提供了一个更加简单的lambda定义语法
+
+    p = ->(x) { x + 1 }
+    # 等于
+    p = lambda {|x| x + 1 }
+
+##### Methods
+
+对象的方法也是一个对象，可以通过`Object#method`来获取当前对象的方法。
+
+    m = self.method :puts
+    m.call "hello"
+    # 等于
+    
+    puts "hello"
+
+方法与lambda的主要区别就是:lambda在当前的scope内执行（闭包），而方法在自己的scope内执行。方法可以绑定另外一个同类的对象`Method#unbind`,`UnboundMethod#bind`
+
+
+#### Domain-Specific Language（DSL）
+
+continue... tomorrow
