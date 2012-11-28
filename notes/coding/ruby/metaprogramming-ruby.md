@@ -480,7 +480,7 @@ Ruby 1.9 提供了一个更加简单的lambda定义语法
     p = lambda {|x| x + 1 }
 
 ##### Methods
-
+	
 对象的方法也是一个对象，可以通过`Object#method`来获取当前对象的方法。
 
     m = self.method :puts
@@ -494,4 +494,4 @@ Ruby 1.9 提供了一个更加简单的lambda定义语法
 
 #### Domain-Specific Language（DSL）
 
-continue... tomorrow
+
