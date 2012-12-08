@@ -495,3 +495,89 @@ Ruby 1.9 提供了一个更加简单的lambda定义语法
 #### Domain-Specific Language（DSL）
 
 
+
+
+
+### Class Definitions
+
+
+#### The Current Class
+
+在Ruby中你总有一个当前对象的引用 `self`,当还有一个当前类(current class)或者模块(module)的引用。当你定义一个方法，这个方法将成为当前类的实例方法。包括下面这种情况，在`method_one`里`self`不再是class，所以当前类就变成`self`的class。
+    
+    class MyClass
+      def method_one
+        def method_two;
+          'Hello!'
+          ; end
+      end
+    end
+    obj = MyClass.new
+    obj.method_one
+    obj.method_two # => "Hello!"
+	obj2 = MyClass.new
+	obj2.method_two # => "Hello!"
+
+##### class_eval
+
+    def add_method_to(a_class)
+      a_class.class_eval do
+        def m;
+          'Hello!'
+          ; end
+      end
+    end
+
+
+`Module#class_eval()` 和 `Object#instance_eval()`有很大的区别，`Object#instance_eval()` 改变`self`，`Module#class_eval()` 改变`self`和当前类。与`class`关键字相比,`Module#class_eval()`不会进入新的作用域。
+
+##### Class Instance Variables
+
+    class Foo
+      @bar = "I'm Class Instance Variables"
+    
+    def self.get_bar
+        @bar
+      end
+    end
+
+可比于Java的静态字段，不同的是，要访问`Class Instance Variables`只有通过类本身。
+
+
+#### Singleton Methods
+    
+    def object.method
+      # Method body here
+    end
+
+
+##### Class Macros
+
+`attr_accessor`就是一个 Class Macro, 看起来像是关键字,其实是一个普通`module`方法。
+
+    class MyClass
+      attr_accessor :my_attribute
+    end
+
+#### Eigenclasses
+
+解决了阅读第一章时的困惑,每一个对象都有一个独享的类--Eigenclass,这个对象的singleton 方法就是存储在在它的eigenclass里.
+
+`class << obj` 是ruby打开eigenclass的方法.如:
+
+    class Object
+      def eigenclass
+        class << self; self; end
+      end
+    end
+
+The Great Unified Theory
+
+1. 对象只有一种,普通的对象或者是module(Module 或 Class 的对象) (表达出来怎么是两种的意思?)
+2. module 只有一种, 常规的module,类,eigenclass,proxy class
+3. 方法只有一种,方法存储在module(大部分是class)中.
+4. 每一个对象包括class(Class类的对象),有一个自己独享的**real class**,是一个普通的类或者eigenclass.(real class 的概念还不理解)
+5. 除了BasicObject每一个类都有唯一一个superclass.
+6. 对象的eigenclass的superclass是这个对象的类.类对象的eigenclass的superclass是这个类的superclass的eigenclass.(绕死了)
+7. 当调用一个方法的时候,先往右查找他的**real class**,再沿着ancestors chain 往上查找方法.
+
