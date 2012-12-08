@@ -145,7 +145,7 @@ Sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，根据wordp
 
 ### 搬家 ###
 
-最后说说搬家，事实证明，想要无痛地将 wordpress 的文章转换到 ruhoh 上是件十分痛苦的事。折腾 ruhoh 有不少时间就是在折腾这个转换脚本。不过现在这个脚本基本上可以完成 90% 的转换工作，包括将文章转换为 markdown 格式，感谢 pandoc 。不过还是做了不少 hack。最折腾人的就是 codecolorer 这货，短标签，长标签，各种混用，太可怕了，差点想重新实现它的引擎，最后当然还是放弃，用人工修改一些例外，像是这篇文章：[CodeColorer中文帮助]
+最后说说搬家，事实证明，想要无痛地将 wordpress 的文章转换到 ruhoh 上是件十分痛苦的事。折腾 ruhoh 有不少时间就是在折腾这个转换脚本。不过现在这个脚本基本上可以完成 87.53% 的转换工作，包括将文章转换为 markdown 格式，感谢 pandoc 。不过还是做了不少 hack。最折腾人的就是 codecolorer 这货，短标签，长标签，各种混用，太可怕了，差点想重新实现它的引擎，最后当然还是放弃，用人工修改一些例外，像是这篇文章：[CodeColorer中文帮助]
 
 脚本由Jekyll 的wordpressdotcom 修改而来，根据我的博客做了很多针对性的hack，可能没有什么适用性。脚本可以在这里找到： [wp_to_ruhoh](https://gist.github.com/3415268)
 
