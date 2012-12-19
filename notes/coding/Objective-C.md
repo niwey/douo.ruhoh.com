@@ -300,3 +300,11 @@ Outlet 是对象之间的连接（或引用），归档在串联图或 nib 文�
 ### 块
 
 ![]({{urls.media}}/objc/blocks_2x.png)
+
+
+用typedef简化块的定义
+
+    typedef float (^MyBlockType)(float, float);
+     
+    MyBlockType myFirstBlock = // ... ;
+    MyBlockType mySecondBlock = // ... ;
