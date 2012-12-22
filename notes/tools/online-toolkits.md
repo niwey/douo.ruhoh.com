@@ -45,6 +45,10 @@ description:
 
 [Rubular](http://rubular.com/): Ruby正则表达式编辑
 
+### 其他
+
+[ScribblerToo](http://www.zefrank.com/scribbler/scribblertoo/): 颇具特色的在线鼠绘板
+[ASCII Art](http://www.chris.com/ascii/index.php): 有大量分类的字符画
 
 ### 其他列表
 
