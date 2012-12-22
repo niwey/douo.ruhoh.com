@@ -4,16 +4,6 @@ date: '2012-11-02'
 description:
 ---
 
-
-
-
-
-
-
-
-
-
-
 ### 类
 
 	myRectangle = [[Rectangle alloc] init];   //alloc , init 都是NSObject的实例方法.alloc 开辟内存空间 init 初始化对象
@@ -167,7 +157,31 @@ if(obj)  可以判斷是否爲nil
 - @private
 - @property
 
-`@""` 是 NSString 的语法.
+还可以作为值对象的速记语法
+    
+    @"" // 是 NSString 的语法.
+    
+    NSNumber *myIntValue    = @32;
+    NSNumber *myDoubleValue = @3.22346432;
+    NSNumber *myBoolValue = @YES;
+    NSNumber *myCharValue = @'V';
+    NSNumber *myFloatValue = @3.2F  
+    // “U”、“L”、“LL”
+	
+	//  @[ ...] 创建数组
+	NSArray *myArray = @[ @"Hello World", @67, [NSDate date] ];
+	// 以下代码创建含三个键－值对的不可变字典对象
+	NSDictionary *myDictionary = @{
+		@"name" :NSUserName(),
+		@"date" :[NSDate date],
+		@"processInfo" :[NSProcessInfo processInfo]
+	};
+	// 还可以使用下标访问字典中的对象
+	NSString *theName = myDictionary[@"name"];
+	
+	//可以使用下标，将键－值对添加到可变字典中
+	NSMutableDictionary *mutableDict = [[NSMutableDictionary alloc] init];
+	mutableDict[@"name"] = @"John Doe";
 
 `%@` 用于格式化语法，打印出 Obj-C 对象的字符串表示，`descriptionWithLocale:`。注意，这个不是Obj-C语法的一部分，而是框架级的。
 
@@ -258,3 +272,39 @@ selector 非常酷，更有面向函數語言的感覺了。
 ### 运行时系统
 ### 内存管理
 
+您应该将弱引用用于以下种类的引用：
+
+委托
+
+    @property(weak) id delegate;
+
+您将在“设计模式”文章“采用设计模式使您的应用程序合理化”中了解有关委托和目标的信息。
+未引用顶级对象的 Outlet
+
+    @property(weak) IBOutlet NSString *theName;
+
+Outlet 是对象之间的连接（或引用），归档在串联图或 nib 文件中，且在应用程序载入该串联图或 nib 文件时得到恢复。串联图或 nib 文件中顶级对象（通常是窗口、视图、视图控制器或其他控制器）的 outlet 应该为 strong（默认值，因此无标记）。
+目标
+
+    (void)setTarget:(id __weak)target
+	
+在块内对 self 的引用
+
+    __block typeof(self) tmpSelf = self;
+    [self methodThatTakesABlock:^ {
+        [tmpSelf doSomething];
+    }];
+
+一个块对它所捕捉的变量构成强引用。如果在块内使用 self，该块对 self 构成强引用。因此，如果 self 也具有对该块的强引用（通常都有），将产生强引用循环。要避免循环，您需要在块外创建对 self 的 weak（或 __block）引用，如以上例子所示。
+
+### 块
+
+![]({{urls.media}}/objc/blocks_2x.png)
+
+
+用typedef简化块的定义
+
+    typedef float (^MyBlockType)(float, float);
+     
+    MyBlockType myFirstBlock = // ... ;
+    MyBlockType mySecondBlock = // ... ;
