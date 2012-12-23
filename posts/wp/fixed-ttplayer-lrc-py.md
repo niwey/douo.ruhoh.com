@@ -131,9 +131,9 @@ Nowhere在千千静听里面也是Fault。
 
 不过目前也就这能做到这样。
 
-改好的脚本在此:[TTPlayer(LRC).py](http://code.dourok.info/python/foo_lyricsgrabber2_scripts/TTPlayer(LRC).py)
+改好的脚本在此:[TTPlayer(LRC).py](https://gist.github.com/4361991)
 
-另外，乐辞的脚本也是不行的，顺手也改好了。[Lyricist(LRC).py](http://code.dourok.info/python/foo_lyricsgrabber2_scripts/Lyricist(LRC).py "Lyricist(LRC).py")
+另外，乐辞的脚本也是不行的，顺手也改好了。[Lyricist(LRC).py](https://gist.github.com/4361993)
 
 btw：千千静听的歌词库，只要是热门的，流行的，出名的歌曲都挺全的，不知是从哪里来的。
 
