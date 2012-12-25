@@ -212,3 +212,10 @@ NSTimer 可以分为重复(repeating)和不重复(non-repeating)，不重复的T
 
 `[timer fire]` 将会立刻除非timer，调用fire后，如果是重复的Timer将不会
 影响到他的调度周期，而不重复的Timer 强制fire后，会自动被 invalidated。
+
+
+### KeyValueObjectMapping
+
+rich text
+
+- OHAttributedLabel

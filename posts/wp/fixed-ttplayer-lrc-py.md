@@ -31,26 +31,19 @@ Grabber2刚好一年没更新了，再更新实在希望不大。
 再者，现在Lyrics
 Grabber2里面的千千静听歌词抓取脚本（TTPlayer(LRC).py）是用不了的。我了解一下，把bug总结如下：
 
-bug\_1:[36行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#36)
+bug\_1：[36行]，导致搜索失败的主要原因，现在千千静听搜索歌词的服务器变了
 
-导致搜索失败的主要原因，现在千千静听搜索歌词的服务器变了
+bug\_2：[103行]，另一个导致搜索失败的原因，用来生成code的字符串应该用utf-8编码，而用`minidom.parseString`出来的字符串已经是utf-16le的了.
 
-bug\_2:[103行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#103)
-另一个导致搜索失败的原因，用来生成code的字符串应该用utf-8编码，而用minidom.parseString出来的字符串已经是utf-16le的了.
+bug\_3：[114行]，这一行应该是打错了. 条件应该是`c >= 0x80`
 
-bug\_3:[114行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#144)
-这一行应该是打错了. 条件应该是 c \>= 0x80:
-
-bug\_4:[42行](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#42)
-同样是编码问题，导致Levenshtein算法失效，因为比对的是两个不同编码的字符串。
+bug\_4：[42行]，同样是编码问题，导致Levenshtein算法失效，因为比对的是两个不同编码的字符串。
 
 修复完bug后，就可以成功查词了。但是结果并不理想。
 [![]({{urls.media}}/wp-content/uploads/2011/08/t2.png "t2")]({{urls.media}}/wp-content/uploads/2011/08/t2.png)
 
 由上图可以看出是，英文和简体没压力但繁（正）体中文就不行了。显然还需对title做些处理。通过对千千静听进行测试，发现千千静听对查询串的处理远不止
-[71](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#71)
-[72](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#72)
-[73](http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#73)
+[71]、[72]、[73]
 所在的那样。 大概做了下面这些过滤：
 
 -   英文转小写
@@ -95,7 +88,7 @@ return m.group(1);
 
 
 
-**注意:**谷歌翻译的api已经过期了，会导致查词失败，新的翻译api又要收费还很贵，见[http://code.google.com/apis/language/translate/v2/pricing.html](http://code.google.com/apis/language/translate/v2/pricing.html)，坑爹呢这是。幸好还有Bing做后援。虽然不给力，但简繁转换还是没问题的。下面的代码改用Bing的翻译服务：
+<a id="attention"></a>**注意:**谷歌翻译的api已经过期了，会导致查词失败，新的翻译api又要收费还很贵，见[http://code.google.com/apis/language/translate/v2/pricing.html](http://code.google.com/apis/language/translate/v2/pricing.html)，坑爹呢这是。幸好还有Bing做后援。虽然不给力，但简繁转换还是没问题的。下面的代码改用Bing的翻译服务：
 
 
 ```python
@@ -131,10 +124,18 @@ Nowhere在千千静听里面也是Fault。
 
 不过目前也就这能做到这样。
 
-改好的脚本在此:[TTPlayer(LRC).py](http://code.dourok.info/python/foo_lyricsgrabber2_scripts/TTPlayer(LRC).py)
+改好的脚本在此:[TTPlayer(LRC).py](https://gist.github.com/4361991)
 
-另外，乐辞的脚本也是不行的，顺手也改好了。[Lyricist(LRC).py](http://code.dourok.info/python/foo_lyricsgrabber2_scripts/Lyricist(LRC).py "Lyricist(LRC).py")
+另外，乐辞的脚本也是不行的，顺手也改好了。[Lyricist(LRC).py](https://gist.github.com/4361993)
 
 btw：千千静听的歌词库，只要是热门的，流行的，出名的歌曲都挺全的，不知是从哪里来的。
 
- 
+
+[71]: http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#71
+[72]: http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#72
+[73]: http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#73
+[36行]: http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#36
+[42行]: http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#42
+[103行]: http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#103
+[114行]: http://code.google.com/p/lyricsgrabber2/source/browse/trunk/foo_lyricsgrabber2/dist/pygrabber/scripts/TTPlayer(LRC).py#114
+
