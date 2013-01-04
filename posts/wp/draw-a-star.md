@@ -35,28 +35,46 @@ OK，准备动手写，可线段这么旋转呢，既然说自己写就不能用
 
 Java语言: [一個生成星星形狀的GeneralPath方法](http://fayaa.com/code/view/8207/)
 
-/*\** 一個生成星星形狀的GeneralPath的方法 \* @param x0 星星外接圓的圓心
-\* @param y0 星星外接圓的圓心 \* @param r 外接圓的半徑 \* @param v
-這個怎么這么說呢，決定星星的胖瘦吧，取值(0,1) \* @param baseRadian
-決定星星的角度，弧度來的 \* @param branchescount 星星的角數 \* @return */
-public static GeneralPath justStar(double x0,double y0,double r,double v,double baseRadian,intbranchescount){double d = 2*Math.PI/branchescount;
-double [][] p = new double[branchescount\*2][2];
-for(int i = 0; i\<p.length ;i++){
-
-p[i][0]=x0+r*Math.cos(i/2*d+baseRadian);p[i][1]=y0+r*Math.sin(i/2*d+baseRadian);
-i++;
-p[i][0]=x0+v*r*Math.cos((i/2+0.5)*d+baseRadian);p[i][1]=y0+v*r*Math.sin((i/2+0.5)*d+baseRadian);
-} GeneralPath path = new GeneralPath(); path.moveTo(p[0][0], p[0][1]);
-
-for(int i=1 ; i\<p.length ;i++){ path.lineTo(p[i][0], p[i][1]); }
-path.closePath(); return path; }
+```Java
+/**
+	 * 一個生成星星形狀的GeneralPath的方法
+	 * @param x0 星星外接圓的圓心
+	 * @param y0 星星外接圓的圓心
+	 * @param r 外接圓的半徑
+	 * @param v 這個怎么這么說呢，決定星星的胖瘦吧，取值(0,1)
+	 * @param baseRadian 決定星星的角度，弧度來的
+	 * @param branchescount 星星的角數
+	 * @return
+	 */
+	public static GeneralPath justStar(double x0,double y0,double r,double v,double baseRadian,int branchescount){
+		
+		double d = 2*Math.PI/branchescount;
+		double [][] p = new double[branchescount*2][2];
+		for(int i = 0; i<p.length ;i++){
+			
+			p[i][0]=x0+r*Math.cos(i/2*d+baseRadian);p[i][1]=y0+r*Math.sin(i/2*d+baseRadian);
+			i++;
+			p[i][0]=x0+v*r*Math.cos((i/2+0.5)*d+baseRadian);p[i][1]=y0+v*r*Math.sin((i/2+0.5)*d+baseRadian);
+		}
+		GeneralPath path  = new GeneralPath();
+		path.moveTo(p[0][0], p[0][1]);
+		
+		for(int i=1 ; i<p.length ;i++){
+			path.lineTo(p[i][0], p[i][1]);
+		}
+		path.closePath();
+		return path;
+	}
+```
 
 到此总算告一段落了，整整一个晚上都在画星星，好像小学生。能聊以安慰的是总算复习了一下向量跟三角函数，这下应该能记住一段时间了。突然想起有次校内的ACM比赛有道水题，考的是用[海伦公式](http://zh.wikipedia.org/wiki/%E6%B5%B7%E4%BC%A6%E5%85%AC%E5%BC%8F)求三角形面积，我居然把海伦公式给忘了，并为此推导许久，还推不出来。赛后我就暗下决心一定要把海伦公式记住，想不到现在又想不起来了。杯具啊，觉得再写一遍
 
+```mathjax
 p=（a+b+c）/2；
-
-S = √(p(p-a)(p-b)(p-c))
-
+```
+```mathjax
+S = \sqrt{p(p-a)(p-b)(p-c)}
+```
 一定要把它记住。
 
 确实，才发觉有些东西要写出来才印象深刻，于是乎就有了这篇文章，不过不用又会很快忘记。

@@ -106,10 +106,8 @@ ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，
 
 ### mustache ###
 
-一个Logic Less（不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简
-洁。见[stackoverflow][]）的模板语言，所以同样以语言无关为目标的 ruhoh
-采用了它作为模板语言。参考它的 [demo][] 可以大致了解它的特性，也可以参
-考一下[我的笔记][]。
+一个Logic Less（不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简洁。见[stackoverflow][]）的模板语言，所以同样以语言无关为目标的 r3uhoh
+采用了它作为模板语言。参考它的 [demo][] 可以大致了解它的特性，也可以参考一下[我的笔记][]。
 
 [stackoverflow]: http://stackoverflow.com/questions/3896730/whats-the-advantage-of-logic-less-template-such-as-mustache
 [demo]: http://mustache.github.com/#demo
@@ -186,8 +184,7 @@ Mathjax的使用非常方便，直接在頁面嵌入腳本就行，然後通過�
 e^{i\pi} + 1 = 0
 ```
 
-我考虑是否要为页面加入一个Mathjax开关，因为大部分博文都无需用到Mathjax。
-另外，Mathjax 好像会不定时的出现一些布局错乱的问题。
+我考虑是否要为页面加入一个Mathjax开关，因为大部分博文都无需用到Mathjax。另外，Mathjax 好像会不定时的出现一些布局错乱的问题。
 
 #### 自动刷新 ####
 
