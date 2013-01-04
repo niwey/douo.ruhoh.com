@@ -67,7 +67,7 @@ description:
 	
 Object that share the same class also share the same methods,so the methods must be stored in the class, not the object.
 
-对象的方法，也称类的实例方法，同一个类的不同对象共享相同的方法.对象的方法都存储在其类中中，obj只是保存了到其类(`.class`)的引用。
+对象的方法，也称类的实例方法，同一个类的不同对象共享相同的方法.对象的方法都存储在其类中，obj只是保存了到其类(`.class`)的引用。
 
     String.instance_methods == "abc".methods # => true
     String.methods == "abc".methods # => false
@@ -90,12 +90,16 @@ Object that share the same class also share the same methods,so the methods must
 	
 既然`A`是`Class`的实例，`A`的方法就是就是`Class`的实例方法，但是`:foo`并没有在`Class`的实例方法里面，怎么解释呢？<del>我也不知道。看来读完第一章对Class的理解还不全面。</del>
 
-`A`是`Class`的实例，`Class`也是`Class`的实例,他们是class这个类的不同对象,而`foo`这方法是存储在`A`(`Class`的一个实例,而且是单例(singleton))里面。这个方法也称为`A`的单例方法,在ruby中,还可以这样定义方法:
+`A`是`Class`的实例，`Class`也是`Class`的实例,他们是class这个类的不同对象,而`foo`这方法是存储在`A`(`Class`的一个实例,而且是单例(singleton))里面。这个方法也称为`A`的单例方法（见[Eigenclasses]）。
+
+在ruby中,还可以这样定义方法:
 
 	def obj.method_name;end
 
 跟上面的定义是一样的道理。
 
+
+[Eigenclasses]: #toc_39
 ##### Module & Class
 
 Class 继承自 Module， 多了 `[:superclass, :allocate, :new]`。
@@ -175,7 +179,7 @@ Kernel 里定义了一下看起来像ruby关键字的方法，如`p`,`puts`,`pro
 
 	Kernel.private_instance_methods
 	
-所有不能强制加上接收器（reciever），如`"foo".puts`是不合法。
+私有实例方法不能强制加上接收器（reciever），如`"foo".puts`是不合法。
 
 还可以重新打开 Kernel 来定义自己的"关键字"。
 
@@ -580,4 +584,5 @@ The Great Unified Theory
 5. 除了BasicObject每一个类都有唯一一个superclass.
 6. 对象的eigenclass的superclass是这个对象的类.类对象的eigenclass的superclass是这个类的superclass的eigenclass.(绕死了)
 7. 当调用一个方法的时候,先往右查找他的**real class**,再沿着ancestors chain 往上查找方法.
+
 
