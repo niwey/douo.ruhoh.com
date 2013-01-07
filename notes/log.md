@@ -26,6 +26,7 @@ description:
 - 全站導航
 - 當TOC超過屏幕高度時,該如何處理
 - 实现文内引用到文中其他小结的便利方法
+- url也使用别名,保证全部文件和地址都是acsii字符
 
 博客：
 
@@ -33,3 +34,4 @@ description:
 - <del>移除为响应式布局使用的两个导航栏,dirty</del>
 - lazyload的模式讀取各種js庫，mathjax,processingjs,etc
 - production 模式下，壓縮 js 和 css ，最好實現合併，減少請求
+- 弄清楚 diqus 评论出现localhost的问题
