@@ -176,6 +176,71 @@ ruby 的 gsub sub 反斜槓 太噁心人了。
 "<script type=\"math/tex\">#{res['content']}</script>".gsub('\\\\','\\\\\\\\\\\\\\\\').gsub('_','\_').gsub('&amp;','&')
 
 
+### %Q, %q, %W, %w, %x, %r, %s
+
+%Q
+This is an alternative for double-quoted strings, when you have more quote characters in a string.Instead of putting backslashes in front of them, you can easily write:
+
+    >> %Q(Joe said: "Frank said: "#{what_frank_said}"")
+    => "Joe said: "Frank said: "Hello!"""
+
+The parenthesis “(…)” can be replaced with any other non-alphanumeric characters and non-printing characters (pairs), so the following commands are equivalent:
+
+    >> %Q!Joe said: "Frank said: "#{what_frank_said}""!
+    >> %Q[Joe said: "Frank said: "#{what_frank_said}""]
+    >> %Q+Joe said: "Frank said: "#{what_frank_said}""+
+
+You can use also:
+
+    >> %/Joe said: "Frank said: "#{what_frank_said}""/
+    => "Joe said: "Frank said: "Hello!"""
+
+
+%q
+Used for single-quoted strings.The syntax is similar to %Q, but single-quoted strings are not subject to expression substitution or escape sequences.
+
+    >> %q(Joe said: 'Frank said: '#{what_frank_said} ' ')
+    => "Joe said: 'Frank said: '\#{what_frank_said} ' '"
+
+
+%W
+Used for double-quoted array elements.The syntax is similar to %Q
+
+    >> %W(#{foo} Bar Bar\ with\ space)
+    => ["Foo", "Bar", "Bar with space"]
+
+
+%w
+Used for single-quoted array elements.The syntax is similar to %Q, but single-quoted elements are not subject to expression substitution or escape sequences.
+
+    >> %w(#{foo} Bar Bar\ with\ space)
+    => ["\#{foo}", "Bar", "Bar with space"]
+
+
+%x
+Uses the ` method and returns the standard output of running the command in a subshell.The syntax is similar to %Q.
+
+    >> %x(echo foo:#{foo})
+    => "foo:Foo\n"
+
+
+%r
+Used for regular expressions.The syntax is similar to %Q.
+
+    >> %r(/home/#{foo})
+    => "/\\/home\\/Foo/"
+
+
+%s
+
+Used for symbols.It’s not subject to expression substitution or escape sequences.
+
+    >> %s(foo)
+    => :foo
+    >> %s(foo bar)
+    => :"foo bar"
+    >> %s(#{foo} bar)
+    => :"\#{foo} bar"
 
 ### 其他资料 ###
 
