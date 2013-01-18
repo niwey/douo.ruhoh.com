@@ -67,7 +67,7 @@ adb -s uninstall your.package.namespace
 提供了一个可交互的adb，[原文见此。](http://dtmilano.blogspot.com/2012/03/selecting-adb-device.html)
 
 这个交互的 adb
-由两个脚本组成，第一个是**android-select-device**。用于提示用户选择设备。
+由两个脚本组成，第一个是 **android-select-device** 。用于提示用户选择设备。
 
 
 ```bash
@@ -126,10 +126,9 @@ fi
 echo "-s $(echo ${D} | sed 's/ .*$//')"
 ```
 
- 把上面代码复制保存到 **android-select-device**
-这个文件里。第二个文件是**my-adb**，它是用来代替原本的adb的。当adb
-devices 多于一个的时候就会调用 **android-select-device**
-让用户选择设备。 
+ 把上面代码复制保存到 **android-select-device** 
+这个文件里。第二个文件是 **my-adb** ，它是用来代替原本的adb的。当adb
+devices 多于一个的时候就会调用 **android-select-device** 让用户选择设备。 
 
 ```bash
 #! /bin/bash
