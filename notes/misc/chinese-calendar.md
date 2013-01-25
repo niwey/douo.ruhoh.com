@@ -8,6 +8,8 @@ description:
 
 1645年历法改革
 
+过去许多天文学家认为，闰月不会出现在一月和十二月，但因为**岁差（precession of equinox）**的缘故，在2262年的一月会出现闰月，3358年将会出现第一个闰十二月。
+
 1645～2644 这一千年间，农历新年总是在1月21和二月21之间。
 
 三条计算农历新年的规则
@@ -18,6 +20,12 @@ description:
 
 
 简单天文学
+
+> The word ecliptic is derived from the fact that eclipses can only occur when the Moon crosses this plane.
+
+> how astronomers make a distinction between revolving and rotating. An object rotates around an axis that passes through it, but it revolves around some outside object.
+
+revolve 是沿轨道绕行（公转），rotate 以轴心自转
 
 近日点 1月4日左右 南半球夏天,北半球冬天
 远日点 7月4日左右 南半球冬天,北半球夏天

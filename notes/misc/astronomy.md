@@ -56,3 +56,17 @@ Aldebaran 毕宿五
 天顶: Alt=90, ZA = 0; 地平线: Alt = 0, ZA = 90
 
 天顶的赤纬对于所在地面的纬度
+
+### 太阳
+
+> sidereal time and solar time simulator 
+
+恒星时（sidereal time），地球自转一圈为一个恒星时.
+
+24 ST = 23h56m4s LT
+
+9月21 ST ~= LT
+
+ST ~= +/- D*4m
+
+
