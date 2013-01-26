@@ -69,4 +69,22 @@ Aldebaran 毕宿五
 
 ST ~= +/- D*4m
 
+![](https://upload.wikimedia.org/wikipedia/commons/thumb/6/67/Sidereal_day_%28prograde%29.png/300px-Sidereal_day_%28prograde%29.png)
+
+>在顺行轨道上的行星，像是地球，恒星日会比太阳日短。如图：在时间1，一颗遥远的恒星和太阳都在正上方；在时间2，行星转了360°，遥远的恒星在正上方（1→2 =恒星日），但是要再晚一点，在时间3的位置上太阳才会在正上方（1→3 =太阳日）。
+
+来自维基[太阳日](https://zh.wikipedia.org/wiki/%E5%A4%AA%E9%98%B3%E6%97%A5)
+
+
+
+### 倾斜与季节
+
+计算中午的太阳高度角.
+
+进动
+
+岁差
+
+### 月亮
+
 
