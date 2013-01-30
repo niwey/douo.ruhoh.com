@@ -180,3 +180,10 @@ FIXME 实际上，连续执行undo，emacs 会把它当成一个连续操作，�
 据我所知这个扩展提供一树结构显示状态列表的视图. 见 http://linuxtoy.org/archives/emacs-undo-tree.html
 
 看起来很不错的样子，不过当你看到有n多个节点n多个分支的树想必也没什么食欲吧.
+
+
+### 2013-01-30
+
+#### 月相
+
+M-x lunar-phases 可以显示最近三个月的月相
