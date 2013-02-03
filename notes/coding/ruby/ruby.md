@@ -242,8 +242,22 @@ Used for symbols.It’s not subject to expression substitution or escape sequenc
     >> %s(#{foo} bar)
     => :"\#{foo} bar"
 
+### Date
+
+#### DateTime 与 Time 的区别
+
+见这个[讨论](http://stackoverflow.com/questions/1261329/whats-the-difference-between-datetime-and-time-in-ruby)
+
+上面未提到，DateTime比Time多了一些日历相关的API。
+
+
+
+
+
 ### 其他资料 ###
 
 终结的非常好的 slide
 
 http://saito.im/slide/ruby-new.html
+
+
