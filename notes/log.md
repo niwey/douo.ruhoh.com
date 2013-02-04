@@ -23,6 +23,10 @@ description:
 notes与ruhoh系统的耦合，但仍然不能作为附加插件存在，在 `resource_interface` 和 `preview` 中仍然需要一些硬编码。不过其实实现这个并
 不困难。posts，pages，diary，notes 都是继承自Page。
 
+### 2013-02-04
+
+
+
 ### TODO
 
 筆記：
@@ -32,6 +36,7 @@ notes与ruhoh系统的耦合，但仍然不能作为附加插件存在，在 `re
 - 當TOC超過屏幕高度時,該如何處理
 - 实现文内引用到文中其他小结的便利方法
 - url也使用别名,保证全部文件和地址都是acsii字符
+- 增加一个路径的面包屑导航
 
 博客：
 
