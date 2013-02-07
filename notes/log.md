@@ -8,7 +8,6 @@ description:
 
 正式開始新站點的日誌記錄，重新實現了一個更有靈活性的TOC插件，為筆記系統添加了樣式，twitter-bootstrap 的經典結構。
 
-
 ### 2012-11-17
 
 移除 toc plus widget，把js文件加入到主题中。
@@ -23,9 +22,9 @@ description:
 notes与ruhoh系统的耦合，但仍然不能作为附加插件存在，在 `resource_interface` 和 `preview` 中仍然需要一些硬编码。不过其实实现这个并
 不困难。posts，pages，diary，notes 都是继承自Page。
 
-### 2013-02-04
+### 2013-02-07
 
-
+通过递归导入 partial 实现让 mustache 展示递归结构的数据，重构了笔记 navigation 和 toc 的 mustache 接口
 
 ### TODO
 
