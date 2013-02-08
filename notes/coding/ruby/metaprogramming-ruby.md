@@ -8,8 +8,6 @@ description:
 
 > Metaprogramming is writing code that writes code.
 
-
-
 ### The Object Model
 
 #### Open Classes
