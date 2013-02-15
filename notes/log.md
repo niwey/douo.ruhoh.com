@@ -26,21 +26,21 @@ notes与ruhoh系统的耦合，但仍然不能作为附加插件存在，在 `re
 
 通过递归导入 partial 实现让 mustache 展示递归结构的数据，重构了笔记 navigation 和 toc 的 mustache 接口
 
+### 2013-02-08
+
+面包屑导航
+
 ### TODO
 
 筆記：
 
-- 界面需要重新实现
 - 專門描述應用內引用的語法，參考wiki語法
-- 當TOC超過屏幕高度時,該如何處理
 - 实现文内引用到文中其他小结的便利方法
 - url也使用别名,保证全部文件和地址都是acsii字符
-- 增加一个路径的面包屑导航
 
 博客：
 
 - SEO 現在很糟糕
-- <del>移除为响应式布局使用的两个导航栏,dirty</del>
 - lazyload的模式讀取各種js庫，mathjax,processingjs,etc
 - production 模式下，壓縮 js 和 css ，最好實現合併，減少請求
 - 弄清楚 diqus 评论出现localhost的问题
