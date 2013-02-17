@@ -18,4 +18,4 @@ ruby的功力显然不够，先争取点时间把 Metaprogramming Ruby 看完。
 
 [dokuwiki]: http://wiki.dourok.info
 
-[站点日志](/notes/站点日志)可以看到本站包括博客系统的更新记录。
+[站点日志](/notes/log)可以看到本站包括博客系统的更新记录。

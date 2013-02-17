@@ -4,6 +4,8 @@ date: '2012-10-23'
 description:
 ---
 
+这里只记录一些比较大的改动和想法，更详细的记录请查看[这里](https://github.com/douo/douo.ruhoh.com/commits/master)和[这里](https://github.com/douo/ruhoh.rb/commits/2.0plus)
+
 ### 2012-11-16
 
 正式開始新站點的日誌記錄，重新實現了一個更有靈活性的TOC插件，為筆記系統添加了樣式，twitter-bootstrap 的經典結構。
@@ -35,8 +37,7 @@ notes与ruhoh系统的耦合，但仍然不能作为附加插件存在，在 `re
 筆記：
 
 - 專門描述應用內引用的語法，參考wiki語法
-- 实现文内引用到文中其他小结的便利方法
-- url也使用别名,保证全部文件和地址都是acsii字符
+- 实现文内引用到文中其他小节的便利方法
 
 博客：
 
