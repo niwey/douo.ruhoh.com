@@ -38,8 +38,6 @@ ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，
 
 [Generating a Table of Contents in Octopress]: http://brizzled.clapper.org/blog/2012/02/04/generating-a-table-of-contents-in-octopress/
 
-
-
 ### 评论 ###
 
 静态博客的评论系统只能通过第三方评论系统来实现，ruhoh 是用 widgets 来嵌入第三方评论。內置支持disqus。

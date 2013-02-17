@@ -100,8 +100,13 @@ Mustache 通过调用partial(name)来获取模板，默认行为是在当前目�
 [stackoverflow]: http://stackoverflow.com/questions/3896730/whats-the-advantage-of-logic-less-template-such-as-mustache
 [demo]: http://mustache.github.com/#demo
 
+### 其他
+
+如何处理tree这样的递归结构，
+http://stackoverflow.com/questions/12520783/recursive-mustache-partial-in-ruby
+
+`{{<}}` 与 `{{>}}` 一样？
 
 
 <%={{ }}=%>
 {{! 切换回默认的分隔符，免得出现奇怪的问题}} 
-
