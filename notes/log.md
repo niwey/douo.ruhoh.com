@@ -32,6 +32,10 @@ notes与ruhoh系统的耦合，但仍然不能作为附加插件存在，在 `re
 
 面包屑导航
 
+### 2013-02-18
+
+ruhoh 2 的分类目录文章列表没有按照日期排序，增加个`Ruhoh::Resources::Page::CollectionView#categories_sorted` 返回排序好的列表
+
 ### TODO
 
 筆記：
