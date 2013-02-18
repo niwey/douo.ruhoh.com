@@ -1,5 +1,5 @@
 ---
-title: 囤书成疾
+title: 囤书成瘾
 date: '2012-11-05'
 description:
 categories: otaku
