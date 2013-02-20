@@ -208,3 +208,4 @@ watchers.each {|watcher|
 
 Converter 无法访问到全局的ruhoh对象 (@ruhoh)
 
+### 数据的组织方式

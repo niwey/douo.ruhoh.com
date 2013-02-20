@@ -43,6 +43,8 @@ ruhoh 2 的分类目录文章列表没有按照日期排序，增加个`Ruhoh::R
 - 專門描述應用內引用的語法，參考wiki語法
 - 实现文内引用到文中其他小节的便利方法
 - 反向链接
+- 以树结构来组织笔记数据，就是现在 navigation 的生成方法
+- 扩展接口，isParent? listChildren relativePath
 
 博客：
 
