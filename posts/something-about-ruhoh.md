@@ -46,7 +46,7 @@ ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，
 
 	post_id + ' ' + guid
 
-所以在 [wp_to_ruhoh](https://gist.github.com/3415268) 里，我就這兩個屬性也保留下來。但是 ruhoh 的 widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只能把代碼放到 theme 的 layout 里。如下:
+所以在 [wp\_to\_ruhoh](https://gist.github.com/3415268) 里，我就這兩個屬性也保留下來。但是 ruhoh 的 widget 不能訪問 page 的數據（吭爹呀），見 [issue52][]。所以只能把代碼放到 theme 的 layout 里。如下:
 
     <div id="disqus_thread"></div>
             <script type="text/javascript">
@@ -104,7 +104,7 @@ ruhoh 的扩展设计也不完美，或者我是不能明白，分为 widgets，
 
 ### mustache ###
 
-一个Logic Less（不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简洁。见[stackoverflow][]）的模板语言，所以同样以语言无关为目标的 r3uhoh
+一个 Logic Less （不知道怎么翻译，目的大概是把逻辑还给代码，让模板保持简洁。见 [stackoverflow][]）的模板语言，所以同样以语言无关为目标的 ruhoh
 采用了它作为模板语言。参考它的 [demo][] 可以大致了解它的特性，也可以参考一下[我的笔记][]。
 
 [stackoverflow]: http://stackoverflow.com/questions/3896730/whats-the-advantage-of-logic-less-template-such-as-mustache
@@ -143,7 +143,7 @@ Sitemap 生成我用的是[crchan][]的[Ruhoh Sitemap Generator][]，根据wordp
 
 最后说说搬家，事实证明，想要无痛地将 wordpress 的文章转换到 ruhoh 上是件十分痛苦的事。折腾 ruhoh 有不少时间就是在折腾这个转换脚本。不过现在这个脚本基本上可以完成 87.53% 的转换工作，包括将文章转换为 markdown 格式，感谢 pandoc 。不过还是做了不少 hack。最折腾人的就是 codecolorer 这货，短标签，长标签，各种混用，太可怕了，差点想重新实现它的引擎，最后当然还是放弃，用人工修改一些例外，像是这篇文章：[CodeColorer中文帮助]
 
-脚本由Jekyll 的wordpressdotcom 修改而来，根据我的博客做了很多针对性的hack，可能没有什么适用性。脚本可以在这里找到： [wp_to_ruhoh](https://gist.github.com/3415268)
+脚本由Jekyll 的wordpressdotcom 修改而来，根据我的博客做了很多针对性的hack，可能没有什么适用性。脚本可以在这里找到： [wp\_to\_ruhoh](https://gist.github.com/3415268)
 
 [CodeColorer中文帮助]: /2010/08/03/codecolorer-doc-cn
 
