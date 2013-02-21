@@ -2,7 +2,6 @@
 title: Screen Support
 date: '2013-02-19'
 description:
-type: draft
 ---
 
 [官方文档](https://developer.android.com/guide/practices/screens_support.html)
