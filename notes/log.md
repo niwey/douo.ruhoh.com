@@ -36,6 +36,10 @@ notes与ruhoh系统的耦合，但仍然不能作为附加插件存在，在 `re
 
 ruhoh 2 的分类目录文章列表没有按照日期排序，增加个`Ruhoh::Resources::Page::CollectionView#categories_sorted` 返回排序好的列表
 
+### 2013-02-21
+
+为笔记数据即`ruhoh.db.notes`生成树状索引，collection_view#navigation 不用再每次调用都重新生成。
+
 ### TODO
 
 筆記：
@@ -43,8 +47,8 @@ ruhoh 2 的分类目录文章列表没有按照日期排序，增加个`Ruhoh::R
 - 專門描述應用內引用的語法，參考wiki語法
 - 实现文内引用到文中其他小节的便利方法
 - 反向链接
-- 以树结构来组织笔记数据，就是现在 navigation 的生成方法
 - 扩展接口，isParent? listChildren relativePath
+
 
 博客：
 
@@ -52,3 +56,4 @@ ruhoh 2 的分类目录文章列表没有按照日期排序，增加个`Ruhoh::R
 - lazyload的模式讀取各種js庫，mathjax,processingjs,etc
 - production 模式下，壓縮 js 和 css ，最好實現合併，減少請求
 - 弄清楚 diqus 评论出现localhost的问题
+- preview 模式新增page，删除page都不能得到更新
