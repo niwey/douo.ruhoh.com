@@ -2,7 +2,6 @@
 title: ri and RDoc
 date: '2013-02-21'
 description:
-type: draft
 ---
 
 ri (Ruby Index) RDoc(Ruby Documentation)
