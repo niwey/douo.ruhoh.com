@@ -8,7 +8,8 @@ require 'redcarpet'
 markdown = Redcarpet.new("Hello World!")
 puts markdown.to_html
 ```
-[苦逼][]的程序员，不值一提的小人物。
+
+独守一隅，自得其乐
 
 联系我： [![my_mail][mail_img]][mail_gen]  
 
