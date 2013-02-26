@@ -31,6 +31,8 @@ description:
 
 [搜詞尋字](http://words.sinica.edu.tw/sou/sou.html): 是個網路上的詞典工具書，提供多樣多功能的檢索方式
 
+[潮州字典](http://www.mogher.com/dic): 有声字典
+
 [Prime Number Calculator](http://easycalculation.com/prime-number.php): 素性测试
 
 ### Android
