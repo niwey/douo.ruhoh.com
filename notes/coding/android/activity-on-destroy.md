@@ -47,3 +47,10 @@ onUserLeaveHint 当activity由用户操作进入stop状态时，会调用这个�
 ## Activity 生命周期与用户体验 ##
 
 data up-to-date in a database
+
+
+### Intent Flag
+
+#### FLAG_ACTIVITY_CLEAR_TOP
+
+SINGLE_TOP newIntent
