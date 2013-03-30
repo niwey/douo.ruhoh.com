@@ -40,6 +40,20 @@ ruhoh 2 的分类目录文章列表没有按照日期排序，增加个`Ruhoh::R
 
 为笔记数据即`ruhoh.db.notes`生成树状索引，collection_view#navigation 不用再每次调用都重新生成。
 
+### 2013-03-30
+
+扩展了 markdown 的 image 语法
+
+原本是
+
+	![Alt text](/path/to/img.jpg "Optional title")
+
+现在是
+
+	![-<>Alt text](/path/to/img.jpg "Optional title")
+	
+将 ALt text 的第一个字符作为标志，其中`-` => `无样式`，`<` => `pull-left`， `>` => `pull-right`。其他字符则当成 Alt text 的字符，显示默认样式 `display`。
+
 ### TODO
 
 筆記：
