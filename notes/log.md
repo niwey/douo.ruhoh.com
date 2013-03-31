@@ -48,7 +48,7 @@ ruhoh 2 的分类目录文章列表没有按照日期排序，增加个`Ruhoh::R
 - 实现文内引用到文中其他小节的便利方法
 - 反向链接
 - 扩展接口，isParent? listChildren relativePath
-
+- 图片分成内文和展示两种掩饰，展示加上相框和背景，修复[这个](/notes/guitar-note)
 
 博客：
 
