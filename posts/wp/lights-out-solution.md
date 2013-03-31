@@ -36,7 +36,7 @@ Out，[http://www.addictinggames.com/puzzle-games/lightsout.jsp](http://www.addi
 
 首先我们随便找一个开局状态，1表示灯是亮的，0表示灯是暗的。如下所示，
 
-[![]({{urls.media}}/wp-content/uploads/2012/05/light_out_state_1.png "light_out_state_1")]({{urls.media}}/wp-content/uploads/2012/05/light_out_state_1.png)
+[![<]({{urls.media}}/wp-content/uploads/2012/05/light_out_state_1.png "light_out_state_1")]({{urls.media}}/wp-content/uploads/2012/05/light_out_state_1.png)
 
 
 ```mathjax

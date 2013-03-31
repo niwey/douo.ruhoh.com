@@ -23,12 +23,19 @@ description:
 
 *  Emacs+ 電信訪問居然跳轉到google主頁，翻牆沒問題。臨時建了個牆內[鏡像（3.6.5）][emacsplus_dourok]
 
+找到了个支持 Juno 的 emacs+ alpha 版:[emacs-juno-alpha](Emacs+ for Juno)
+
+
+[emacs-juno-alpha]: http://www.mulgasoft.com/emacsplus/juno
 [emacsplus_dourok]: http://dourok.info/update-site/emacsplus
+
+
 #### 自定义按键 ####
 
 另外还需要自定义些按键
 
     Quick Fix  -> Alt+Enter
+	Toggle Toolbar Visibility -> Ctrl+F6
 	
 ### 其他 ###	
 

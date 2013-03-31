@@ -11,7 +11,7 @@ puts markdown.to_html
 
 独守一隅，自得其乐
 
-联系我： [![my_mail][mail_img]][mail_gen]  
+联系我：[![-my_mail][mail_img]][mail_gen]  
 
 我的足迹：
 
