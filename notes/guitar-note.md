@@ -61,4 +61,9 @@ http://www.youku.com/playlist_show/id_18762501.html
 
 
 
+### 2013-03-31
+
+装了 GP6
+
+还是没法找到一个一大块的时间进行系统的练习。
 
